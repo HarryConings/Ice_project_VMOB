@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instellingen>
+    <ziekenfondsen>
+        <ZKF203>
+            <as400>
+                <as400_name>AIRBUS</as400_name>
+                <username>M203CGK2</username>
+                <password>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</password>
+                <mut_nbr>203</mut_nbr>
+                <libcxfil>libcxfil03</libcxfil>
+                <libsxfil>libsxfil03</libsxfil>
+                <libcxref>libcxref03</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus203</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+         </as400>
+      </ZKF203>
+      <ZKF235>
+            <as400>
+                <as400_name>AIRBUS</as400_name>
+                <username>M235CGK2</username>
+                <password>ZWthMjAxNlBhdGVyNDc4N25vc3RlckVlcnN0MTg0NTdjZWdKYW56aW5ndGNlZzQ3TG9uZG9uY2FsbGluZzc=</password>
+                <mut_nbr>235</mut_nbr>
+                <libcxfil>libcxfil35</libcxfil>
+                <libsxfil>libsxfil03</libsxfil> <!-- files staan in sxfil03 -->
+                <libcxref>libcxref35</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus235</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+         </as400>
+      </ZKF235>       
+    </ziekenfondsen>
+	 <verzekeringen>                                                   <!--verzekeringen waar een kaart voor gegenereerd wordt-->
+        <ZKF203>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+             <ambuplus>64</ambuplus>
+             <ambuplan>63</ambuplan>
+             <hospiforfait hospiforfait="39">
+                <HOSPIFORFAIT12>24</HOSPIFORFAIT12>
+                <HOSPIFORFAIT25>21</HOSPIFORFAIT25>
+                <HOSPIFORFAIT50>22</HOSPIFORFAIT50>
+             </hospiforfait>
+             <hospicontinu>53</hospicontinu>
+		   <maxiplan>69</maxiplan>
+         </ZKF203>
+         <ZKF235>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+             <ambuplus>64</ambuplus>
+             <ambuplan>63</ambuplan> <!-- 9/12/15 -->
+             <hospiforfait hospiforfait="50">
+                <HOSPIFORFAIT12>12</HOSPIFORFAIT12>
+                <HOSPIFORFAIT25>11</HOSPIFORFAIT25>
+                <HOSPIFORFAIT50>10</HOSPIFORFAIT50>
+             </hospiforfait>
+             <hospicontinu>53</hospicontinu>
+		   <maxiplan>69</maxiplan>  <!-- 9/12/15 -->
+         </ZKF235>
+     </verzekeringen>
+	 <excel>
+		<plaats_verslag>P:\GIT\VMOB\TEST\Project_client_info_as400</plaats_verslag>
+		<plaats_sjabloon>P:\GIT\VMOB\TEST\Project_client_info_as400</plaats_sjabloon>
+		<sjabloon1>sjabloon1.xlsx</sjabloon1>
+		<sjabloon2>sjabloon2.xlsx</sjabloon2>
+	 </excel>
+	 </instellingen>
