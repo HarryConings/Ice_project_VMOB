@@ -1,0 +1,33 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.2.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.2.1\bin\perlapp.exe
+Script: X:\productie_assurcard_agresso\agresso_insert_contracten_prod.pl
+Cwd: X:\mob-hospiplan-2014\vnzmodules
+Clean: 0
+Date: 2014-11-19 21:06:52
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: X:\productie_assurcard_agresso\agresso_insert_contracten_prod.exe
+Force: 0
+Gui: 0
+Hostname: PV203O100
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: agresso_insert_contracten
+Version-FileVersion: 1.0.0
+Version-InternalName: agresso_insert_contracten
+Version-LegalCopyright: HARRY CONINGS 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: agresso_insert_contracten
+Version-ProductName: agresso_insert_contracten
+Version-ProductVersion: 1.0.0
+Warnings: 0
+Xclude: 0
