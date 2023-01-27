@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instellingen>
+     <mode>TEST</mode> <!--TEST voor test files gaan niet naar het GKD /PROD  voor productie files gaan wel naar het GKD--> 
+	 <Agresso_IP_TEST>10.198.216.91</Agresso_IP_TEST> <!-- 10.198.216.90 S200WP1XXL01.mutworld.be productie // 10.198.216.91 test s200wr2xxl01.mutworld.be -->
+	 <Agresso_IP_PROD>10.198.216.90</Agresso_IP_PROD> <!-- 10.198.216.90 S200WP1XXL01.mutworld.be productie // 10.198.216.91 test s200wr2xxl01.mutworld.be -->
+	 <Agresso_SQL>10.198.216.89</Agresso_SQL> <!--Server=S998XXLSQL01.CPC998.BE\\i200-->	 
+     <CompanyCode>VMOB</CompanyCode>                             <!--naam van het bedrijf in Agresso-->
+     <ApArType_klant>R</ApArType_klant>                                     <!--ApArType is altijd R   staat in de xml van agresso -->
+     <ApArType_leverancier>P</ApArType_leverancier>                                 <!-- ApArInfo ApArType -->
+     <assurcard_invoice_import_interface>RF</assurcard_invoice_import_interface> <!-- is altijs BI -->
+     <agresso_voucher_type>RZ</agresso_voucher_type>  <!--This must be a valid transaction type that has been setup in the Transaction types screen in AGRESSO Common-->
+     <plaats_file>P:\\OGV\\ASSURCARD_PROG\\asurcard_xml</plaats_file> <!--plaats waar de klanten_naar_agresso_xml wordt geplaatst-->
+     <plaats_ABWSupplierCustomer_xsd>P:\\OGV\\ASSURCARD_PROG\\asurcard_xsd\\agresso\\ABWSupplierCustomer.xsd</plaats_ABWSupplierCustomer_xsd> <!--plaats waar de ABWSupplierCustomer.xsd staat dubbele \\ gebruiken ipv \-->
+     <plaats_ABWSchemaLib_xsd>P:\\OGV\\ASSURCARD_PROG\\asurcard_xsd\\agresso\\ABWSchemaLib.xsd</plaats_ABWSchemaLib_xsd> <!--plaats waar de ABWSchemaLib xsd staat dubbele \\ gebruiken ipv \-->
+	 <plaats_mobicoon>C:\macros\mob\agresso_zet_een_klant_in.exe</plaats_mobicoon>
+-	<plaats_mobicoon_on_top>C:\macros\mob\agresso_zet_een_klant_in_on_top.exe</plaats_mobicoon_on_top>
+	<plaats_sjablonen_brieven>W:\OGV\BRIEFWISSELING_NIEUW\Sjablonen</plaats_sjablonen_brieven> <!-- plaats waar de sjablonen zich bevinden -->
+     <plaats_background_pdf>W:\OGV\BRIEFWISSELING_NIEUW\Sjablonen\background.pdf</plaats_background_pdf>
+     <plaats_brieven>W:\OGV\BRIEFWISSELING_NIEUW\Documenten</plaats_brieven>
+     <plaats_brieven_cache>P:\OGV\BRIEFWISSELING_NIEUW\Documenten\cache</plaats_brieven_cache>
+     <plaats_brieven_print_herinneringen>P:</plaats_brieven_print_herinneringen>
+	<plaats_files_gkd_agresso>W:\OGV\BRIEFWISSELING_NIEUW\Documenten\terug_gkd</plaats_files_gkd_agresso><!-- plaats files terug in agresso en gkd enkel gebruikt bij fout-->
+	<herinneringen_tekst>HERINNERING AAN ONZE BRIEF VAN </herinneringen_tekst> <!-- gevolgd door dag maand in tekst jaar oorspronkelijke brief-->
+     <tweede_herinneringen_tekst>TWEEDE HERINNERING AAN ONZE BRIEF VAN </tweede_herinneringen_tekst> <!-- gevolgd door dag maand in tekst jaar oorspronkelijke brief-->
+     <dagen_tweede_herinnering>21</dagen_tweede_herinnering> <!--bij brrieven _herX waar X is aantal weken hoeveel dagen na eerste herinering moet de tweese gestuurd-->
+     <dagen_nagging_herrinering>14</dagen_nagging_herrinering><!--bij brrieven _herX waar X is aantal weken hoeveel dagen na tweede herinnering moeten er mails gestuurd-->
+     <printer_herineringen>P235OGVL01_lade2</printer_herineringen>  
+     <mail_verslag_naar>harry.conings@vnz.be, isabelle.duville@vnz.be, isabelle.duville@hospiplus.be, marnix.raes@hospiplus.be, christianbruyninckx@hospiplus.be </mail_verslag_naar> <!--mail adressen naar waar dat de uitlag moet worden gemaild-->
+     <PayTerms>30</PayTerms>                                    <!-- voorlopig gaat 30 45 niet -->
+     <CreditLimit>0</CreditLimit>                               <!-- hoeveel crediet we de mensen geven -->
+     <Currency>EUR</Currency>                                   <!-- De munteenheid die we gebruiken -->
+     <TaxCode>0</TaxCode>                                   <!-- geen BTW -->
+     <AP_Account>4801009</AP_Account>                       <!-- boekhoudrekening voor AP-->
+     <GL_Account>9000001</GL_Account>                       <!-- boekhoudingrekening voor general ledger -->
+     <ApArNo>71009938000</ApArNo>
+     <invoice_payment_delay>14</invoice_payment_delay>      <!-- factuur van hospitaal wordt na x dagen betaald-->
+     <PayMethod>IP</PayMethod>                                  <!-- Betalingsmethode moet op IP staan -->
+     <Default_Language>NL</Default_Language>                    <!-- standaard taal -->
+     <blok_grootte>2000</blok_grootte>                           <!-- aantal personen die per keer naar de websevice gaan -->
+     <blok_grootte_invoices>200</blok_grootte_invoices>         <!--aantal facturen die per keer naar de webservice worden geschreven -->
+     <verzekeringen>                                                   <!--verzekeringen waar een kaart voor gegenereerd wordt-->
+         <ZKF203>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+             <ambuplus>64</ambuplus>
+             <ambuplan>63</ambuplan>
+             <hospiforfait hospiforfait="39">
+                <HOSPIFORFAIT12>24</HOSPIFORFAIT12>
+                <HOSPIFORFAIT25>21</HOSPIFORFAIT25>
+                <HOSPIFORFAIT50>22</HOSPIFORFAIT50>
+             </hospiforfait>
+             <hospicontinu>53</hospicontinu>
+	     <maxiplan>69</maxiplan>
+         </ZKF203>
+         <ZKF235>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+             <ambuplus>64</ambuplus>
+             <ambuplan>63</ambuplan> <!-- 9/12/15 -->
+             <hospiforfait hospiforfait="50">
+                <HOSPIFORFAIT12>12</HOSPIFORFAIT12>
+                <HOSPIFORFAIT25>11</HOSPIFORFAIT25>
+                <HOSPIFORFAIT50>10</HOSPIFORFAIT50>
+             </hospiforfait>
+             <hospicontinu>53</hospicontinu>
+	     <maxiplan>69</maxiplan>  <!-- 9/12/15 -->
+         </ZKF235>
+     </verzekeringen>
+	<as400>
+		<ZKF203>
+			 <as400_name>AIRBUS</as400_name>
+                <username>M203CGK2</username>
+                <password>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</password>
+                <mut_nbr>203</mut_nbr>
+                <libcxfil>libcxfil03</libcxfil>
+                <libsxfil>libsxfil03</libsxfil>
+                <libcxref>libcxref03</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus203</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</ZKF203>
+		<ZKF235>
+			 <as400_name>AIRBUS</as400_name>
+                <username>M235CGK2</username>
+                <password>ZWthMjAxNlBhdGVyNDc4N25vc3RlckVlcnN0MTg0NTdjZWdKYW56aW5ndGNlZzQ3TG9uZG9uY2FsbGluZzc=</password>
+                <mut_nbr>235</mut_nbr>
+                <libcxfil>libcxfil35</libcxfil>
+                <libsxfil>libsxfil03</libsxfil> <!-- files staan in sxfil03 -->
+                <libcxref>libcxref35</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus235</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</ZKF235>
+	</as400>
+	<Doc_Archief>											<!-- settings waar en hoe alle documenten worden bewaard -->
+		 <LocatieDocumenten>W:\\OGV\\SCANNING</LocatieDocumenten>
+		 <LocatieExtract>W:\\OGV\\SCANNING\\EXTRACT</LocatieExtract>
+		 <LocatieVerwerkt>W:\\OGV\\SCANNING\\VERWERKT</LocatieVerwerkt>	
+		 <Catalog_key_Openoffice_brieven>HA0431</Catalog_key_Openoffice_brieven> <!-- waar openoffice brieven in doccenter gepllatst worden als ze niet hieronder te vinden zijn -->
+		 <DocType>KLANTBRIEF</DocType>     <!-- als de naam niet in doc_in_naam_mapping voorkomt gebruiken we deze standaard voor agresso-->
+		 <DocType_MSG>EMAIL</DocType_MSG>		<!--dit is een mail eventueel met bijlage -->
+		 <ziekenfondsen>
+           <ZKF203>
+               <nr>203</nr>
+               <name_as400>AIRBUS</name_as400>			  
+               <username>M203CGK2</username>
+               <password>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</password> <!-- nieuw paswoord AS400 aanpassen via versleutel paswoord -->
+               <as400_library>libcxfil03</as400_library>
+               <doc_in>MOIN0001</doc_in> <!-- als de naam niet in doc_in_naam_mapping voorkomt gebruiken we deze standaard voor doccenter-->			  
+               <doc_conf_in>MVIN0001</doc_conf_in>
+               <doc_out>MOB_OUT</doc_out>
+               <doc_conf_out>MOBV_OUT</doc_conf_out>
+               <doc_in_naam_mapping>
+                     <ATVV>       <!-- afkorting-->
+                          <CAT>HA0101</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Attest Vorige Verzekering</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>
+                     </ATVV> 
+                     <STAV>  <!--  afkorting -->
+                          <CAT>HA0111</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Stopzetting Aansluiting</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>						  
+                     </STAV> 
+                     <SASF>   <!--  afkorting -->
+                          <CAT>HA0201</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA Schadeaangifte Formulier</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>						  
+                     </SASF>     
+                     <SABI>  <!--  afkorting -->
+                          <CAT>HA0211</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA vraag gegevens Lid</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>
+                     </SABI> 
+                     <SABIDR>   <!--  afkorting -->
+                          <CAT>HA0221</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA Vraag gegevens Dokter</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>
+                     </SABIDR>
+                     <SAGNTS>   <!--  afkorting -->
+                          <CAT>HA0231</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA Geen tussenkomst</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>						  
+                     </SAGNTS>
+                     <AVAB>   <!--  afkorting -->
+                          <CAT>HA0301</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Aanvaardingsbrief</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>						  
+                     </AVAB>
+                     <AVBI>   <!--  afkorting -->
+                          <CAT>HA0311</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Gegevens opgevraagd Lid</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>						  
+                     </AVBI>
+                     <AVBIDR>   <!--  afkorting -->
+                          <CAT>HA0321</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Gegevens opgevraagd Dokter</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>							
+                     </AVBIDR>
+                     <AVMV>    <!--  afkorting -->
+                          <CAT>HA331</CAT>    <!-- Code documenttype -->
+                          <omschrijving>AV Medische Vragenlijst</omschrijving>  <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>						  
+                     </AVMV>
+                     <AVAV>   <!--  afkorting -->
+                          <CAT>HA0341</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Aansluitings Verklaring</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>								  
+                     </AVAV>
+                     <STAVL>   <!--  afkorting -->
+                          <CAT>HA0401</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Stopzetting aansluiting aan Lid</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </STAVL>
+                     <MDBI>   <!--  afkorting -->
+                          <CAT>HA0411</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Medisch Verslag /BI</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>									  
+                     </MDBI>
+                     <INHPL>   <!--  afkorting -->
+                          <CAT>HA0421</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Info Hospitalisatie Verzekering</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </INHPL>
+                     <DB>    <!--  afkorting -->
+                          <CAT>HA0431</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Diverse Brieven</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </DB>
+                     <PWT>   <!--  afkorting -->
+                          <CAT>HA0441</CAT>   <!-- Code documenttype -->
+                          <omschrijving>PTL wordt TIT</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </PWT>
+                     <AVPRF>   <!--  afkorting -->
+                          <CAT>HA0241</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Proforma</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </AVPRF>
+                     <WZ>   <!--  afkorting -->
+                          <CAT>HA0981</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Archief Wijzigingen</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>									  
+                     </WZ>
+                     <AG>   <!--  afkorting -->
+                          <CAT>HA0991</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Archief Alle Gegevens</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>									  
+                     </AG>
+               </doc_in_naam_mapping>               
+           </ZKF203>
+           <ZKF235>
+               <nr>203</nr>
+               <name_as400>AIRBUS</name_as400>			  
+               <username>M235CGK2</username>
+               <password>ZWthMjAxNkhlZGVuZGFhZ3NlS3Vuc3RjZWdMYWdlcmZlbGRab25lMzgxNmNlZ2EzNjUw</password> <!-- okt2015 -->
+               <as400_library>libcxfil35</as400_library>
+               <doc_in>MOIN0001</doc_in><!-- als de naam niet in doc_in_naam_mapping voorkomt gebruiken we deze standaard voor doccenter-->			   
+               <doc_conf_in>MVIN0001</doc_conf_in>
+               <doc_out>MOB_OUT</doc_out>
+               <doc_conf_out>MOBV_OUT</doc_conf_out>
+               <doc_in_naam_mapping>
+                     <ATVV>       <!-- afkorting-->
+                          <CAT>HA0101</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Attest Vorige Verzekering</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>
+                     </ATVV> 
+                     <STAV>  <!--  afkorting -->
+                          <CAT>HA0111</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Stopzetting Aansluiting</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>						  
+                     </STAV> 
+                     <SASF>   <!--  afkorting -->
+                          <CAT>HA0201</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA Schadeaangifte Formulier</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>						  
+                     </SASF>     
+                     <SABI>  <!--  afkorting -->
+                          <CAT>HA0211</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA vraag gegevens Lid</omschrijving> <!-- Nederlandse Omschrijving -->
+                     </SABI> 
+                     <SABIDR>   <!--  afkorting -->
+                          <CAT>HA0221</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA Vraag gegevens Dokter</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>
+                     </SABIDR>
+                     <SAGNTS>   <!--  afkorting -->
+                          <CAT>HA0231</CAT>   <!-- Code documenttype -->
+                          <omschrijving>SA Geen tussenkomst</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>SCHADEBRIEVE</doc_agresso>						  
+                     </SAGNTS>
+                     <AVAB>   <!--  afkorting -->
+                          <CAT>HA0301</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Aanvaardingsbrief</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>						  
+                     </AVAB>
+                     <AVBI>   <!--  afkorting -->
+                          <CAT>HA0311</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Gegevens opgevraagd Lid</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>						  
+                     </AVBI>
+                     <AVBIDR>   <!--  afkorting -->
+                          <CAT>HA0321</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Gegevens opgevraagd Dokter</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>							
+                     </AVBIDR>
+                     <AVMV>    <!--  afkorting -->
+                          <CAT>HA331</CAT>    <!-- Code documenttype -->
+                          <omschrijving>AV Medische Vragenlijst</omschrijving>  <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>						  
+                     </AVMV>
+                     <AVAV>   <!--  afkorting -->
+                          <CAT>HA0341</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Aansluitings Verklaring</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>								  
+                     </AVAV>
+                     <STAVL>   <!--  afkorting -->
+                          <CAT>HA0401</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Stopzetting aansluiting aan Lid</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </STAVL>
+                     <MDBI>   <!--  afkorting -->
+                          <CAT>HA0411</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Medisch Verslag /BI</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>									  
+                     </MDBI>
+                     <INHPL>   <!--  afkorting -->
+                          <CAT>HA0421</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Info Hospitalisatie Verzekering</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </INHPL>
+                     <DB>    <!--  afkorting -->
+                          <CAT>HA0431</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Diverse Brieven</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </DB>
+                     <PWT>   <!--  afkorting -->
+                          <CAT>HA0441</CAT>   <!-- Code documenttype -->
+                          <omschrijving>PTL wordt TIT</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </PWT>
+                     <AVPRF>   <!--  afkorting -->
+                          <CAT>HA0241</CAT>   <!-- Code documenttype -->
+                          <omschrijving>AV Proforma</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBRIEVEN</doc_agresso>									  
+                     </AVPRF>
+                     <WZ>   <!--  afkorting -->
+                          <CAT>HA0981</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Archief Wijzigingen</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>									  
+                     </WZ>
+                     <AG>   <!--  afkorting -->
+                          <CAT>HA0991</CAT>   <!-- Code documenttype -->
+                          <omschrijving>Archief Alle Gegevens</omschrijving> <!-- Nederlandse Omschrijving -->
+						  <doc_agresso>POLISBEHEER</doc_agresso>									  
+                     </AG>   
+               </doc_in_naam_mapping> 
+           </ZKF235>
+		</ziekenfondsen> 
+	 </Doc_Archief>
+</instellingen>
+

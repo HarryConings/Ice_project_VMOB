@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<automatische_brieven>
+    <A00ontbrekende_doc>  <!-- OK -->
+        <naam>MIFID ONTBREKENDE DOCUMENTEN</naam>  <!-- naam tabblad in mobicoon -->
+        <sjabloon>HOSP_DB_MIFID-doc-opvragen-geenmail.odt</sjabloon> <!-- OK  doc aanvinken die ontbreken -->
+        <gkd_kode>HA0431</gkd_kode> <!-- HA0431 Diverse Brieven -->
+        <aanvinkteksten>  <!-- aanvinken wat onbreekt -->
+            <tekst1>- Behoefteanalyse</tekst1>
+            <tekst2>- Verzekeringsvoorstel</tekst2>
+            <tekst3>- Medische vragenlijst</tekst3>    
+			<tekst4>     op naam van ................................</tekst4>
+			<tekst5>- Attest van vorige hospitalisatieverzekering</tekst5>
+			<tekst6>- Attest van uw huidige werkgeversverzekering</tekst6>
+		</aanvinkteksten>
+        <dagen_eerste_herinnering>30</dagen_eerste_herinnering> <!-- 30 dagen na brief -->
+		<dagen_tweede_herinnering>30</dagen_tweede_herinnering> <!-- 30 dagen na 1ste herinnering -->
+        <dagen_nagging>30</dagen_nagging> <!-- 30 dagen na 2de herinnering -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2x2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+        <pdf_naar_gkd>ja</pdf_naar_gkd>		
+    </A00ontbrekende_doc>
+
+    <A01HOSP_DB_MIFID-doc-aansluiting-nog-niet-mogelijk-geenmail>  <!-- OK -->
+        <naam>MIFID AANSLUITING NOG NIET MOGELIJK</naam>  <!-- naam tabblad in mobicoon -->
+        <sjabloon>HOSP_DB_MIFID-doc-aansluiting-nog-niet-mogelijk-geenmail.odt</sjabloon> <!-- OK  doc aanvinken die ontbreken -->
+        <gkd_kode>HA0431</gkd_kode> <!-- HA0431 Diverse Brieven -->
+        <aanvinkteksten>  <!-- aanvinken wat onbreekt -->
+ 			<tekst1>Bij nazicht bij uw vorig ziekenfonds is gebleken dat er geen gelijkaardige verzekering werd onderschreven. Mogen wij u daarom vragen de bijgevoegde medische vragenlijst ingevuld en ondertekend terug te sturen.</tekst1>
+			<tekst2>Bij omschakeling naar een andere formule blijkt er nog een openstaand saldo te zijn van de premie bij uw huidige hospitalistatieverzekering. Pas na ontvangst hiervan kan de omschakeling verder afgehandeld worden.</tekst2>
+			<tekst3>Het attest van uw werkgever ivm uw hospitalisatieverzekering - met vermelding van begin- en einddatum - was niet toegevoegd bij uw aanvraag. Mogen wij u vragen dit alsnog over te maken.</tekst3>  
+			<tekst4>Volgens de bepalingen van de Algemene Voorwaarden van uw verzekeringsovereenkomst "HospiPlan-AmbuPlan" (pg. 10) die u bijgevoegd terugvindt, kunnen wij echter momenteel niet ingaan op uw vraag. U bent immers nog geen jaar aangesloten bij "HospiPlan-AmbuPlan" en kunt derhalve nog niet omschakelen naar "HospiPlus-AmbuPlus".</tekst4>  	
+		</aanvinkteksten>
+        <dagen_eerste_herinnering>30</dagen_eerste_herinnering> <!-- 30 dagen na brief -->
+		<dagen_tweede_herinnering>30</dagen_tweede_herinnering> <!-- 30 dagen na 1ste herinnering -->
+        <dagen_nagging>30</dagen_nagging> <!-- 30 dagen na 2de herinnering -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2x2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+        <pdf_naar_gkd>ja</pdf_naar_gkd>		
+    </A01HOSP_DB_MIFID-doc-aansluiting-nog-niet-mogelijk-geenmail>	
+
+   <A02ontbrekende_doc>  <!-- OK -->
+        <naam>MIFID ONTBREKENDE DOCUMENTEN OMSCHAKELING</naam>  <!-- naam tabblad in mobicoon -->
+        <sjabloon>HOSP_DB_MIFID-doc-opvragen-omschakeling-geenmail.odt</sjabloon> <!-- OK  doc aanvinken die ontbreken -->
+        <gkd_kode>HA0431</gkd_kode> <!-- HA0431 Diverse Brieven -->
+        <aanvinkteksten>  <!-- aanvinken wat onbreekt -->
+            <tekst1>- Behoefteanalyse</tekst1>
+            <tekst2>- Verzekeringsvoorstel</tekst2>
+            <tekst3>- Medische vragenlijst</tekst3>    
+			<tekst4>     op naam van ................................</tekst4>
+			<tekst5>- Attest van vorige hospitalisatieverzekering</tekst5>
+			<tekst6>- Attest van uw huidige werkgeversverzekering</tekst6>
+		</aanvinkteksten>
+        <dagen_eerste_herinnering>30</dagen_eerste_herinnering> <!-- 30 dagen na brief -->
+		<dagen_tweede_herinnering>30</dagen_tweede_herinnering> <!-- 30 dagen na 1ste herinnering -->
+        <dagen_nagging>30</dagen_nagging> <!-- 30 dagen na 2de herinnering -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2x2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+        <pdf_naar_gkd>ja</pdf_naar_gkd>		
+    </A02ontbrekende_doc>	
+
+	
+	<A03HOSP_AG_Verz-overeenkomst-Brief-Polis-geenmail>  <!-- OK -->
+		<naam>Verz.Overeenkomst BRIEF POLIS</naam>  <!-- "Blad" naam brief in mobicoon -->
+		<sjabloon>HOSP_AG_Verz-overeenkomst-Brief-Polis-geenmail.odt</sjabloon> <!-- blad Aanvaardingsbrief -->
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0991</gkd_kode> <!-- HA0991 AG Archief Alle Gegevens  -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2x2</printer> <!--  -->
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+        <pdf_naar_gkd>ja</pdf_naar_gkd>				
+	</A03HOSP_AG_Verz-overeenkomst-Brief-Polis-geenmail>	
+
+	<A04HOSP_AG_Verz-overeenkomst-Persoonlijke-Fiche-geenmail>  <!-- OK OK -->
+		<naam>Verz. Overeenkomst PERSOONLIJKE FICHE</naam> <!-- "Aanvaardingsbrief" naam brief in mobicoon -->
+		<sjabloon>HOSP_AG_Verz-overeenkomst-Persoonlijke-Fiche-geenmail.odt</sjabloon> <!-- Vroegere aanvaardingsbrief met + zonder -->
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0991</gkd_kode> <!-- HA0991 AG Archief Alle Gegevens -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer> <!--  -->
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</A04HOSP_AG_Verz-overeenkomst-Persoonlijke-Fiche-geenmail>	
+	
+	<A05HOSP_WZ_Geboorte-PTL-Brief-Polis-geenmail> <!-- ? -->
+		<naam>Verz.Overeenkomst BRIEF POLIS - wijziging</naam>  <!--   -->
+		<sjabloon>HOSP_WZ_Geboorte-PTL-Brief-Polis-geenmail.odt</sjabloon> <!-- Vroegere document Aanpassing Blad Aanvaardingsbrief -->
+		<gkd_kode>HA0989</gkd_kode> <!-- HA0989 WZ Archief Wijziging -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</A05HOSP_WZ_Geboorte-PTL-Brief-Polis-geenmail>	
+	
+	<!-- <A06HOSP_PWT_MIFID-doc-PTL-TIT-geenmail_her3>   
+		<naam>MIFID doc opvragen bij PTL wordt TIT</naam>  
+		<sjabloon>HOSP_PWT_MIFID-doc-PTL-TIT-geenmail_her3.odt</sjabloon>  
+		<dagen_eerste_herinnering>30</dagen_eerste_herinnering>  
+		<dagen_tweede_herinnering>30</dagen_tweede_herinnering>  
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0441</gkd_kode>  
+        <printen>ja</printen>  
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</A06HOSP_PWT_MIFID-doc-PTL-TIT-geenmail_her3> -->
+
+	<A06HOSP_PWT_PTL-TIT-aan-TIT-Brief-Polis-geenmail> <!-- OK  -->
+		<naam>PTL wordt TIT Verz. overeenkomst - Polis</naam>  <!-- Tekst in nieuwe MOBicoon -->
+		<sjabloon>HOSP_PWT_PTL-wordt-TIT-Brief-Polis-geenmail.odt</sjabloon> <!-- Vroegere document Aanpassing Blad Aanvaardingsbrief -->
+		<gkd_kode>HA0441</gkd_kode> <!-- HA0441 PWTPTL wort TIT -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</A06HOSP_PWT_PTL-TIT-aan-TIT-Brief-Polis-geenmail>
+	
+	<A07HOSP_PWT_PTL-TIT-aan-TIT-Brief-Polis-geenmail> <!-- OK  -->
+		<naam>PTL wordt TIT aan Ouders - Polis</naam>  <!-- Tekst in nieuwe MOBicoon -->
+		<sjabloon>HOSP_PWT_PTL-TIT-aan-Ouders-Brief-Polis-geenmail.odt</sjabloon> <!-- Vroegere document Aanpassing Blad Aanvaardingsbrief -->
+		<gkd_kode>HA0441</gkd_kode> <!-- HA0441 PWTPTL wort TIT -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</A07HOSP_PWT_PTL-TIT-aan-TIT-Brief-Polis-geenmail>
+	
+	<A08HOSP_AVBI_BI-DR-aan-lid-geenmail_her3>  
+		<naam>Info aan lid - BI aan Dr.</naam> <!--  -->
+		<sjabloon>HOSP_AVBI_BI-DR-aan-lid-geenmail_her3.odt</sjabloon> <!-- Vroegere aanvaardingsbrief met + zonder -->
+		<dagen_eerste_herinnering>30</dagen_eerste_herinnering> <!-- 30 dagen na brief -->
+		<dagen_tweede_herinnering>30</dagen_tweede_herinnering> <!-- 30 dagen na 1ste herinnering -->
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0321</gkd_kode> <!-- HA0321 AV BI aan Dr -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2x2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</A08HOSP_AVBI_BI-DR-aan-lid-geenmail_her3>  
+	
+    <A09HOSP_DB_Attest-priveverz-opvragen-geenmail>  
+		<naam>Attest Privé Verz. opvragen</naam>  
+		<sjabloon>HOSP_DB_Attest-priveverz-opvragen-geenmail.odt</sjabloon> <!-- om wachttijd te annuleren -->
+        <gkd_kode>HA0431</gkd_kode> <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>  <!-- indien ja : onmiddellijke printopdracht - indien neen : volgende dag -->
+        <printer>P235OGVL01_lade2</printer>
+		<pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+    </A09HOSP_DB_Attest-priveverz-opvragen-geenmail>	
+	
+    <B01HOSP_DB_MIFID-doc-overlijden-geenmail_her3>  <!-- OK -->
+	    <naam>MIFID doc opvragen bij overlijden</naam> <!-- Brief bij overlijden van TIT indien PTL -->
+	    <sjabloon>HOSP_DB_MIFID-doc-overlijden-geenmail_her3.odt</sjabloon> <!-- 1ste rappel 4x7 dgn na brief  -->
+	    <dagen_eerste_herinnering>30</dagen_eerste_herinnering> <!-- 30 dagen na brief -->
+	    <dagen_tweede_herinnering>30</dagen_tweede_herinnering> <!-- 30 dagen na 1ste herinnering -->
+	    <popup_brief>nee</popup_brief>
+	    <gkd_kode>HA0431</gkd_kode> <!-- HA0431 DB Diverse Brieven -->
+	    <printen>ja</printen>  <!-- print automatisch volgende dag -->
+	    <printer>P235OGVL01_lade2</printer>
+	    <pdf_naar_agresso>ja</pdf_naar_agresso>
+	    <pdf_naar_gkd>ja</pdf_naar_gkd>
+    </B01HOSP_DB_MIFID-doc-overlijden-geenmail_her3>	
+	
+    <B02HOSP_DB_MIFID-Continu-65-Hosp-geenmail_her3> <!-- OK  -->
+		<naam>Omschakeling Continu 65 jaar</naam>
+		<sjabloon>HOSP_DB_MIFID-Continu-65-Hosp-geenmail_her3.odt</sjabloon>
+		<dagen_eerste_herinnering>30</dagen_eerste_herinnering> <!-- 30 dagen na brief -->
+		<dagen_tweede_herinnering>30</dagen_tweede_herinnering> <!-- 30 dagen na 1ste herinnering -->		
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+	</B02HOSP_DB_MIFID-Continu-65-Hosp-geenmail_her3>
+
+	<B03HOSP_DB_AV-Brief-Kennisgeving-geenmail> <!-- OK - Aanvraag registratie hospitalisatieverz–overname bij mutatie  -->
+		<naam>Kennisgeving bij mutatie</naam>
+		<sjabloon>HOSP_DB_AV-Brief-Kennisgeving-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</B03HOSP_DB_AV-Brief-Kennisgeving-geenmail>
+
+	<B05HOSP_DB_MIFID-doc-Pasgeborene-geenmail> <!-- OK - Pasgeborene bij partner  -->
+		<naam>MIFID doc opvragen Pasgeborene Partner</naam>
+		<sjabloon>HOSP_DB_MIFID-doc-Pasgeborene-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</B05HOSP_DB_MIFID-doc-Pasgeborene-geenmail>	
+	
+	<C01HOSP_STAVL_Annulatie-inschrijving-geenmail> <!-- ? -->
+		<naam>Annulatie inschrijving</naam>
+		<sjabloon>HOSP_STAVL_Annulatie-inschrijving-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0401</gkd_kode>  <!-- HA0401 STAVL Stopzetting aan lid -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</C01HOSP_STAVL_Annulatie-inschrijving-geenmail>
+	
+	<C02HOSP_STAVL_Ontslag-V02-Premie-OK-geenmail> <!-- ? -->
+		<naam>Vrijwillig Ontslag (V02) HOSPI... Premie OK</naam>
+		<sjabloon>HOSP_STAVL_Ontslag-V02-Premie-OK-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0401</gkd_kode>  <!-- HA0401 STAVL Stopzetting aan lid -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+	</C02HOSP_STAVL_Ontslag-V02-Premie-OK-geenmail>
+
+	<C03HOSP_STAVL_Ontslag-V01-buitenland-geenmail> <!-- ? -->
+		<naam>Ontslag buitenland (V01)</naam>
+		<sjabloon>HOSP_STAVL_Ontslag-V01-buitenland-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0401</gkd_kode>  <!-- HA0401 STAVL Stopzetting aan lid -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+	</C03HOSP_STAVL_Ontslag-V01-buitenland-geenmail>
+
+	<C04HOSP_DB_Aansluitng-te-vroeg-geenmail> <!-- OK Uw aanvraag tot registratie bij onze hospitalisatieverzekering -->
+		<naam>Aansluiting Te Vroeg</naam>
+		<sjabloon>HOSP_DB_Aansluitng-te-vroeg-geenmail_her3.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+	</C04HOSP_DB_Aansluitng-te-vroeg-geenmail>		
+
+	<D01HOSP_AVPRF_Pro-Forma-zonder-BA-geenmail>  <!-- OK -->
+		<naam>Pro Forma - zonder Beperking</naam>  <!--  -->
+		<sjabloon>HOSP_AVPRF_Pro-Forma-zonder-BA-geenmail.odt</sjabloon> <!-- blad Aanvaardingsbrief -->
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0241</gkd_kode> <!-- HA0241 Pro Forma  -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</D01HOSP_AVPRF_Pro-Forma-zonder-BA-geenmail>
+
+	<I01HOSP_DB_INFO-Algmeen-geenmail> <!-- OK - INFO -->
+		<naam>INFO - Algemeen</naam>
+		<sjabloon>HOSP_DB_INFO-Algmeen-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</I01HOSP_DB_INFO-Algmeen-geenmail>	
+
+	<I02HOSP_DB_INFO-Algmeen-mutatie-geenmail> <!-- OK - INFO melding op mutatie  -->
+		<naam>INFO - Algemeen melding bij mutatie</naam>
+		<sjabloon>HOSP_DB_INFO-Algmeen-mutatie-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</I02HOSP_DB_INFO-Algmeen-mutatie-geenmail>		
+	
+	<I03HOSP_DB_INFO-MaxiPlan-geenmail> <!-- OK - INFO melding -->
+		<naam>INFO - MaxiPlan</naam>
+		<sjabloon>HOSP_DB_INFO-MaxiPlan-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</I03HOSP_DB_INFO-MaxiPlan-geenmail>			
+
+	<Z01HOSP_Schadedossier-opmaak-geenmail_nops>
+		<naam>Schadedossier Opmaak</naam>
+		<sjabloon>HOSP_AG_Schadedossier-opmaak-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode></gkd_kode> 
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>nee</pdf_naar_gkd>	
+	</Z01HOSP_Schadedossier-opmaak-geenmail_nops>
+	
+	<Z02HOSP_DB_Geen-Aansluiting-Hosp-geenmail> <!-- OK - INFO melding op mutatie  -->
+		<naam>Geen Aansluiting Hosp</naam>
+		<sjabloon>HOSP_DB_Geen-Aansluiting-Hosp-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</Z02HOSP_DB_Geen-Aansluiting-Hosp-geenmail>
+
+	<Z03HOSP_DB_Opsturen-SA-formulier-geenmail> <!-- OK - INFO melding op mutatie  -->
+		<naam>Tel. - Schadeaangiftefformulier opsturen</naam>
+		<sjabloon>HOSP_DB_Opsturen-SA-formulier-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</Z03HOSP_DB_Opsturen-SA-formulier-geenmail>
+
+	<Z04HOSP_DB_OVS-na-domi-geenmail> <!-- OK - INFO melding op mutatie  -->
+		<naam>OVS opsturen na domi</naam>
+		<sjabloon>HOSP_DB_OVS-na-domi-geenmail.odt</sjabloon>
+		<popup_brief>nee</popup_brief>
+		<gkd_kode>HA0431</gkd_kode>  <!-- HA0431 DB Diverse Brieven -->
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>ja</pdf_naar_agresso>
+		<pdf_naar_gkd>ja</pdf_naar_gkd>
+	</Z04HOSP_DB_OVS-na-domi-geenmail>	
+	
+	<Z09Wat_kunnen_we_invullen>
+         <naam>Wat kunnen we invullen</naam>
+         <sjabloon>HOSP_Wat_kunnen_we_invullen_nieuw_agresso.odt</sjabloon>
+         <popup_brief>nee</popup_brief>
+         <gkd_kode>HA0001</gkd_kode>
+         <dagen_eerste_herinnering>30</dagen_eerste_herinnering>
+        <sjabloon_eerste_herinnering>idem</sjabloon_eerste_herinnering>
+        <dagen_tweede_herinnering>40</dagen_tweede_herinnering>
+        <sjabloon_tweede_herinnering>idem</sjabloon_tweede_herinnering>
+        <dagen_nagging>20</dagen_nagging>
+        <printen>ja</printen>
+        <printer>P235OGVL01_lade2</printer>
+        <pdf_naar_agresso>nee</pdf_naar_agresso>
+    </Z09Wat_kunnen_we_invullen>
+
+</automatische_brieven>

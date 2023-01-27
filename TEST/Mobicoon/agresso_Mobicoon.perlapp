@@ -1,0 +1,39 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: agresso_MobIcoon.pl
+Cwd: P:\GIT\VMOB\TEST\Mobicoon
+Add: DateTime::
+Add: Log::Report::
+Add: Params::Validate::XS::
+Add: Params::Validate::PP::
+Add: XML::Compile::
+Add: XML::SAX::
+Clean: 0
+Date: 2018-01-28 21:08:25
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: agresso_MobIcoon.exe
+Force: 0
+Gui: 1
+Hostname: W203HCN2V
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: agresso zet klant in productie versie
+Version-FileVersion: 1.1.0
+Version-InternalName: agresso zet klant in productie versie
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: agresso zet klant in productie versie
+Version-ProductName: agresso zet klant in productie versie
+Version-ProductVersion: 1.1.0
+Warnings: 0
+Xclude: 0
