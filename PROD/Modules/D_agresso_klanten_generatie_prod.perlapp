@@ -1,0 +1,35 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: agresso_klanten_generatie_prod.pl
+Cwd: P:\GIT\VMOB\PROD\Modules
+Add: Log::Report::
+Add: XML::Compile::
+Clean: 0
+Date: 2022-09-20 16:41:17
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: agresso_klanten_generatie_prod.exe
+Force: 0
+Gui: 0
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: Agresso Klanten Generatie umlaut weg
+Version-FileVersion: 2.0.0
+Version-InternalName: Agresso Klanten Generatie
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: Agresso Klanten Generatie
+Version-ProductName: Agresso Klanten Generatie
+Version-ProductVersion: 2.0.0
+Warnings: 0
+Xclude: 0
