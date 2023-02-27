@@ -608,11 +608,20 @@ package webservice;
                     $main::klant->{Taal}=$response->{_content}[2][0][2][0][4]->{GetCustomerResult}->{CustomerTypeList}->{CustomerObject}->{Language};
                     eval {my $meerdere_adressen = $response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->[0]->{Address}};
                     if ($@) {
-                         $main::klant->{adres}->[0]->{Straat}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Address};
-                         $main::klant->{adres}->[0]->{Stad}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Place};
-                         $main::klant->{adres}->[0]->{Postcode}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{ZipCode};
-                         $main::klant->{adres}->[0]->{Telefoon_nr}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Telephone1};
-                         $main::klant->{adres}->[0]->{e_mail}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{eMail};
+                         eval {my $geen_adres = $response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Address}};
+                         if (!$@) {   
+                            $main::klant->{adres}->[0]->{Straat}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Address};
+                            $main::klant->{adres}->[0]->{Stad}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Place};
+                            $main::klant->{adres}->[0]->{Postcode}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{ZipCode};
+                            $main::klant->{adres}->[0]->{Telefoon_nr}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{Telephone1};
+                            $main::klant->{adres}->[0]->{e_mail}=$response->{_content}[2][0][2][0][4]->{GetCustomersResult}->{CustomerTypeList}->{CustomerObject}->{AddressList}->{AddressUnitType}->{eMail};
+                          } else {
+                            $main::klant->{adres}->[0]->{Straat} = '';
+                            $main::klant->{adres}->[0]->{Stad}= '';
+                            $main::klant->{adres}->[0]->{Postcode}='';
+                            $main::klant->{adres}->[0]->{Telefoon_nr}='';
+                            $main::klant->{adres}->[0]->{e_mail}='';
+                         }
                          $main::klant->{adres}->[0]->{type}='Domi';
                         }else {
                          my $adres_teller = 0;
@@ -977,14 +986,15 @@ package mail;
          $vandaag = substr ($vandaag,0,8);  # vandaag in YYYYMMDD
          $vandaag = sprintf "%04d-%02d-%02d",substr ($vandaag,0,4),substr ($vandaag,4,2),substr ($vandaag,6,2);
          foreach my $geadresseerde (@aan_lijst) {
-             my $smtp = Net::SMTP->new('10.63.120.3',
-                     Hello => 'mail.vnz.be',
-                     Timeout => 60);
-                     $smtp->auth('mailprogrammas','pleintje203');
+             #my $smtp = Net::SMTP->new('10.63.120.3',
+               my $smtp = Net::SMTP->new('mailservices.m-team.be',
+                           Hello => 'mail.vnz.be',
+                           Timeout => 60);
+                     #$smtp->auth('mailprogrammas','pleintje203');
                      $smtp->mail($van);
                      $smtp->to($geadresseerde);
-                     $smtp->cc('informatica.mail@vnz.be');
-                     #$smtp->bcc("bar@blah.net");
+                     #$smtp->cc('informatica.mail@vnz.be');
+                     #$smtp->bcc('harry@ice.be');
                      $smtp->data;
                      $smtp->datasend("From: harry.conings");
                      $smtp->datasend("\n");
