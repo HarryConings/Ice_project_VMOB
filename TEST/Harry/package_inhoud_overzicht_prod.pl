@@ -77,7 +77,8 @@ sub make_overzicht_matrix {
          #my $test = $main::instelingen->{$periode}->{verzekeringen};
          #bepalen aantal rijen
         # my @test1a = @main::nomenclaturen_met_wachttijd;
-        # my $test = $main::instelingen;
+         my $test = $main::instelingen;
+         print "periode $periode\n---------------------\n";
          foreach my $nr (keys $main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}){
                    eval {my $wachttijd = $main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}[$nr]->{nomenclatuur}->{wachttijd}};
                    if (!$@) {

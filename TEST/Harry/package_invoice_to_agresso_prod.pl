@@ -557,27 +557,28 @@ sub mail_bericht_fout {
      my $vandaag = ParseDate("today");
      #$vandaag = substr ($vandaag,0,8);  # vandaag in YYYYMMDD
      #$vandaag = sprintf "%04d-%02d-%02d",substr ($vandaag,0,4),substr ($vandaag,4,2),substr ($vandaag,6,2);
-     foreach my $geadresseerde (@aan_lijst) {
-         my $smtp = Net::SMTP->new('10.63.120.3',
-                    Hello => 'mail.vnz.be',
-                    Timeout => 60);
-         $smtp->auth('mailprogrammas','pleintje203');
-         $smtp->mail($van);
-         $smtp->to($geadresseerde);
-         $smtp->cc('informatica.mail@vnz.be');
-         #$smtp->bcc("bar@blah.net");
-         $smtp->data;
-         $smtp->datasend("From: harry.conings");
-         $smtp->datasend("\n");
-         $smtp->datasend("To: Kaartbeheerders");
-         $smtp->datasend("\n");
-         $smtp->datasend("Subject: Agresso timout $vandaag");
-         $smtp->datasend("\n");
-         $smtp->datasend("Een fout kwam voor op @output_file\ntijd $vandaag\nvriendelijke groeten\nHarry Conings");
-         $smtp->dataend;
-         $smtp->quit;
-         print "mail aan $geadresseerde  gezonden\n";
-         return ('Timeout fout mail_bericht_fout');
-        }
+     #foreach my $geadresseerde (@aan_lijst) {
+     #    my $smtp = Net::SMTP->new('10.63.120.3',
+     #               Hello => 'mail.vnz.be',
+     #               Timeout => 60);
+     #    $smtp->auth('mailprogrammas','pleintje203');
+     #    $smtp->mail($van);
+     #    $smtp->to($geadresseerde);
+     #    $smtp->cc('informatica.mail@vnz.be');
+     #    #$smtp->bcc("bar@blah.net");
+     #    $smtp->data;
+     #    $smtp->datasend("From: harry.conings");
+     #    $smtp->datasend("\n");
+     #    $smtp->datasend("To: Kaartbeheerders");
+     #    $smtp->datasend("\n");
+     #    $smtp->datasend("Subject: Agresso timout $vandaag");
+     #    $smtp->datasend("\n");
+     #    $smtp->datasend("Een fout kwam voor op @output_file\ntijd $vandaag\nvriendelijke groeten\nHarry Conings");
+     #    $smtp->dataend;
+     #    $smtp->quit;
+     #    print "mail aan $geadresseerde  gezonden\n";
+     #    return ('Timeout fout mail_bericht_fout');
+     #   }
+     print "mail uitgeschakeld";
     }
 1;

@@ -104,7 +104,7 @@ package ToolBarMainFrame;
              @main::contracts_check = ();
              @main::contracts_brieven_check = ();
              $main::contract_gekozen=0;
-             $main::periode= "periode_20160101-20161231";
+             $main::periode= "periode_20210101-20211231";
              $main::verzekering = "hospiplan_ambuplan";
              MenuMainFrame->set_values_menu($frame);  #code
              MainFrameNotebookOnder->delete_all_pages;
