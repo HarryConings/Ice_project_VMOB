@@ -1,20 +1,20 @@
 #!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
-Script: package_verwerk_files_prod.pl
-Cwd: P:\GIT\VMOB\PROD\packages
+Script: D_package_verwerk_files_prod.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\PROD\packages
 Add: DateTime::Locale::
 Add: Params::Validate::PP::
 Add: Params::Validate::XS::
 Clean: 0
-Date: 2017-09-07 12:45:50
+Date: 2023-02-27 14:18:02
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: package_verwerk_files_prod.exe
+Exe: D_package_verwerk_files_prod.exe
 Force: 0
 Gui: 0
-Hostname: W203HCN2V
+Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
 No-Logo: 0

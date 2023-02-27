@@ -2,9 +2,9 @@
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
 Script: D_package_print_herineringen_prod.pl
-Cwd: P:\GIT\VMOB\PROD\packages
+Cwd: P:\komodoproject\Ice_project_VMOB\PROD\packages
 Clean: 0
-Date: 2022-09-21 11:21:05
+Date: 2023-02-27 14:13:07
 Debug: 
 Dependent: 0
 Dyndll: 0

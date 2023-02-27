@@ -201,10 +201,10 @@ package verwerk_files;
         my $lokale_plaats = $agresso_instellingen->{plaats_brieven_cache};
         my $mail_error="ik kan volgende file\n$file_error \nuit $lokale_plaats\nniet rangeren  \nwaarschijnlijk een foute benaming van het sjabloon\n";
         foreach my $geadresseerde (@aan_lijst) {
-            my $smtp = Net::SMTP->new('10.63.120.3',
+            my $smtp = Net::SMTP->new('mailservices.m-team.be',
                        Hello => 'mail.vnz.be',
                        Timeout => 60);
-            $smtp->auth('mailprogrammas','pleintje203');
+            #$smtp->auth('mailprogrammas','pleintje203');
             $smtp->mail($van);
             $smtp->to($geadresseerde);
             $smtp->cc('informatica.mail@vnz.be');
@@ -233,10 +233,10 @@ package verwerk_files;
         my $lokale_plaats = $agresso_instellingen->{plaats_brieven_cache};
         my $mail_error="ik kan volgende file\n$file_error \nuit $lokale_plaats\nniet copieren \nwaarschijnlijk bestaat die file al\nof is de connectie uitgevallen\n";
         foreach my $geadresseerde (@aan_lijst) {
-            my $smtp = Net::SMTP->new('10.63.120.3',
+            my $smtp = Net::SMTP->new('mailservices.m-team.be',
                        Hello => 'mail.vnz.be',
                        Timeout => 60);
-            $smtp->auth('mailprogrammas','pleintje203');
+            #$smtp->auth('mailprogrammas','pleintje203');
             $smtp->mail($van);
             $smtp->to($geadresseerde);
             $smtp->cc('informatica.mail@vnz.be');
@@ -265,10 +265,10 @@ package verwerk_files;
         my $lokale_plaats = $agresso_instellingen->{plaats_brieven_cache};
         my $mail_error="volgende files werden verwerkt:\n$file_s \n";
         foreach my $geadresseerde (@aan_lijst) {
-            my $smtp = Net::SMTP->new('10.63.120.3',
+            my $smtp = Net::SMTP->new('mailservices.m-team.be',
                        Hello => 'mail.vnz.be',
                        Timeout => 60);
-            $smtp->auth('mailprogrammas','pleintje203');
+            #$smtp->auth('mailprogrammas','pleintje203');
             $smtp->mail($van);
             $smtp->to($geadresseerde);
             $smtp->cc('informatica.mail@vnz.be');
