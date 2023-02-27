@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<page_size_doccenter>1500</page_size_doccenter> <!-- send in bloks if more than -->
+	<MUT>  <!-- MUT where you can chose from -->
+		<MUT203>
+			<zkf>203</zkf>
+			<name>VNZ</name>
+			<input_directory>P:\gok\export\GOK_Export\203</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT203>
+		<MUT235>
+			<zkf>235</zkf>
+			<name>NZVL</name>
+			<input_directory>P:\gok\export\GOK_Export\235</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT235>
+		<MUT232>
+			<zkf>232</zkf>
+			<name>MUNALUX</name>
+			<input_directory>P:\gok\export\GOK_Export\232</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT232>
+		<MUT206>
+			<zkf>206</zkf>
+			<name>SYMBIO</name>
+			<input_directory>P:\gok\export\GOK_Export\206</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT206>
+		<MUT228>
+			<zkf>228</zkf>
+			<name>Verviers</name>
+			<input_directory>P:\gok\export\GOK_Export\228</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT228>
+		<MUT216>
+			<zkf>216</zkf>
+			<name>Charleroi</name>
+			<input_directory>P:\gok\export\GOK_Export\216</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT216>
+		<MUT226>
+			<zkf>226</zkf>
+			<name>Liege</name>
+			<input_directory>P:\gok\export\GOK_Export\226</input_directory>
+			<delay_working_days>1</delay_working_days>			
+		</MUT226>
+	</MUT>	
+    <mail>
+        <MUT203>
+			 <zkf>203</zkf> <!-- mutality number -->
+             <Location_mail_Template>C:\macros\DoccenterMail\mailsjabloon</Location_mail_Template>
+             <From_Mail>ledenbeheer@vnz.be</From_Mail> <!-- return adres -->
+             <From>Vlaams &amp; Neutraal Ziekenfonds</From>   <!-- name mail adres -->
+			 <Bcc>informatica.log@vnz.be</Bcc>
+			 <Subject_Mail>test</Subject_Mail>
+			 <Test_Mail_Adres>harry.conings@vnz.be</Test_Mail_Adres> <!-- test mail address GEEN als geen test-->
+			 <send_mail>YES</send_mail>
+        </MUT203>        
+    </mail>
+   	<AS400>
+		<MUT203>
+			    <zkf>203</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M203CGK2</username>
+                <password>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</password>
+                <mut_nbr>203</mut_nbr>
+                <libcxfil>libcxfil03</libcxfil>
+                <libsxfil>libsxfil03</libsxfil>
+                <libcxref>libcxref03</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus203</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT203>
+		<MUT235>
+			    <zkf>235</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M235CGK1</username>
+                <password>ZWthMjAxNlBhdGVyNDc4N25vc3RlckVlcnN0MTg0NTdjZWdKYW56aW5ndGNlZzQ3TG9uZG9uY2FsbGluZzc=</password>
+                <mut_nbr>235</mut_nbr>
+                <libcxfil>libcxfil35</libcxfil>
+                <libsxfil>libsxfil35</libsxfil>
+                <libcxref>libcxref35</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus235</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT235>	
+		<MUT232>
+			    <zkf>232</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M232CGK1</username>
+                <password>ZzIxa2FIZWRlbmRhYWdzZUt1bnN0YzIzTGFnZXJmZWxkWm9uZTM4MTZjMjNhMzY1MA==</password>
+                <mut_nbr>232</mut_nbr>
+                <libcxfil>libcxfil32</libcxfil>
+                <libsxfil>libsxfil32</libsxfil>
+                <libcxref>libcxref32</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus232</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT232>
+		<MUT206>
+			    <zkf>206</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M206CGK1</username>
+                <password>MjA2SGVkZW5kYWFnc2VLdW5zdGNna0xhZ2VyZmVsZFpvbmUzODE2Y2drYTM2NTA=</password>
+                <mut_nbr>206</mut_nbr>
+                <libcxfil>libcxfil76</libcxfil>
+                <libsxfil>libsxfil76</libsxfil>
+                <libcxref>libcxref76</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus206</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT206>
+		 <MUT228>
+			    <zkf>228</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M228CGK1</username>
+                <password>MjI4bm9tYnJlZmlsczVWTlpMb3Vpc2UxNTEyVk5aa2luZDIzMQ==</password>
+                <mut_nbr>228</mut_nbr>
+                <libcxfil>libcxfil28</libcxfil>
+                <libsxfil>libsxfil28</libsxfil>
+                <libcxref>libcxref28</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus228</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT228>
+		<MUT216>
+			    <zkf>216</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M216CGK1</username>
+                <password>MjE2SGVkZW5kYWFnc2VLdW5zdG11dExhZ2VyZmVsZFpvbmUzODE2bXV0YTM2NTA=</password>
+                <mut_nbr>216</mut_nbr>
+                <libcxfil>libcxfil86</libcxfil>
+                <libsxfil>libsxfil86</libsxfil>
+                <libcxref>libcxref86</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus216</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT216>
+		<MUT226>
+			    <zkf>226</zkf> <!-- mutality number -->
+			    <as400_name>AIRBUS</as400_name>
+                <username>M226CGK1</username>
+                <password>MjI2UGF0ZXJub3N0ZXJFZXJzdDEyMDNnb2tKYW56aW5ndDU5OGdva0dqb2VsNTIzNjk3Mw==</password>
+                <mut_nbr>226</mut_nbr>
+                <libcxfil>libcxfil96</libcxfil>
+                <libsxfil>libsxfil96</libsxfil>
+                <libcxref>libcxref96</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus226</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</MUT226>			
+	</AS400>	
+</settings>
