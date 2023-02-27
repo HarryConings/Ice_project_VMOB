@@ -1,19 +1,19 @@
 #!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
-Script: X:\productie_assurcard_agresso\agresso_invoice_importer_prod.pl
-Cwd: X:\mob-hospiplan-2014\vnzmodules
+Script: D_agresso_invoice_importer_prod.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\PROD\Modules
 Add: Log::Report::
 Add: XML::Compile::**
 Clean: 0
-Date: 2016-08-05 08:12:39
+Date: 2023-02-27 12:32:06
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: X:\productie_assurcard_agresso\agresso_invoice_importer_prod.exe
+Exe: D_agresso_invoice_importer_prod.exe
 Force: 0
 Gui: 0
-Hostname: PV203O101
+Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
 No-Logo: 0

@@ -281,10 +281,10 @@ package mail;
             $vandaag = substr ($vandaag,0,8);  # vandaag in YYYYMMDD
             $vandaag = sprintf "%04d-%02d-%02d",substr ($vandaag,0,4),substr ($vandaag,4,2),substr ($vandaag,6,2);
             foreach my $geadresseerde (@aan_lijst) {
-                my $smtp = Net::SMTP->new('10.63.120.3',
+                my $smtp = Net::SMTP->new('mailservices.m-team.be',
                            Hello => 'mail.vnz.be',
                            Timeout => 60);
-                $smtp->auth('mailprogrammas','pleintje203');
+                #$smtp->auth('mailprogrammas','pleintje203');
                 $smtp->mail($van);
                 $smtp->to($geadresseerde);
                 #$smtp->cc('informatica.mail@vnz.be');
