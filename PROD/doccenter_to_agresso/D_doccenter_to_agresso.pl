@@ -151,7 +151,8 @@ package mail;
                         }
                         #print "$msg";
                     }
-                 $msg->send('smtp', '10.63.120.3', AuthUser => 'mailprogrammas',AuthPass => 'pleintje203',Timeout => 60 ); 
+                 #$msg->send('smtp', '10.63.120.3', AuthUser => 'mailprogrammas',AuthPass => 'pleintje203',Timeout => 60 );
+                 $msg->send('smtp', 'mailservices.m-team.be',Timeout => 60 ); 
                  print "mail gezonden\n";
                  return (1);
                 }

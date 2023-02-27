@@ -1,21 +1,21 @@
 #!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
-Script: doccenter_to_agresso.pl
-Cwd: P:\GIT\VNZ\doccenter_to_agresso
+Script: D_doccenter_to_agresso.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\PROD\doccenter_to_agresso
 Add: Params::Validate::XS::
 Add: Params::Validate::PP::
 Add: DateTime::Locale::
 Bind: types.db[file=C:\Perl\site\lib\MIME\types.db,text,extract,mode=777]
 Clean: 0
-Date: 2020-01-21 17:08:01
+Date: 2023-02-27 12:01:43
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: doccenter_to_agresso.exe
+Exe: D_doccenter_to_agresso.exe
 Force: 0
 Gui: 1
-Hostname: W203HCN2V
+Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
 No-Logo: 0
