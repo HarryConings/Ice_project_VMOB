@@ -2,7 +2,7 @@
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
 Script: package_frame_prod.pl
-Cwd: P:\GIT\VMOB\TEST\Harry
+Cwd: P:\komodoproject\Ice_project_VMOB\TEST\Harry
 Add: Params::Validate::XS::
 Add: Params::Validate::PP::
 Add: Class::Load::PP::
@@ -12,14 +12,14 @@ Add: Class::Load
 Add: Log::Report::
 Add: DateTime::Locale::
 Clean: 0
-Date: 2023-01-06 09:11:49
+Date: 2023-02-27 15:28:28
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: harry_prod.exe
+Exe: package_frame_prod.exe
 Force: 0
 Gui: 1
-Hostname: VSOC-HARRY1
+Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
 No-Logo: 0
