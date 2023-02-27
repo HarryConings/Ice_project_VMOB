@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 require 'Decryp_Encrypt.pl';
+#2023-01-17  optellen in as400 van alle maf voor de uitzonderingen
 #2019-11-04   bugs eruit
 #require 'package_cnnectdb.pl';
 #OPGELET!!!!!!
@@ -92,8 +93,8 @@ package main;
               my $test_teller = 0;
              foreach my $client_id (sort keys $maxiplans) {
                   
-                if ( $client_id == 136881 ){  #test 136882  milan constant-d #for testing purposes if ( $client_id = 109690 )  if ( $client_id = 191887 )if ( $client_id != 999999
-                 my $excel_rij;
+                if ( $client_id != 99999999 ){  #test 136882  milan constant-d #for testing purposes if ( $client_id = 109690 )  if ( $client_id = 191887 )if ( $client_id != 999999
+                 my $excel_rij;                 #milan heeft meerdere dossiers 
                  $test_teller += 1;                 
                  my $begindatum = $maxiplans->{$client_id}->{begin_datum};
                  my $wachtdatum = $maxiplans->{$client_id}->{wacht_datum};

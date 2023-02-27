@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <instellingen>
-     <mode>TEST</mode> <!--TEST voor test files gaan niet naar het GKD /PROG  voor productie files gaan wel naar het GKD--> 
+     <mode>PROD</mode> <!--TEST voor test files gaan niet naar het GKD /PROG  voor productie files gaan wel naar het GKD--> 
 	 <Agresso_IP_TEST>10.198.216.91</Agresso_IP_TEST> <!-- 10.198.216.91 test s200wr2xxl01.mutworld.be -->
 	 <Agresso_IP_PROG>10.198.216.90</Agresso_IP_PROG> <!-- 10.198.216.90 S200WP1XXL01.mutworld.be productie -->
 	 <Agresso_SQL>10.198.216.89</Agresso_SQL> <!--Server=S998XXLSQL01.CPC998.BE\\i200-->	 
@@ -45,8 +45,8 @@
      <blok_grootte>2000</blok_grootte>                           <!-- aantal personen die per keer naar de websevice gaan -->
      <blok_grootte_invoices>200</blok_grootte_invoices>         <!--aantal facturen die per keer naar de webservice worden geschreven -->
      <maf_maximum>1000</maf_maximum> 						<!-- maximum dat de maf mag uitkeren -->
-	<maf_sjabloon>P:\OGV\ASSURCARD_TEST\excel_sjablonen\sjabloonmaf.xls</maf_sjabloon>			<!-- sjabloon overzicht maf -->
-	<maf_verslag>P:\OGV\ASSURCARD_TEST\programmas\MAF\excel</maf_verslag>							<!-- map waar de excel verslagen woren bedwaard -->
+	<maf_sjabloon>P:\OGV\ASSURCARD_PROG\excel_sjablonen\sjabloonmaf.xls</maf_sjabloon>			<!-- sjabloon overzicht maf -->
+	<maf_verslag>P:\OGV\ASSURCARD_PROG\programmas\MAF\excel</maf_verslag>							<!-- map waar de excel verslagen woren bedwaard -->
 	<verzekeringen>                                                   <!--verzekeringen waar een kaart voor gegenereerd wordt-->
          <ZKF203>
              <hospiplan_ambuplan>51</hospiplan_ambuplan>
@@ -61,6 +61,7 @@
                 <HOSPIFORFAIT50>22</HOSPIFORFAIT50>
              </hospiforfait>
              <hospicontinu>53</hospicontinu>
+			 <tandplus>68</tandplus>
 		   <maxiplan>69</maxiplan>
          </ZKF203>
          <ZKF235>
@@ -76,6 +77,7 @@
                 <HOSPIFORFAIT50>10</HOSPIFORFAIT50>
              </hospiforfait>
              <hospicontinu>53</hospicontinu>
+			 <tandplus>68</tandplus>
 		   <maxiplan>69</maxiplan>  <!-- 9/12/15 -->
          </ZKF235>
      </verzekeringen>

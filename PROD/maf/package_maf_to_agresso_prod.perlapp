@@ -2,19 +2,19 @@
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
 Script: package_maf_to_agresso_prod.pl
-Cwd: P:\GIT\VMOB\PROD\maf
+Cwd: P:\komodoproject\Ice_project_VMOB\PROD\maf
 Add: Log::Report::
 Add: DateTime::
 Add: Params::Validate::
 Clean: 0
-Date: 2018-01-19 14:15:14
+Date: 2023-02-27 10:20:51
 Debug: 
 Dependent: 0
 Dyndll: 0
 Exe: package_maf_to_agresso_prod.exe
 Force: 0
 Gui: 0
-Hostname: W203HCN2V
+Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
 No-Logo: 0
@@ -30,7 +30,7 @@ Version-InternalName:
 Version-LegalCopyright: Harry conings
 Version-LegalTrademarks: 
 Version-OriginalFilename: maf
-Version-ProductName: maf 
+Version-ProductName: maf
 Version-ProductVersion: 1.0.0
 Warnings: 0
 Xclude: 0
