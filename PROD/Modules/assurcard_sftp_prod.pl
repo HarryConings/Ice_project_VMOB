@@ -3,6 +3,10 @@
 #use Net::SFTP::Foreign;
 #use Net::SSH::Any;
 #use Net::FTP;
+# in DOS prompt uit te voeren
+# instalatie 
+# %WINDIR%\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe "C:\Program Files\WinSCP\WinSCPnet.dll" /codebase /tlb:WinSCPnet32.tlb
+# https://winscp.net/eng/docs/library_install#registering
 use File::Copy;
 use Date::Manip;
 use Win32::OLE;
@@ -55,7 +59,7 @@ $sessionOptions->{'Protocol'} = $consts->{'Protocol_Sftp'};
 $sessionOptions->{'HostName'} = $host;
 $sessionOptions->{'UserName'} = $user;
 $sessionOptions->{'Password'} = $password;
-#$sessionOptions->{'SshHostKeyFingerprint'} = 'ssh-ed25519 255 f7oWFd9z3+Df+CAHp7eS+qX7yL3Wb7Fu1W6Y7xhgsfA=ssh-ed25519 255 d3:25:08:74:af:ce:41:c9:a2:37:9b:32:ea:d3:4d:36';
+$sessionOptions->{'SshHostKeyFingerprint'} = 'ssh-ed25519 255 f7oWFd9z3+Df+CAHp7eS+qX7yL3Wb7Fu1W6Y7xhgsfA=';
 $session->Open( $sessionOptions);
 #$sftp->binary();
 #my $ftp = Net::FTP->new("$host", Debug => 1) or die "Cannot connect to some.host.name: $@";
@@ -63,7 +67,23 @@ $session->Open( $sessionOptions);
 #$ftp->binary();
 #$ftp->pasv;
   print "Connected\n";
+  # Upload files
+    my $transferOptions = Win32::OLE->new('WinSCP.TransferOptions');
+    $transferOptions->{'TransferMode'} = $consts->{'TransferMode_Binary'}; 
+    #my $transferResult = $session->PutFiles('P:\GIT\VMOB\SFTP\test.txt', '/', FALSE, $transferOptions);
   print "\n GET FILES !!\n";
+    #my $transferResultGet = $session->GetFiles('/test.txt','P:\GIT\VMOB\SFTP\get\\', FALSE, $transferOptions );
+    #$transferResultGet->Check();
+    my $transferResult = $session->ListDirectory('/testmap');
+    #my $items = Win32::OLE::Enum->new($transferResult->{'Transfers'});
+    my $items = Win32::OLE::Enum->new($transferResult->{'Files'});
+    my $item;
+    while (defined($item = $items->Next))
+        {
+            print  $item->{'FileInfo'} . "\n";
+            #print $item->{'FileName'} . "\n";
+        }
+    print "";
   #203
   #$ok = &putfiles ($sftpdir203_local_out,$sftpdir203_out);
   my $ok = &getfiles ($local_dir_Invoices,$ftp_dir_Invoices);
