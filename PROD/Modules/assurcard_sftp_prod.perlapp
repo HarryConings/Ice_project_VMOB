@@ -1,0 +1,34 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: assurcard_sftp_prod.pl
+Cwd: P:\komodoproject\VMOB\Ice_project_VMOB\PROD\Modules
+Add: Date::Manip::
+Clean: 0
+Date: 2023-03-07 11:51:44
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: assurcard_sftp_prod.exe
+Force: 0
+Gui: 0
+Hostname: VSOC-HARRY1
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: Wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: 
+Version-FileVersion: 1.1.0
+Version-InternalName: windows sftp via winscp
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: windows sftp via winscp
+Version-ProductName: windows sftp
+Version-ProductVersion: 1.1.0
+Warnings: 0
+Xclude: 0
