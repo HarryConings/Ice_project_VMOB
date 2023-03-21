@@ -112,7 +112,7 @@ our $vandaag = ParseDate("today");
 $vandaag = substr ($vandaag,0,8);
 
 BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
-&load_agresso_setting('P:\OGV\ASSURCARD_PROG\assurcard_settings_xml\agresso_settings.xml');
+&load_agresso_setting('D:\OGV\ASSURCARD_PROG\assurcard_settings_xml\agresso_settings.xml');
 &zoek_verzekeringen;
 
 &mail_bericht;
