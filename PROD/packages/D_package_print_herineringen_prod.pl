@@ -430,8 +430,12 @@ package insert_eerste_herinnering_in_frame ;
               print "bestaat->$brief\n";
               copy ($brief  => $home_file);
               print "home-file->$home_file\n";
-              #die;
-              my $doc = ooDocument(file =>  "$home_file");     
+              if (-e $home_file) {                
+              }else {
+                sleep (5)
+              }
+              if (-e $home_file) {     
+                my $doc = ooDocument(file =>  "$home_file");     
                 my $element =  $doc->getFrameElement('Plaats_datum');
                 my $text_plaats_datum =  $doc->getFlatText($element);
                 my $filter = "$text_plaats_datum";
@@ -506,6 +510,10 @@ package insert_eerste_herinnering_in_frame ;
                 #print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
                 #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);#, '-norestore','-headless','-pt',+ $printer,+ "$brief_nieuw_file_naam"); #,'-pt',+ $printer,+ "$brief_nieuw_file_naam"
                 sleep (5);
+              }else {
+                 print " home file $home_file -> bestaat niet !!!!!! -> NIETS GEDAAN !!!-> $brief\n";
+                 $main::overzichts_mail = $main::overzichts_mail."home file $home_file -> bestaat niet !!!!!! -> NIETS GEDAAN !!!-> brief\n"
+              }
                 print "";
          }else {
              print "\nbestaat niet ->$brief\--\n";
@@ -514,6 +522,7 @@ package insert_eerste_herinnering_in_frame ;
              copy ($brief  => $home_file);
              copy ($brief1  => $home_file1);
              $main::overzichts_mail = $main::overzichts_mail."\ndocument bestaat niet -> $brief\n";
+             
              #die;
          }
          
