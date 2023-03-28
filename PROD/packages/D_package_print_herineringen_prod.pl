@@ -585,85 +585,95 @@ package insert_tweede_herinnering_in_frame ;
                 print "bestaat->$brief\n";
                 copy ($brief  => $home_file);
                 #die;
-                my $printer = $main::agresso_instellingen->{printer_herineringen};
-                my $doc = ooDocument(file =>  "$home_file");     
-                my $element =  $doc->getFrameElement('Plaats_datum');
-                my $text_plaats_datum =  $doc->getFlatText($element);
-                my $filter = "$text_plaats_datum";
-                my $result = $doc->selectTextContent($filter, "Aalst, $main::today_day $main::maand_naam $main::today_year");
-                $element =  $doc->getFrameElement('Herinnering');     
-                #create the style
-                #$doc->importFontDeclaration( '<style:font-face ' . 'style:name="Comic Sans MS" ' . 'svg:font-family="Comic Sans MS"/>' );
-                #$doc->updateStyle( 'Frame-inhoud', properties => {-area => 'Speciale opmaakprofielen','style:font-name' => 'Comic Sans MS','fo:font-size' => '12pt'} ) or print "kan stijl niet aanpassen\n";
-                
-                # declare the font used by the style
-                # create the needed style
-                $doc->importFontDeclaration( '<style:font-face ' . 'style:name="Comic Sans MS" ' . 'svg:font-family="Comic Sans MS"/>' );
-               
-                $doc -> getStyleElement("Standard");
-                #we nemen een style die bestaat veranderen het font want een nieuw font creeren werkt niet versie 1.3
-                #$doc->createStyle( "ComicMS11", family => 'frame', parent => "Standard", properties => {'style:font-name' => 'Comic Sans MS', 'fo:font-size' => '12pt' } );
-                $doc-> updateStyle ("P1",properties => {-area => 'text', 'style:font-name' => 'Comic Sans MS', 'fo:font-size' => '10pt', 'fo:font-weight' => 'bold' } );
-                # my @styles = $doc->getAutoStyleList();
-                my $paragraph = $doc->createParagraph( "$main::agresso_instellingen->{tweede_herinneringen_tekst} $dat_oorspronk_brief_tekst","P1");
-                #$doc-> updateStyle ("Standard",properties => { -area => 'text', 'style:font-name' => 'Comic Sans MS', 'fo:font-size' => '10pt' } );
-                $doc->setTextBoxContent($element, $paragraph);
-                my @styles = $doc->getAutoStyleList();
-                $filter = "dat_oorspronk_brief";
-                $result = $doc->selectTextContent($filter, "$dat_oorspronk_brief");
-                #print "stop\n";
-                #vervang rijen
-                my ($rows, $columns) = $doc->getTableSize("wat_binnenbrengen");
-                for (my $rijenteller =0;$rijenteller < $rows;$rijenteller +=1) {
-                    $doc->deleteRow("wat_binnenbrengen",1);                 
-                   }
-                eval {foreach my $item (@wat_binnenbrengen) {}};
-                if (!$@) {            
-                    my $rijenteller =1;
-                    my $cell;
-                    foreach my $wat (@wat_binnenbrengen) {
-                        $doc->appendRow("wat_binnenbrengen");
-                        $cell = $doc->getCell("wat_binnenbrengen",$rijenteller, 0);
-                        $doc->cellValue("wat_binnenbrengen",$rijenteller,0,$wat);
-                        $rijenteller +=1;
-                       }
-                   }
+                if (-e $home_file) {
                     
-                my $brief_nieuw_file_naam = $brief ;
-                my $filedat = "$main::today_day\-$main::today_month\-$main::today_year";
-                #$brief_nieuw_file_naam =~ s/\d{1,2}-\d{1,2}-\d{4}\.\d{1,2}u\d{1,2}/$filedat/;
-                $brief_nieuw_file_naam =~ s/\d{1,2}-\d{1,2}-\d{4}\.\d{1,2}u\d{1,2}/$filedat\.07u30/;
-                $brief_nieuw_file_naam =~  s/_her\d+/_h2/;
-                my $brief_te_herprinten =$brief_nieuw_file_naam;                
-                my $oude_locatie = $main::agresso_instellingen->{plaats_brieven};
-                $oude_locatie =~  s/\\/\\\\/g;
-                my $nieuwe_locatie = $main::agresso_instellingen->{plaats_brieven_cache};
-                $nieuwe_locatie =~  s/\\/\\\\/g;
-                $brief_nieuw_file_naam =~  s%$oude_locatie%$nieuwe_locatie%;
-                $brief_te_herprinten =~  s%$oude_locatie%%;
-                $doc-> save;
-                #$doc-> save("$brief_nieuw_file_naam");
-                $doc-> dispose;
-                copy ($home_file  => $brief_nieuw_file_naam);
-                copy ($home_file  => "D:\\OGV\\ASSURCARD_PROG\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten");
-                my $OO_instpath = &dir__OO;
-                $OO_instpath =~  s/\\/\\\\/g;
-                print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
-                $main::overzichts_mail = $main::overzichts_mail."$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $brief_nieuw_file_naam\n";
-                system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);             #, '-norestore','-headless','-pt',+ $printer,+ "$brief_nieuw_file_naam"); #,'-pt',+ $printer,+ "$brief_nieuw_file_naam"
-                
-                $brief_nieuw_file_naam  =~ s/cache\\/cache\\\\/;
-                #my $home_dir = "$ENV{USERPROFILE}"  ;
-                #unlink "$home_dir\\herinner-brief.odt";       
-                #my $home_file = "$home_dir\\herinner-brief.odt";
-                #copy ($brief_nieuw_file_naam  => $home_file);
-                #print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
-                #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);#, '-norestore','-headless','-pt',+ $printer,+ "$brief_nieuw_file_naam"); #,'-pt',+ $printer,+ "$brief_nieuw_file_naam"
-                #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);
-                sleep (5);
-                print "";
-                #system(1,"$instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,
-                #   + $printfilename);
+                }else {
+                   sleep(5);
+                }
+                if (-e $home_file) {
+                    my $printer = $main::agresso_instellingen->{printer_herineringen};
+                    my $doc = ooDocument(file =>  "$home_file");     
+                    my $element =  $doc->getFrameElement('Plaats_datum');
+                    my $text_plaats_datum =  $doc->getFlatText($element);
+                    my $filter = "$text_plaats_datum";
+                    my $result = $doc->selectTextContent($filter, "Aalst, $main::today_day $main::maand_naam $main::today_year");
+                    $element =  $doc->getFrameElement('Herinnering');     
+                    #create the style
+                    #$doc->importFontDeclaration( '<style:font-face ' . 'style:name="Comic Sans MS" ' . 'svg:font-family="Comic Sans MS"/>' );
+                    #$doc->updateStyle( 'Frame-inhoud', properties => {-area => 'Speciale opmaakprofielen','style:font-name' => 'Comic Sans MS','fo:font-size' => '12pt'} ) or print "kan stijl niet aanpassen\n";
+                    
+                    # declare the font used by the style
+                    # create the needed style
+                    $doc->importFontDeclaration( '<style:font-face ' . 'style:name="Comic Sans MS" ' . 'svg:font-family="Comic Sans MS"/>' );
+                   
+                    $doc -> getStyleElement("Standard");
+                    #we nemen een style die bestaat veranderen het font want een nieuw font creeren werkt niet versie 1.3
+                    #$doc->createStyle( "ComicMS11", family => 'frame', parent => "Standard", properties => {'style:font-name' => 'Comic Sans MS', 'fo:font-size' => '12pt' } );
+                    $doc-> updateStyle ("P1",properties => {-area => 'text', 'style:font-name' => 'Comic Sans MS', 'fo:font-size' => '10pt', 'fo:font-weight' => 'bold' } );
+                    # my @styles = $doc->getAutoStyleList();
+                    my $paragraph = $doc->createParagraph( "$main::agresso_instellingen->{tweede_herinneringen_tekst} $dat_oorspronk_brief_tekst","P1");
+                    #$doc-> updateStyle ("Standard",properties => { -area => 'text', 'style:font-name' => 'Comic Sans MS', 'fo:font-size' => '10pt' } );
+                    $doc->setTextBoxContent($element, $paragraph);
+                    my @styles = $doc->getAutoStyleList();
+                    $filter = "dat_oorspronk_brief";
+                    $result = $doc->selectTextContent($filter, "$dat_oorspronk_brief");
+                    #print "stop\n";
+                    #vervang rijen
+                    my ($rows, $columns) = $doc->getTableSize("wat_binnenbrengen");
+                    for (my $rijenteller =0;$rijenteller < $rows;$rijenteller +=1) {
+                        $doc->deleteRow("wat_binnenbrengen",1);                 
+                       }
+                    eval {foreach my $item (@wat_binnenbrengen) {}};
+                    if (!$@) {            
+                        my $rijenteller =1;
+                        my $cell;
+                        foreach my $wat (@wat_binnenbrengen) {
+                            $doc->appendRow("wat_binnenbrengen");
+                            $cell = $doc->getCell("wat_binnenbrengen",$rijenteller, 0);
+                            $doc->cellValue("wat_binnenbrengen",$rijenteller,0,$wat);
+                            $rijenteller +=1;
+                           }
+                       }
+                        
+                    my $brief_nieuw_file_naam = $brief ;
+                    my $filedat = "$main::today_day\-$main::today_month\-$main::today_year";
+                    #$brief_nieuw_file_naam =~ s/\d{1,2}-\d{1,2}-\d{4}\.\d{1,2}u\d{1,2}/$filedat/;
+                    $brief_nieuw_file_naam =~ s/\d{1,2}-\d{1,2}-\d{4}\.\d{1,2}u\d{1,2}/$filedat\.07u30/;
+                    $brief_nieuw_file_naam =~  s/_her\d+/_h2/;
+                    my $brief_te_herprinten =$brief_nieuw_file_naam;                
+                    my $oude_locatie = $main::agresso_instellingen->{plaats_brieven};
+                    $oude_locatie =~  s/\\/\\\\/g;
+                    my $nieuwe_locatie = $main::agresso_instellingen->{plaats_brieven_cache};
+                    $nieuwe_locatie =~  s/\\/\\\\/g;
+                    $brief_nieuw_file_naam =~  s%$oude_locatie%$nieuwe_locatie%;
+                    $brief_te_herprinten =~  s%$oude_locatie%%;
+                    $doc-> save;
+                    #$doc-> save("$brief_nieuw_file_naam");
+                    $doc-> dispose;
+                    copy ($home_file  => $brief_nieuw_file_naam);
+                    copy ($home_file  => "D:\\OGV\\ASSURCARD_PROG\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten");
+                    my $OO_instpath = &dir__OO;
+                    $OO_instpath =~  s/\\/\\\\/g;
+                    print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
+                    $main::overzichts_mail = $main::overzichts_mail."$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $brief_nieuw_file_naam\n";
+                    system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);             #, '-norestore','-headless','-pt',+ $printer,+ "$brief_nieuw_file_naam"); #,'-pt',+ $printer,+ "$brief_nieuw_file_naam"
+                    
+                    $brief_nieuw_file_naam  =~ s/cache\\/cache\\\\/;
+                    #my $home_dir = "$ENV{USERPROFILE}"  ;
+                    #unlink "$home_dir\\herinner-brief.odt";       
+                    #my $home_file = "$home_dir\\herinner-brief.odt";
+                    #copy ($brief_nieuw_file_naam  => $home_file);
+                    #print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
+                    #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);#, '-norestore','-headless','-pt',+ $printer,+ "$brief_nieuw_file_naam"); #,'-pt',+ $printer,+ "$brief_nieuw_file_naam"
+                    #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);
+                    sleep (5);
+                    print "";
+                    #system(1,"$instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,
+                    #   + $printfilename);
+                }else {
+                 print " home file $home_file -> bestaat niet !!!!!! -> NIETS GEDAAN !!!-> $brief\n";
+                 $main::overzichts_mail = $main::overzichts_mail."home file $home_file -> bestaat niet !!!!!! -> NIETS GEDAAN !!!-> brief\n"
+                }
             }else {
              print "\nbestaat niet ->$brief\--\n";
              print "testen op->$brief1\--\n";
