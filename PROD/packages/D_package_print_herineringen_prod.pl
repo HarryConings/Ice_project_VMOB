@@ -585,8 +585,7 @@ package insert_tweede_herinnering_in_frame ;
                 print "bestaat->$brief\n";
                 copy ($brief  => $home_file);
                 #die;
-                if (-e $home_file) {
-                    
+                if (-e $home_file) {                    
                 }else {
                    sleep(5);
                 }
