@@ -822,7 +822,7 @@ package Frame;
       sub OK {
            my($frame)= @_;           
            my $huidig_jaar =  $frame->{Frame_Txt_Berekeningsjaar}->GetValue();
-           if ($huidig_jaar > 2014 and $huidig_jaar < 2024) {
+           if ($huidig_jaar > 2014 and $huidig_jaar < 2027) {
              my $dryrun = $frame->{Frame_chk_1_dryrun}->GetValue();
              if ($dryrun == 0 ) {
                   my( $answer ) =  Wx::MessageBox(
