@@ -61,7 +61,7 @@ package main;
                 $smtp->auth('mailprogrammas','pleintje203');
                 $smtp->mail($van);
                 $smtp->to($geadresseerde);
-                $smtp->cc('informatica.mail@vnz.be');
+                #$smtp->cc('informatica.mail@vnz.be');
                 #$smtp->bcc("bar@blah.net");
                 $smtp->data;
                 $smtp->datasend("From: harry.conings");
