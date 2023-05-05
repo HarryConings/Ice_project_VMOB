@@ -169,10 +169,10 @@ sub make_overzicht_matrix {
                      $soort_werkblad=$main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}[$nr]->{nomenclatuur}[$n_nr]->{soort_werkblad};
                      $main::rekenregels_per_nomenclatuur->{$nomencltuur_nr}->{soort_werkblad} =$soort_werkblad;
                      push (@{$main::nomenclatuurnummers_per_groep{$groepsnaam}},$nomencltuur_nr);
+                     #my $test1 = $main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}[$nr];
                      if (lc ($groepsnaam) eq 'dienst') {
-                            push (@main::diensten,$korte_naam);
+                            push (@main::diensten,$korte_naam);                            
                            }
-                     
                      if (defined $main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}[$nr]->{nomenclatuur}[$n_nr]->{eenmalig_bedrag_jaar}->{bedrag}) {
                             $max_bedrag = $main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}[$nr]->{nomenclatuur}[$n_nr]->{eenmalig_bedrag_jaar}->{bedrag};
                             my $tekst = $main::instelingen->{$periode}->{verzekeringen}->{$verzekering}->{groep}[$nr]->{nomenclatuur}[$n_nr]->{eenmalig_bedrag_jaar}->{tekst};

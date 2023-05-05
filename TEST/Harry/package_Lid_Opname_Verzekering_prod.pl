@@ -17,6 +17,7 @@ package Lid_Opname_Verzekering;
      sub new {
          my $test = $main::klant;
          # "\naangeroepen Lid_Opname_Verzekering-new\n_____________________________________________________\n\n";
+         #my @testd= @main::diensten;
          my ($class, $frame) = @_;
          $frame->{lov_sizer_1} = Wx::FlexGridSizer->new(4, 19, 10, 10);
          $frame->{lov_Button_Agresso_Nummer}  = Wx::Button->new($frame->{MainFrameNotebookBoven_pane_lov}, -1, _T("Agresso Nummer:"),wxDefaultPosition,wxSIZE(100,20));
@@ -93,7 +94,7 @@ package Lid_Opname_Verzekering;
          $frame->{lov_chk_lostcard}  = Wx::CheckBox->new($frame->{MainFrameNotebookBoven_pane_lov}, -1,$main::klant->{Verloren_kaart},wxDefaultPosition,wxSIZE(15,20));
          $main::hospi_tussenkomsttxtctrl=$frame->{lov_Txt_Hospi_Tussenkomst};
          $main::verschil_txtctrl=$frame->{lov_Txt_Verschil};
-	 $main::verschil_dagen_betaald_txtctrl =$frame->{lov_Txt_Dagen_Betaald};
+         $main::verschil_dagen_betaald_txtctrl =$frame->{lov_Txt_Dagen_Betaald};
          #Rij1
          #kolom 1 +2
          $frame->{lov_panel_1} = Wx::Panel->new($frame->{MainFrameNotebookBoven_pane_lov},-1,wxDefaultPosition,wxSIZE(20,20));
