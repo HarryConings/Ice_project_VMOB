@@ -343,6 +343,14 @@ sub zoek_verzekerden {
                      $CountryCode = 'CO';
                 }elsif ($CountryCode eq 'EAU' or $CountryCode eq 'eau'){
                      $CountryCode = 'AE';
+                }elsif ($CountryCode eq 'GUA' or $CountryCode eq 'gua'){
+                     $CountryCode = 'GT';
+                }elsif ($CountryCode eq 'CHY' or $CountryCode eq 'chy'){
+                     $CountryCode = 'CY';
+                }elsif ($CountryCode eq 'OEK' or $CountryCode eq 'oek'){
+                     $CountryCode = 'UA';
+                }elsif ($CountryCode eq 'CRS' or $CountryCode eq 'crs'){
+                     $CountryCode = 'KR';
                     }
              my $Email = &zoekemailadres ($dbh,$nrzkfcheck,$agresso_klant[13],$vandaag);
              my $EmailCc = 'geen';
@@ -512,6 +520,14 @@ sub zoek_verzekerden {
                      $CountryCode = 'CO';
                     }elsif ($CountryCode eq 'EAU' or $CountryCode eq 'eau'){
                      $CountryCode = 'AE';
+                    }elsif ($CountryCode eq 'GUA' or $CountryCode eq 'gua'){
+                     $CountryCode = 'GT';
+                    }elsif ($CountryCode eq 'CHY' or $CountryCode eq 'chy'){
+                         $CountryCode = 'CY';
+                    }elsif ($CountryCode eq 'OEK' or $CountryCode eq 'oek'){
+                         $CountryCode = 'UA';
+                    }elsif ($CountryCode eq 'CRS' or $CountryCode eq 'crs'){
+                         $CountryCode = 'KR'; 
                     }
                    
                  #print "$adres_onderdeel\n ";

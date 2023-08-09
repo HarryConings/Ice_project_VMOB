@@ -39,10 +39,10 @@ our $last_agr_nr=0;
 our $last_zkf = 'ZKF203';
 package main;
       #bepalen TEST PROD
-      our $version = 'v202105'; # EXTRA VELDEN
+      our $version = 'v202308'; # EXTRA VELDEN
       our $mode = 'PROG'; #TEST voor test   PROG voor productie
       our $volledig = 'FULL'; #alle contracten worden verwijderd en opnieuw ingezet
-      our $enkel_jo = 'JA' ; #NEE is ook SQL
+      our $enkel_jo = 'NEE' ; #NEE is ook SQL
       $mode = $ARGV[0] if (defined $ARGV[0]);
       $volledig ='UPDATE' if ($ARGV[0] eq 'UPDATE');
       if ( $mode eq 'TEST' or $mode eq 'PROG'){}else{die}
@@ -195,12 +195,12 @@ package agresso;
       $dbh->do("DELETE FROM afxvmobcontrbu WHERE client = '$client' ");
       #exec sp_columns afxvmobcontrbu
       #attribute_id dim_value line_no client date_from date_to product startdatum wachtdatum einddatum contract_nr zkf_nr zkf_nr_datum_van zkf_nr_datum_tot info last_update user_id agrtid ontslagcode_fx
-      #aansluitingscode_fx  hoedanigheid_fx bestaalstatus_fx laatste_betaaldatum_fx openstaande_premie_fx betaalwijze_fx periode_premie_fx barema_fx betaler_naam_fx betaler_rrn_fx
+      #aansluitingscode_fx  hoedanigheid_fx betaalstatus_fx laatste_betaaldatum_fx openstaande_premie_fx betaalwijze_fx periode_premie_fx barema_fx betaler_naam_fx betaler_rrn_fx
       $dbh->do("INSERT INTO afxvmobcontrbu (attribute_id,dim_value,line_no,client,date_from,date_to,product,startdatum,wachtdatum,einddatum,contract_nr,zkf_nr,zkf_nr_datum_van,
-               zkf_nr_datum_tot,info,last_update,user_id,ontslagcode_fx,aansluitingscode_fx,hoedanigheid_fx,bestaalstatus_fx,laatste_betaaldatum_fx,openstaande_premie_fx,
+               zkf_nr_datum_tot,info,last_update,user_id,ontslagcode_fx,aansluitingscode_fx,hoedanigheid_fx,betaalstatus_fx,laatste_betaaldatum_fx,openstaande_premie_fx,
                betaalwijze_fx,periode_premie_fx,barema_fx,betaler_naam_fx,betaler_rrn_fx) 
       Select attribute_id,dim_value,line_no,client,date_from,date_to,product,startdatum,wachtdatum,einddatum,contract_nr,zkf_nr,zkf_nr_datum_van,
-      zkf_nr_datum_tot,info,last_update,user_id,ontslagcode_fx,aansluitingscode_fx,hoedanigheid_fx,bestaalstatus_fx,laatste_betaaldatum_fx,openstaande_premie_fx,
+      zkf_nr_datum_tot,info,last_update,user_id,ontslagcode_fx,aansluitingscode_fx,hoedanigheid_fx,betaalstatus_fx,laatste_betaaldatum_fx,openstaande_premie_fx,
       betaalwijze_fx,periode_premie_fx,barema_fx,betaler_naam_fx,betaler_rrn_fx from afxvmobcontract");
       return ('Backup contracten naar afxvmobcontrbu gedaan');
    }
@@ -303,7 +303,7 @@ package AS400;
       open (JOFILE,'>>',$file_voor_jo);
       my $text= "attribute_id;dim_value;line_no;client;product;startdatum;wachtdatum;einddatum;contract_nr;zkf_nr;info;last_update;";
       $text = "$text"."user_id;aansluitingscode_fx;ontslagcode_fx;laatste_betaaldatum_fx;openstaande_premie_fx;betaalwijze_fx;barema_fx;";
-      $text = "$text"."betaler_naam_fx;betaler_rrn_fx;periode_premie_fx;hoedanigheid_fx;bestaalstatus_fx";
+      $text = "$text"."betaler_naam_fx;betaler_rrn_fx;periode_premie_fx;hoedanigheid_fx;betaalstatus_fx";
       #print JOFILE "$text\n";
       foreach my $zkf (keys $instellingen->{ziekenfondsen}) {
                          my $zkf_nr  = substr ($zkf,3,3);
@@ -500,7 +500,7 @@ package AS400;
                                              $ok = $dbh_agresso->do("INSERT INTO afxvmobcontract (attribute_id,dim_value,line_no,client,product,startdatum,
                                                                     wachtdatum,einddatum,contract_nr,zkf_nr,info,last_update,user_id,aansluitingscode_fx,
                                                                     ontslagcode_fx,laatste_betaaldatum_fx,openstaande_premie_fx,betaalwijze_fx,barema_fx,
-                                                                    betaler_naam_fx,betaler_rrn_fx,periode_premie_fx,hoedanigheid_fx,bestaalstatus_fx) VALUES
+                                                                    betaler_naam_fx,betaler_rrn_fx,periode_premie_fx,hoedanigheid_fx,betaalstatus_fx) VALUES
                                                                     ('A4',$agresso_klant[0],$zkf_line_no,'VMOB','$naam','$agresso_klant[6]','$agresso_klant[7]',
                                                                     '$agresso_klant[8]',$agresso_klant[9],'$zkf_nr','$info',getdate(),'WEBSERV',
                                                                     '$aansluitingscode','$ontslagcode','$laatste_betaling',$saldo,'$laatste_betaalwijze',
@@ -520,7 +520,7 @@ package AS400;
                                           $jodata= "$jodata"."$agresso_klant[8];$agresso_klant[9];$zkf_nr;$info;$vandaag;WEBSERV;";
                                           $jodata= "$jodata"."$aansluitingscode;$ontslagcode;$laatste_betaling_jo;$saldo;$laatste_betaalwijze;";
                                           $jodata= "$jodata"."$laatste_barema;$betaler_naam;$betaler_rrn;$laatste_periodiciteit;$hoedanigheid;$betaalstatus";                                          
-                                          print JOFILE "$jodata\n";      
+                                          #print JOFILE "$jodata\n";      
                                           #$line_no +=1;
                                           $record_teller +=1;                                          
                                           if ($ok == 1) {
@@ -541,7 +541,7 @@ package AS400;
                 
                }
            close (JOFILE);
-           copy ($file_voor_jo,$file_agresso);
+           #copy ($file_voor_jo,$file_agresso);
            my $totaal = $total_ok + $total_nok ;
            $mail_contracten  = $mail_contracten."We hebben in het totaal voor $totaal klanten contracten ingezet.\nVoor $total_ok klanten is dat gelukt.\nVoor $total_nok klanten is dat niet gelukt\n" ;
            print "We hebben in het totaal voor $totaal klanten contracten ingezet.\nVoor $total_ok klanten is dat gelukt.\nVoor $total_nok klanten is dat niet gelukt\n" ;

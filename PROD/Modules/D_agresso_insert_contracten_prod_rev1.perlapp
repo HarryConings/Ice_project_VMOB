@@ -1,17 +1,17 @@
 #!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
-Script: agresso_insert_contracten_rev1.pl
-Cwd: P:\GIT\VMOB\TEST\Modules
+Script: D_agresso_insert_contracten_prod_rev1.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\PROD\Modules
 Clean: 0
-Date: 2021-06-14 10:57:56
+Date: 2023-08-09 15:22:11
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: agresso_insert_contracten_rev1.exe
+Exe: D_agresso_insert_contracten_prod_rev1.exe
 Force: 0
 Gui: 0
-Hostname: W203HCN2V
+Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
 No-Logo: 0
@@ -20,7 +20,7 @@ Shared: none
 Tmpdir: 
 Verbose: 0
 Version-Comments: wordt geleverd zonder enige garantie
-Version-CompanyName: ICE 
+Version-CompanyName: ICE
 Version-FileDescription: agresso insert contracten
 Version-FileVersion: 1.1.0
 Version-InternalName: agresso insert contracten
