@@ -6,7 +6,7 @@ Cwd: P:\komodoproject\Ice_project_VMOB\PROD\Modules
 Add: Log::Report::
 Add: XML::Compile::
 Clean: 0
-Date: 2023-02-27 13:54:24
+Date: 2023-08-09 12:41:34
 Debug: 
 Dependent: 0
 Dyndll: 0
@@ -24,7 +24,7 @@ Verbose: 0
 Version-Comments: wordt geleverd zonder enige garantie
 Version-CompanyName: ICE
 Version-FileDescription: Assurcard_contract_xml_prod
-Version-FileVersion: 1.0.0
+Version-FileVersion: 1.1.0
 Version-InternalName: Assurcard_contract_xml_prod
 Version-LegalCopyright: Harry Conings 0475464289
 Version-LegalTrademarks: 

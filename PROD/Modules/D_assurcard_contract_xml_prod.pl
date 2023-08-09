@@ -202,7 +202,7 @@ sub zoek_ontslagen_contract {
       my $sqlmutuitdet =("SELECT a.KNRN52,a.DOSSNR,a.EINCON,c.ABEDKK,c.ABOCKK,c.AB2OKK,c.ABTVKK,b.EXIDL8
                         FROM $settings{'ascard_fil'} a JOIN $settings{'pers_fil'} b ON a.KNRN52=b.KNRNL8 JOIN $settings{'phoekk_fil'} c ON b.EXIDL8=c.EXIDKK
                         WHERE c.ABTVKK IN  ($te_onderzoeken) and a.CARDNR != 0 and a.ZKF =$nrzkfcheck and a.KNRN52 != 0 and OKNOW = 'Y'
-                        and b.EXIDL8 NOT IN (SELECT  EXIDKK  FROM  $settings{'phoekk_fil'}  WHERE ABEDKK >= $vandaag and ABTVKK IN  ($te_onderzoeken)  )
+                        and b.EXIDL8 NOT IN (SELECT  EXIDKK  FROM  $settings{'phoekk_fil'}  WHERE ABEDKK >= $vandaag and ABTVKK = c.ABTVKK   )
                         ORDER BY a.KNRN52,a.DOSSNR"); #and a.CARDNR != 0 versie 3.0
      my $sthmutuitdet = $dbh->prepare( $sqlmutuitdet );
      $sthmutuitdet ->execute();
