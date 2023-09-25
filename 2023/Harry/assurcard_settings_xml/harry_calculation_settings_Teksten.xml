@@ -1,0 +1,47 @@
+<instellingen>                     <!-- deze file bevat teksten voor link naar GKD -->
+<GKD_teksten>
+	<TABBLAD_GKD> <!-- je kan hier maximaal 24 teksten geven -->
+		<tekst>Schade: SA formulier ontvangen</tekst>
+		<tekst>Schade: Factuur ontvangen</tekst>
+		<tekst>Schade: SA formulier + factuur ontvangen</tekst>
+		<tekst>Schade: Ambulante kosten ontvangen</tekst>
+		<tekst>Schade: BI ontvangen arts (Medisch verslag)</tekst>
+		<tekst>Schade: BI ontvangen lid</tekst>
+		<tekst>Schade: Diverse ontvangen</tekst>
+		<tekst>Schade: Bijk. Gegevens opgevraagd</tekst>
+		
+
+		<tekst>Aansluiting: Behoefteanalyse ontvangen</tekst>
+		<tekst>Aansluiting: Verzekeringsvoorstel ontvangen</tekst>
+		<tekst>Aansluiting: Medische vragenlijst ontvangen</tekst>
+		<tekst>Aansluiting: Volledige aanvraag ontvangen (BH/VZV/MV)</tekst>
+		<tekst>Aansluiting: Attest vorige verzekering ontvangen</tekst>
+		<tekst>Aansluiting: BI ontvangen arts</tekst>
+		<tekst>Aansluiting: BI ontvangen lid</tekst>
+		<tekst>Aansluiting: Omschakeling ontvangen</tekst>
+		<tekst>Aansluiting: Stopzetting ontvangen</tekst>
+		<tekst>Aansluiting: Diverse ontvangen</tekst>
+		
+		<tekst>HPKaart geschorst wegens afbetalingsplan</tekst>
+		<tekst>In afwachting ontvangst Electronisch ziekenhuisfactuur</tekst>
+		<tekst>Doc. opgevraagd: zie Catalogus-com</tekst>
+	</TABBLAD_GKD>
+	<AUTOMATISCHE_TEKSTEN>
+		<ASSURCARD>  <!-- Assurcard je kan hier maximaal 1 tekst geven -->
+			<tekst>Factuur via HospiPluskaart: behandeld</tekst>
+		</ASSURCARD>
+		<HOSP> <!-- Handmatige facturen -->   
+			<tekst>Factuur: manueel behandeld</tekst>
+		</HOSP>
+		<VOOR_EN_NAZORG>
+			<tekst>Kosten voor- en nazorgen behandeld</tekst>
+		</VOOR_EN_NAZORG>
+		<AMBULANTE_ZORGEN>
+			<tekst>Ambulante zorgen behandeld</tekst>
+		</AMBULANTE_ZORGEN>
+		<KAART_VERLOREN>
+			<tekst>Duplicaat HospiPluskaart aangevraagd</tekst>
+		</KAART_VERLOREN>
+	</AUTOMATISCHE_TEKSTEN>
+</GKD_teksten>
+</instellingen>

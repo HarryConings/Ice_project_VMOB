@@ -1,0 +1,41 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: package_frame_prod.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\TEST\Harry
+Add: Params::Validate::XS::
+Add: Params::Validate::PP::
+Add: Class::Load::PP::
+Add: DateTime::Duration::
+Add: Class::Load::XS::
+Add: Class::Load
+Add: Log::Report::
+Add: DateTime::Locale::
+Clean: 0
+Date: 2023-02-27 15:28:28
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: package_frame_prod.exe
+Force: 0
+Gui: 1
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: Harry TEST  Agresso
+Version-FileVersion: 2023.1
+Version-InternalName: Harry TEST  Agresso
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: Harry TEST  Agresso
+Version-ProductName: Harry Productie Agresso
+Version-ProductVersion: 2023.1
+Warnings: 0
+Xclude: 0
