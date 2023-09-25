@@ -392,7 +392,7 @@ sub send_order_via_webserv_client {
      my $ordernr='fault';
      my $fault ='';
      my $soap = SOAP::Lite
-      -> proxy("http://$ip/BusinessWorld-webservices/service.svc?ImportService/ImportV200606")    
+      -> proxy("http://$ip/service.svc?ImportService/ImportV200606")    
       ->ns('http://services.agresso.com/ImportService/ImportV200606','imp')
       ->on_action( sub { return 'ExecuteServerProcessAsynchronously' } );
       #->on_fault( $antwoord = &mail_bericht_fout($output_file) );  # timout versie 20201126 ;

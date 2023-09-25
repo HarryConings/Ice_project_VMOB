@@ -26,7 +26,7 @@ sub agresso_get_K_altijd {
       use SOAP::Lite ;
       #+trace => [ transport => sub { print $_[0]->as_string } ];
      my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-     my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101"; # productie /test   
+     my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101"; # productie /test   
      my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
      my $soap = SOAP::Lite
         ->proxy($proxy)

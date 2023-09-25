@@ -8,16 +8,16 @@ package assurcard_calculation_settings;
      sub new {
          my $settings;
          #settings $settings->{periode} en $settings->{verzekering} komen me van boven bepalen de periode en de verzekering voor de lay out
-         print "\nP:\\OGV\\ASSURCARD_$main::mode\\assurcard_settings_xml\\harry_calculation_settings.xml\n";
+         print "\n\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$main::mode\\harry_calculation_settings.xml\n";
          #$settings = XMLin("P:\\OGV\\ASSURCARD_TEST\\assurcard_settings_xml\\harry_calculation_settings.xml"); #test nieuwe xml
-         $settings = XMLin("P:\\OGV\\ASSURCARD_$main::mode\\assurcard_settings_xml\\harry_calculation_settings.xml");
+         $settings = XMLin("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$main::mode\\harry_calculation_settings.xml");
         
          return ($settings);
         }
      sub teksten_gkd {
           my $teksten;
          #settings $teksten->{periode} en $teksten->{verzekering} komen me van boven bepalen de periode en de verzekering voor de lay out
-         $teksten = XMLin("P:\\OGV\\ASSURCARD_$main::mode\\assurcard_settings_xml\\harry_calculation_settings_teksten.xml");
+         $teksten = XMLin("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$main::mode\\harry_calculation_settings_teksten.xml");
          return ($teksten);
         }
     

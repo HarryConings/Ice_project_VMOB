@@ -12,9 +12,9 @@ package sql_toegang_agresso;
 sub setup_mssql_connectie {
      my $database;
      if ($main::mode eq 'TEST') {
-         $database = 'agraccept';
+         $database = 'ERPM7TEST';
      }elsif  ($main::mode eq 'PROG') {
-        $database = 'agrprod'
+        $database = 'ERPM7TEST'
      }else {
           die;
      }
@@ -24,7 +24,7 @@ sub setup_mssql_connectie {
          "dbi:ODBC:",
          "Driver={SQL Server};",
          #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-         "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+         "Server=S250WR2XXL01.zkf200mut.prd\\sql1;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
          "UID=HOSPIPLUS;",
          "PWD=ihuho4sdxn;",
          "Database=$database",        

@@ -186,7 +186,7 @@ sub save_ambulante_zorgen_ernstige_ziekten {
 sub insert_ambulante {
      my $xml_content = shift @_;
      my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-     my $proxy ="http://$ip/BusinessWorld-webservices/service.svc?CustomerService/Customer";
+     my $proxy ="http://$ip/service.svc?CustomerService/Customer";
      my $uri   = 'http://services.agresso.com/CustomerService/Customer';
      my $soap = SOAP::Lite
         ->proxy($proxy)

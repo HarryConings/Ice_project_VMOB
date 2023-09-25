@@ -33,10 +33,10 @@ require 'package_gkd_tab_prod.pl';
 #require 'package_maak_brief.pl';
 require 'Decryp_Encrypt.pl';
 package main;
-     our $version = 'v20230505'; # periode gezet op 2021 aangepast voor windows 10 geen tandplus mail weg in package_invoice_to_agresso_prod
-     our $mode = 'PROG'; #TEST voor test   PROG voor productie
+     our $version = 'v20230925_V7_'; # periode gezet op 2021 aangepast voor windows 10 geen tandplus mail weg in package_invoice_to_agresso_prod
+     our $mode = 'TEST'; #TEST voor test   PROG voor productie
      $mode = $ARGV[0] if (defined $ARGV[0]);
-     if ( $mode eq 'TEST' or $mode eq 'PROG'){}else{die}
+     if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
      BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
      use strict;
      use warnings;
@@ -138,14 +138,13 @@ package main;
      #kolom 4 (4, _T("Z. tsk"));
      #kolom 5 (5, _T("HP+ tsk"));
      #kolom 6 (6, _T("Verschil"));
-     main->load_agresso_setting("P:\\OGV\\ASSURCARD_$mode\\assurcard_settings_xml\\harry_agresso_settings.xml"); #nagekeken     
+     main->load_agresso_setting("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$mode\\harry_agresso_settings.xml"); #nagekeken     
      my $instpath = $main::agresso_instellingen->{plaats_mobicoon};
      #my $test3 =system(1,"$instpath",60073024369);              
      my $periode= "periode_20230101-20231231"; #opgelet ook aanpassen in package_ToolBarMainFrame
      our $gebruikersnaam = package_invoice_to_agresso->get_windows_user;
      #$gebruikersnaam = 'M203DUVI' if (uc $gebruikersnaam eq 'M203HCON');  
      $gebruikersnaam = 'M235DUVI' if (uc $gebruikersnaam eq 'M203DUVI');
-     $gebruikersnaam = 'M235BRUC' if (uc $gebruikersnaam eq 'M203CBRX');
      $gebruikersnaam = 'M235DUVI' if (uc $gebruikersnaam eq 'M203HCON');     
      $gebruikersnaam = uc $gebruikersnaam ;
      our $variant_LG04;

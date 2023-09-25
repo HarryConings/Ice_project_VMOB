@@ -39,15 +39,15 @@ $vandaag = substr ($vandaag,0,8);
 #&agresso_get_invoice_info;
 sub variant_LG04 {
            my ($self,$user) = @_;
-           use SOAP::Lite ;       
-           #+trace => [ transport => sub { print $_[0]->as_string } ];
+           use SOAP::Lite        
+           +trace => [ transport => sub { print $_[0]->as_string } ];
            #+trace => [ transport => sub { print $_[0]->as_string } ];
             #my $Default_Variant = $main::agresso_instellingen->{Default_variant_LG04};
             my $TemplateId=4661;
             #my $TemplateId=4658;
             $TemplateId=4661 if($main::mode eq "PROG");
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-            my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101";  
+            my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101";  
             my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
             my $soap = SOAP::Lite
              ->proxy($proxy)
@@ -103,7 +103,7 @@ sub agresso_get_clients_with_assurcard_invoices {
       use SOAP::Lite #;
       +trace => [ transport => sub { print $_[0]->as_string } ];
       my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-      my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101"; # productie/test    
+      my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101"; # productie/test    
       my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
       my $soap = SOAP::Lite
         ->proxy($proxy)
@@ -192,7 +192,7 @@ sub agresso_get_invoice_info {
       $ENV{HTTP_DEBUG} = 1;
       #$clientnummer = 102301;
        my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-       my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101"; # productie/test      
+       my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101"; # productie/test      
        my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
        my $soap = SOAP::Lite
             ->proxy($proxy)
@@ -447,7 +447,7 @@ sub agresso_get_customer_info {
       #use SOAP::Lite ;
       #sleep 10;
       my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-      my $proxy = "http://$ip/BusinessWorld-webservices/service.svc"; # productie /test
+      my $proxy = "http://$ip/service.svc"; # productie /test
       my $uri   = 'http://services.agresso.com/CustomerService/Customer';
       my $soap = SOAP::Lite
             ->proxy($proxy)
@@ -771,7 +771,7 @@ sub agresso_get_customer_info_rr_nr {
       #$clientnummer = 67122533419;#;100048 100248 166516
       #use SOAP::Lite ;
       my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"}; 
-      my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101"; # productie/test
+      my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101"; # productie/test
       my $uri   = 'http://services.agresso.com/CustomerService/Customer';
       my $soap = SOAP::Lite
             ->proxy($proxy)
