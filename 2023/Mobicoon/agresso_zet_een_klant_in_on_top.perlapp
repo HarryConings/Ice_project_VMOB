@@ -1,0 +1,33 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: agresso_zet_een_klant_in_on_top.pl
+Cwd: X:\mob -hospiplan2016\wxpackages
+Clean: 0
+Date: 2016-10-28 13:38:26
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: agresso_zet_een_klant_in_on_top.exe
+Force: 0
+Gui: 1
+Hostname: PV203O101
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: 
+Version-CompanyName: 
+Version-FileDescription: 
+Version-FileVersion: 
+Version-InternalName: 
+Version-LegalCopyright: 
+Version-LegalTrademarks: 
+Version-OriginalFilename: 
+Version-ProductName: 
+Version-ProductVersion: 
+Warnings: 0
+Xclude: 0

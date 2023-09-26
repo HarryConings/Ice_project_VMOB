@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teksten>
+	<ziekenfondsen>
+		<ZKF203>
+			<agent_tekst>Vlaams en Neutraal Ziekenfonds, verzekeringsagent 2006, Hoogstratenplein 1, 2800 Mechelen</agent_tekst>
+			<agent_tekst1>Vlaams en Neutraal Ziekenfonds</agent_tekst1>
+		</ZKF203>
+		<ZKF235>
+			<agent_tekst>Neutraal Ziekenfonds Vlaanderen, verzekeringsagent 2007, Statieplein 12, 9300 Aalst</agent_tekst>
+			<agent_tekst1>Neutraal Ziekenfonds Vlaanderen</agent_tekst1>
+		</ZKF235>
+    </ziekenfondsen>
+	
+	<verzekeringen>                                                   <!--verzekeringen waar een kaart voor gegenereerd wordt-->
+		<HOSPIPLAN_AMBUPLAN><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+			<verz_tekst2>- voor- en nazorg</verz_tekst2>
+			<verz_tekst3>- ambulante kosten bij ernstige ziekte</verz_tekst3>
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5>Bestaande aandoeningen zijn niet verzekerd voor kamer- en ereloonsupplementen bij het nemen van een éénpersoonskamer. De aandoening(en) aangeduid met * zijn ernstige ziekte(n) volgens de polisvoorwaarden. De ambulante kosten voor deze ziekte(n ) worden niet gedekt door de aanvullende waarborg AmbuPlan.</verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>051</verz_tekst7>
+			<verz_tekst8>U ontvangt uw persoonlijke HospiPluskaart nog met een aparte brief. Deze wordt geactiveerd nadat u de premie hebt betaald en na het verstrijken van uw wachttijd (indien deze van toepassing is.)</verz_tekst8>
+			<verz_tekst9></verz_tekst9>
+			<verz_teksta></verz_teksta>
+			<verz_tekstb></verz_tekstb>			
+		</HOSPIPLAN_AMBUPLAN>
+		
+		<HOSPIPLAN><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+			<verz_tekst2>- voor- en nazorg</verz_tekst2>
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5>Bestaande aandoeningen zijn niet verzekerd voor kamer- en ereloonsupplementen bij het nemen van een éénpersoonskamer. </verz_tekst5>	
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>	
+			<verz_tekst7>061</verz_tekst7>
+			<verz_tekst8>U ontvangt uw persoonlijke HospiPluskaart nog met een aparte brief. Deze wordt geactiveerd nadat u de premie hebt betaald en na het verstrijken van uw wachttijd (indien deze van toepassing is.)</verz_tekst8>			
+			<verz_tekst9></verz_tekst9>
+			<verz_teksta></verz_teksta>
+			<verz_tekstb></verz_tekstb>		
+		</HOSPIPLAN>
+		
+		<AMBUPLAN><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- ambulante kosten bij ernstige ziekte</verz_tekst1>	
+			<verz_tekst2></verz_tekst2>
+			<verz_tekst3></verz_tekst3>
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5>Bestaande aandoeningen zijn niet verzekerd voor kamer- en ereloonsupplementen bij het nemen van een éénpersoonskamer. De aandoening(en) aangeduid met * zijn ernstige ziekte(n) volgens de polisvoorwaarden. De ambulante kosten voor deze ziekte(n ) worden niet gedekt door de aanvullende waarborg AmbuPlan.</verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>063</verz_tekst7>
+			<verz_tekst8></verz_tekst8>
+			<verz_tekst9>- Voeg uw ambulante kosten toe ivm uw ernstige ziekte (doktersvisite, apotheekkosten, labo, ....)</verz_tekst9>	
+			<verz_teksta></verz_teksta>	
+			<verz_tekstb></verz_tekstb>			
+		</AMBUPLAN>
+		
+		<HOSPIPLUS_AMBUPLUS><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+			<verz_tekst2>- voor- en nazorg</verz_tekst2>
+			<verz_tekst3>- ambulante kosten bij ernstige ziekte</verz_tekst3>
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5>Bestaande aandoeningen zijn niet verzekerd voor kamer- en ereloonsupplementen bij het nemen van een éénpersoonskamer. De aandoening(en) aangeduid met * zijn ernstige ziekte(n) volgens de polisvoorwaarden. De ambulante kosten voor deze ziekte(n ) worden niet gedekt door de aanvullende waarborg AmbuPlus.</verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>052</verz_tekst7>
+			<verz_tekst8>U ontvangt uw persoonlijke HospiPluskaart nog met een aparte brief. Deze wordt geactiveerd nadat u de premie hebt betaald en na het verstrijken van uw wachttijd (indien deze van toepassing is.)</verz_tekst8>			
+			<verz_tekst9>- Voeg uw ambulante kosten toe (doktersvisite, apotheekkosten, labo, ....)</verz_tekst9>
+			<verz_teksta></verz_teksta>
+			<verz_tekstb></verz_tekstb>
+		</HOSPIPLUS_AMBUPLUS>
+		
+		<HOSPIPLUS><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+			<verz_tekst2>- voor- en nazorg</verz_tekst2>
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5>Bestaande aandoeningen zijn niet verzekerd voor kamer- en ereloonsupplementen bij het nemen van een éénpersoonskamer. </verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>062</verz_tekst7>	
+			<verz_tekst8>U ontvangt uw persoonlijke HospiPluskaart nog met een aparte brief. Deze wordt geactiveerd nadat u de premie hebt betaald en na het verstrijken van uw wachttijd (indien deze van toepassing is.)</verz_tekst8>			
+			<verz_tekst9>- Voeg uw ambulante kosten toe (doktersvisite, apotheekkosten, labo, ....)</verz_tekst9>
+			<verz_teksta></verz_teksta>
+			<verz_tekstb></verz_tekstb>			
+		</HOSPIPLUS>
+		
+		<AMBUPLUS><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- ambulante kosten bij ernstige ziekte</verz_tekst1>
+            <verz_tekst2></verz_tekst2><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5>Bestaande aandoeningen zijn niet verzekerd voor kamer- en ereloonsupplementen bij het nemen van een éénpersoonskamer. De aandoening(en) aangeduid met * zijn ernstige ziekte(n) volgens de polisvoorwaarden. De ambulante kosten voor deze ziekte(n ) worden niet gedekt door de aanvullende waarborg AmbuPlus.</verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>064</verz_tekst7>
+			<verz_tekst8></verz_tekst8>			
+			<verz_tekst9>- Voeg uw ambulante kosten toe ivm uw ernstige ziekte (doktersvisite, apotheekkosten, labo, ....)</verz_tekst9>			
+			<verz_teksta></verz_teksta>	
+			<verz_tekstb></verz_tekstb>			
+		</AMBUPLUS>		
+
+		<HOSPIFORFAIT12><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+            <verz_tekst2></verz_tekst2><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4></verz_tekst4>
+			<verz_tekst5></verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>043</verz_tekst7>
+			<verz_tekst8></verz_tekst8>			
+			<verz_tekst9></verz_tekst9>	
+			<verz_teksta></verz_teksta>
+			<verz_tekstb></verz_tekstb>			
+		</HOSPIFORFAIT12>
+		
+        <HOSPIFORFAIT25><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+            <verz_tekst2></verz_tekst2><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4></verz_tekst4>
+			<verz_tekst5></verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>042</verz_tekst7>
+			<verz_tekst8></verz_tekst8>			
+			<verz_tekst9></verz_tekst9>
+			<verz_teksta></verz_teksta>			
+		</HOSPIFORFAIT25>
+		
+		<HOSPIFORFAIT50><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+            <verz_tekst2></verz_tekst2><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4></verz_tekst4>
+			<verz_tekst5></verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>
+			<verz_tekst7>041</verz_tekst7>
+			<verz_tekst8></verz_tekst8>	
+			<verz_tekst9></verz_tekst9>
+			<verz_teksta></verz_teksta>
+			<verz_tekstb></verz_tekstb>			
+		</HOSPIFORFAIT50>
+ 
+		<HOSPICONTINU><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- hospitalisatie</verz_tekst1>
+            <verz_tekst2></verz_tekst2><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+            <verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4>Na een periode van 5 jaar kan dit op uw vraag herzien worden aan de hand van een recent en actueel medisch verslag door uw behandelende arts.</verz_tekst4>
+			<verz_tekst5></verz_tekst5>
+			<verz_tekst6>tot einde dekking groepsverzekering of uiterlijk einde v/d maand v/d 65ste verjaardag.</verz_tekst6>
+			<verz_tekst7>053</verz_tekst7>
+			<verz_tekst8></verz_tekst8>
+			<verz_tekst9></verz_tekst9>
+			<verz_teksta></verz_teksta>
+			<verz_tekstb>Opgelet! Bij het beëindigen van de groepsverzekering, via uw werkgever, ONMIDDELLIJK 'HospiPlus' op de hoogte brengen !</verz_tekstb>			
+		</HOSPICONTINU>
+		
+		<MAXIPLAN><!-- verzekering moet in hoofdletters-->
+			<verz_tekst1>- medische kosten</verz_tekst1>
+			<verz_tekst2></verz_tekst2><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst3></verz_tekst3><!-- je moet zien dat je de vervang text in het sjabloon uitveegd -->
+			<verz_tekst4></verz_tekst4>
+			<verz_tekst5></verz_tekst5>
+			<verz_tekst6>van onbepaalde duur</verz_tekst6>	
+			<verz_tekst7>069</verz_tekst7>
+			<verz_tekst8></verz_tekst8>
+			<verz_tekst9></verz_tekst9>	
+			<verz_teksta>Wij willen uw aandacht erop vestigen dat u pas na verloop van 3 jaar, te rekenen vanaf de datum van stopzetting van de overeenkomst, opnieuw zal kunnen aansluiten bij MaxiPlan.</verz_teksta>		
+			<verz_tekstb></verz_tekstb>			
+		</MAXIPLAN>
+	</verzekeringen>
+</teksten>  
