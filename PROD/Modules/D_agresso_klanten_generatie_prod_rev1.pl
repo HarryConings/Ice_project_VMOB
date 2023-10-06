@@ -114,9 +114,14 @@ $vandaag = substr ($vandaag,0,8);
 BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
 &load_agresso_setting('D:\OGV\ASSURCARD_PROG\assurcard_settings_xml\agresso_settings.xml');
 &zoek_verzekeringen;
-
+opendir my $dir, $file_agresso or &error_unc_not_open  ;
+my @files_unc = readdir $dir;
+$mail = "$mail.\nFiles in Agresso\n____________________\n@files_unc\n";
 &mail_bericht;
-
+sub error_unc_not_open {
+     $mail = "$mail.\n !!!!!!!!!!!!!!\n Kan $file_agresso niet openen !!!!!!!!!!!!!!!!!!!!!!";
+     &mail_bericht;
+}
 sub load_agresso_setting  {
      my $file_name = shift @_;
      $agresso_instellingen = XMLin("$file_name");
@@ -1076,7 +1081,7 @@ sub verander_xml_file {
      my $file_voor_jo = "$agresso_instellingen->{plaats_file}\\klanten_naar_agresso_$nr_zkf\-$vandaag\-B$aantal_blok.xml";
      write_file($file_voor_jo,$cdata);
      copy($file_voor_jo ,$file_agresso);
-     copy($file_voor_jo ,$file_agresso_test);
+     #copy($file_voor_jo ,$file_agresso_test);
      print "\n$cdata\n";
      #print "";
 }
