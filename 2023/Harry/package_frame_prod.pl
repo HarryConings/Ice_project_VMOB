@@ -228,7 +228,7 @@ package Frame;
      sub new {
           my($self) = @_;
           my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"};
-          $self = $self->SUPER::new(undef, -1, "Harry $main::mode $main::version Milestone 6 Agresso  -> User: $main::gebruikersnaam-> $ip -> Variant: $main::variant_LG04",
+          $self = $self->SUPER::new(undef, -1, "Harry $main::mode $main::version Milestone 7 Agresso  -> User: $main::gebruikersnaam-> $ip -> Variant: $main::variant_LG04",
                               wxDefaultPosition,[1350,850],wxDEFAULT_FRAME_STYLE | wxMAXIMIZE);
           #$self = $self->SUPER::new(undef, -1, "Berekening - Voorbeeld",
           #                    wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE | wxMAXIMIZE);
