@@ -67,7 +67,7 @@ require "package_sql_toegang_agresso_MI.pl";
 #
 #    };
 package main;
-     our $test_prod = 'PROG'; # test = 'TEST' productie = 'PROG'
+     our $test_prod = 'TEST'; # test = 'TEST' productie = 'PROD'
      BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
      use strict;
      use MIME::Base64;
@@ -98,7 +98,7 @@ package main;
      #require "bban_to_bic.pl";
      #require "chkbetaling_prod.pl";
      #require 'agresso_bban_bic_db_prod.pl';
-     our $version = '20210713'; #vorige '20200625'
+     our $version = '20231006-ERPM7TEST'; #vorige '20200625'
      our $frame;     
      our $welke_brieven_maken;   
      our $settings;
@@ -135,10 +135,10 @@ package main;
      $vandaag_tijd =~ s/\s//g;
      our $tijd = substr ($vandaag_tijd,8,6);
      $vandaag = substr ($vandaag,0,8);  
-     our $agresso_instellingen = main->load_settings("P:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_agresso_settings_new.xml"); #is nagezien
-     our $brieven_instellingen = main->load_settings("P:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_brieven_settings_new.xml"); #is nagezien
-     our $brieven_vervang_teksten = main->load_settings("P:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_brieven_vervang_tekst_new.xml"); #nagezien
-     our $teksten_GKD = main->load_settings("P:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_agresso_settings_Teksten_new.xml");
+     our $agresso_instellingen = main->load_settings("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$test_prod\\mobicoon_settings.xml"); #is nagezien
+     our $brieven_instellingen = main->load_settings("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$test_prod\\mobicoon_brieven_settings.xml"); #is nagezien
+     our $brieven_vervang_teksten = main->load_settings("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$test_prod\\mobicoon_brieven_vervang_tekst.xml"); #nagezien
+     our $teksten_GKD = main->load_settings("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$test_prod\\mobicoon_UBW_Teksten.xml");
      #our $agresso_instellingen = main->load_settings("C:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_agresso_settings_new.xml"); #is nagezien
      #our $brieven_instellingen = main->load_settings("C:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_brieven_settings_new.xml"); #is nagezien
      #our $brieven_vervang_teksten = main->load_settings("C:\\OGV\\ASSURCARD_$test_prod\\assurcard_settings_xml\\zet_klant_in_brieven_vervang_tekst_new.xml"); #nagezien
@@ -1697,7 +1697,7 @@ package main;
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
             my $soap = SOAP::Lite           
             #productie http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606
-            -> proxy("http://$ip/BusinessWorld-webservices/service.svc?ImportService/ImportV200606")
+            -> proxy("http://$ip/service.svc?ImportService/ImportV200606")
             #-> proxy('http://s200wr2xxl01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606') # test
             ->ns('http://services.agresso.com/ImportService/ImportV200606','imp')
             ->on_action( sub { return 'ExecuteServerProcessAsynchronously' } );
@@ -1726,7 +1726,7 @@ package main;
             #+trace => [ transport => sub { print $_[0]->as_string } ];
            #+trace => [ transport => sub { print $_[0]->as_string } ];
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;
-            my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101";  
+            my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101";  
             my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
             my $soap = SOAP::Lite
              ->proxy($proxy)
@@ -2077,7 +2077,7 @@ package main;
      sub insert_contracten {
             my $xml_content = shift @_;
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;
-            my $proxy = "http://$ip/BusinessWorld-webservices/service.svc?CustomerService/Customer";
+            my $proxy = "http://$ip/service.svc?CustomerService/Customer";
             #productie http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606
             #my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?CustomerService/Customer';
             #my $proxy = 'http://s200wr2xxl01.mutworld.be/BusinessWorld-webservices/service.svc?CustomerService/Customer';
@@ -2200,7 +2200,7 @@ package main;
             my ($class,$clientnummer ) = @_;
             #$clientnummer = 67122533419;#;100048 100248 166516
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};
-            my $proxy = "http://$ip/BusinessWorld-webservices/service.svc";
+            my $proxy = "http://$ip/service.svc";
             #productie http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606
             #my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc';
             #my $proxy = 'http://s200wr2xxl01.mutworld.be/BusinessWorld-webservices/service.svc';
@@ -5652,18 +5652,18 @@ package ToolBarMainFrame;
 
          $frame->{frame_toolbar} = Wx::ToolBar->new($frame, -1, wxDefaultPosition, wxDefaultSize, );
 
-         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1100, _T("Naar Agresso sturen"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\opslaan.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Naar Agresso"), "");
-         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1101, _T("Cancel"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\cancel.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Cancel"), "");
-         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1102, _T("Bestaat"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\Bestaat.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Bestaat"), "") if ($main::bestaande_klant == 1);
-         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1103, _T("Print"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\printen.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Print"), "");
-         $frame->{Reset}=$frame->{frame_toolbar}->AddTool(1105, _T("Reset"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\Reset.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Reset"), "");
-         #$frame->{vorige_klant_met_factuur} = $frame->{frame_toolbar}->AddTool(1101, _T("Vorige"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\vorige.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Vorige"), "");
-         #$frame->{volgende_klant_met_factuur} =$frame->{frame_toolbar}->AddTool(1102, _T("Volgende"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\volgende.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Volgende"), "");
-         #$frame->{factuur_ophalen}=$frame->{frame_toolbar}->AddTool(1103, _T("Factuur Ophalen"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\factuur_ophalen1.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Factuur ophalen"), "");
-         #$frame->{factuur_Verwerken}=$frame->{frame_toolbar}->AddTool(1104, _T("Factuur Verwerken"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\Factuur_verwerken.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Factuur Verwerken"), "");
-         #$frame->{Reset}=$frame->{frame_toolbar}->AddTool(1106, _T("Factuur niet behandelen"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\factuur_niet_behandelen.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Factuur niet behandelen"), "");
-         #$frame->{Reset}=$frame->{frame_toolbar}->AddTool(1105, _T("Reset"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\Reset.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Reset"), "");
-         #$frame->{Reset}=$frame->{frame_toolbar}->AddTool(1110, _T("spacer"), Wx::Bitmap->new("P:\\OGV\\ASSURCARD_PROG\\bitmap\\spacer.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("spacer"), "");
+         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1100, _T("Naar Agresso sturen"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\opslaan.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Naar Agresso"), "");
+         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1101, _T("Cancel"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\cancel.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Cancel"), "");
+         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1102, _T("Bestaat"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\Bestaat.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Bestaat"), "") if ($main::bestaande_klant == 1);
+         $frame->{opslaan}=$frame->{frame_toolbar}->AddTool(1103, _T("Print"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\printen.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Print"), "");
+         $frame->{Reset}=$frame->{frame_toolbar}->AddTool(1105, _T("Reset"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\Reset.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Reset"), "");
+         #$frame->{vorige_klant_met_factuur} = $frame->{frame_toolbar}->AddTool(1101, _T("Vorige"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\vorige.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Vorige"), "");
+         #$frame->{volgende_klant_met_factuur} =$frame->{frame_toolbar}->AddTool(1102, _T("Volgende"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\volgende.bmp", wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Volgende"), "");
+         #$frame->{factuur_ophalen}=$frame->{frame_toolbar}->AddTool(1103, _T("Factuur Ophalen"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\factuur_ophalen1.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Factuur ophalen"), "");
+         #$frame->{factuur_Verwerken}=$frame->{frame_toolbar}->AddTool(1104, _T("Factuur Verwerken"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\Factuur_verwerken.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Factuur Verwerken"), "");
+         #$frame->{Reset}=$frame->{frame_toolbar}->AddTool(1106, _T("Factuur niet behandelen"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\factuur_niet_behandelen.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Factuur niet behandelen"), "");
+         #$frame->{Reset}=$frame->{frame_toolbar}->AddTool(1105, _T("Reset"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\Reset.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("Reset"), "");
+         #$frame->{Reset}=$frame->{frame_toolbar}->AddTool(1110, _T("spacer"), Wx::Bitmap->new("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\bitmap\\spacer.bmp",wxBITMAP_TYPE_ANY), wxNullBitmap, wxITEM_NORMAL, _T("spacer"), "");
          #$frame->{frame_toolbar}->AddSeparator;
          #$frame->{Toolbar_choice_leden_met_assurcard_facturen} = Wx::Choice->new($frame->{frame_toolbar}, 26,wxDefaultPosition,wxSIZE(100,20),\@main::klanten_met_assurcard_facturen);
          #$frame->{frame_toolbar}->AddControl($frame->{Toolbar_choice_leden_met_assurcard_facturen});
@@ -6060,34 +6060,42 @@ package sql_toegang_agresso;
 
 #our $dbh_mssql;
 
-        sub setup_mssql_connectie {
-             my $dbh_mssql;
-             my $dsn_mssql = join "", (
-                 "dbi:ODBC:",
-                 "Driver={SQL Server};",
-                 #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-                 "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05
-                 "UID=HOSPIPLUS;",
-                 "PWD=ihuho4sdxn;",
-                 #"Database=agraccept",
-                 "Database=agrprod",
-                );
-              my $user = 'HOSPIPLUS';
-              my $passwd = 'ihuho4sdxn';
-
-              my $db_options = {
-                 PrintError => 1,
-                 RaiseError => 1,
-                 AutoCommit => 1, #0 werkt niet in
-                 LongReadLen =>2000,
-
-                };
-             #
-             # connect to database
-             #
-             $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or sql_toegang_agresso->cannot_connect($user);
-             return ($dbh_mssql)
-            }
+     sub setup_mssql_connectie {
+          my $mode = $main::test_prod;
+          my $database; 
+          if ($mode eq 'TEST') {
+                 $database='ERPM7TEST';
+          }elsif($mode eq 'PROD') {
+                $database='ERPM7TEST';
+          }
+          my $ip = $main::agresso_instellingen->{Agresso_SQL};
+          my $dbh_mssql;
+          my $dsn_mssql = join "", (
+              "dbi:ODBC:",
+              "Driver={SQL Server};",
+              #"Server=S998XXLSQL01.CPC998.BE\\i200;",
+              "Server=$ip\\sql1;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+              "UID=HOSPIPLUS;",
+              "PWD=ihuho4sdxn;",
+              "Database=$database",
+              #"Database=agraccept",
+             );
+           my $user = 'HOSPIPLUS';
+           my $passwd = 'ihuho4sdxn';
+          
+           my $db_options = {
+              PrintError => 1,
+              RaiseError => 1,
+              AutoCommit => 1, #0 werkt niet in
+              LongReadLen =>2000,
+     
+             };
+          #
+          # connect to database
+          #
+          $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or exit_msg("Can't connect: $DBI::errstr");
+          return ($dbh_mssql)
+    }
         sub cannot_connect {
              my( $self,$user_name ) = @_;
              my $info = Wx::AboutDialogInfo->new;
@@ -6243,7 +6251,7 @@ package sql_toegang_agresso;
              $sth -> finish();
              print "";
             }
-       sub ubtstatistics_insert_row { #statistieken wat men allemaal doet
+        sub ubtstatistics_insert_row { #statistieken wat men allemaal doet
             my ($class,$dbh,$apar_id,$zkf_nr,$gkd_tekst) = @_;
             my $client ='VMOB';
             my $zetin = "insert into ubtstatistics (client,apar_id,zkf_nr,stat_text,date_insert,stat_counter)
