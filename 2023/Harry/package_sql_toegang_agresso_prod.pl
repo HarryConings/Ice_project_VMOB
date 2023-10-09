@@ -13,7 +13,7 @@ sub setup_mssql_connectie {
      my $database;
      if ($main::mode eq 'TEST') {
          $database = 'ERPM7TEST';
-     }elsif  ($main::mode eq 'PROG') {
+     }elsif  ($main::mode eq 'PROD') {
         $database = 'ERPM7TEST'
      }else {
           die;
