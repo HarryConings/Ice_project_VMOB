@@ -15,7 +15,7 @@ sub setup_mssql_connectie {
      if ($mode eq 'TEST') {
             $database='ERPM7TEST';
      }elsif($mode eq 'PROD') {
-           $database='ERPM7TEST';
+           $database='ERPM7PROD';
      }
      my $ip = $main::agresso_instellingen->{Agresso_SQL};
      my $dbh_mssql;
