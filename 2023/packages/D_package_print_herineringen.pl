@@ -4,7 +4,7 @@ use strict;
 
 package main;
      require "package_settings_prod.pl";
-     require "package_cnnectdb_prod.pl";
+     require "package_cnnectdb_as400.pl";
      require 'package_maak_brief_prod.pl';
      use Date::Calc qw(Delta_Days);
      my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst)=localtime(time);
@@ -17,12 +17,15 @@ package main;
      our $agresso_instellingen;
      our $brieven_instellingen;
      our $overzichts_mail = "Herinnerings brieven die moeten worden afgedrukt\n___________________________________________________________________________\n\n";
-     my $dbh= sql_toegang_agresso->setup_mssql_connectie;
+     our $mode = 'TEST';
+     $mode = $ARGV[0] if (defined $ARGV[0]);
+     if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
+     my $dbh= sql_toegang_agresso->setup_mssql_connectie($main::mode);
      sql_toegang_agresso->afxvmobreminded_replace_to_P($dbh);
      sql_toegang_agresso->afxvmobtoprint_replace_to_P($dbh);
      main->delfiles("D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten");
-     main->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\zet_klant_in_agresso_settings.xml');
-     main->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\\zet_klant_in_brieven_settings.xml');
+     main->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
+     main->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\\brieven_settings.xml');
      my $alternatieve_drive = $agresso_instellingen->{plaats_brieven_print_herinneringen};
      our $te_herinneren = sql_toegang_agresso->afxvmobtoremind_first_time($dbh,$alternatieve_drive);
     
@@ -226,31 +229,48 @@ package main;
 package sql_toegang_agresso;
      use DBI::DBD;
      sub setup_mssql_connectie {
+        my ($self,$mode_con) = @_;
         my $dbh_mssql;
-        my $dsn_mssql = join "", (
+        my $dsn_mssql;
+        my $user = 'HOSPIPLUS';
+        my $passwd = 'ihuho4sdxn';
+        my $ip = $main::agresso_instellingen->{Agresso_SQL};
+        if ($mode_con eq 'PROD') {                      
+           my $database='ERPM7PROD'; 
+           $dsn_mssql = join "", (
             "dbi:ODBC:",
             "Driver={SQL Server};",
-            "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+            "Server=$ip\\sql1;", # nieuwe database server 2016 05
+            #"Server=S998XXLSQL01.CPC998.BE\\i200;",
             "UID=HOSPIPLUS;",
             "PWD=ihuho4sdxn;",
-            "Database=agrprod",
+             "Database=$database",            
            );
-         my $user = 'HOSPIPLUS';
-         my $passwd = 'ihuho4sdxn';
-        
+           #print '';
+        }else {
+            my $database='ERPM7TEST';
+            $dsn_mssql = join "", (
+            "dbi:ODBC:",
+            "Driver={SQL Server};",
+            "Server=$ip\\sql1;", # nieuwe database server 2016 05
+            #"Server=S998XXLSQL01.CPC998.BE\\i200;",
+            "UID=HOSPIPLUS;",
+            "PWD=ihuho4sdxn;",
+            "Database=$database",
+           );
+        }
          my $db_options = {
             PrintError => 1,
             RaiseError => 1,
             AutoCommit => 1, #0 werkt niet in
-            LongReadLen =>2000,
-   
+            LongReadLen =>2000
            };
         #
         # connect to database
         #
         $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or exit_msg("Can't connect: $DBI::errstr");
         return ($dbh_mssql)
-       }
+      }
         
      sub afxvmobtoprint_insert_row {
            my ($class,$dbh,$dim_value,$naam_sjabloon,$moet_geprint) = @_; #$dim_value is agresso nr
