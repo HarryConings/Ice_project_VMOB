@@ -1,0 +1,36 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: D_package_verwerk_files.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\2023\packages
+Add: DateTime::Locale::
+Add: Params::Validate::PP::
+Add: Params::Validate::XS::
+Clean: 0
+Date: 2023-10-17 14:18:32
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: D_package_verwerk_files.exe
+Force: 0
+Gui: 0
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: package Verwerk files productie
+Version-FileVersion: 1.0.0
+Version-InternalName: package Verwerk files productie
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: package Verwerk files productie
+Version-ProductName: package Verwerk files productie
+Version-ProductVersion: 1.0.0
+Warnings: 0
+Xclude: 0
