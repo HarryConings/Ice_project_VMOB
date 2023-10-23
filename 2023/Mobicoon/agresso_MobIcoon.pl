@@ -67,7 +67,7 @@ require "package_sql_toegang_agresso_MI.pl";
 #
 #    };
 package main;
-     our $test_prod = 'TEST'; # test = 'TEST' productie = 'PROD'
+     our $test_prod = 'PROD'; # test = 'TEST' productie = 'PROD'
      BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
      use strict;
      use MIME::Base64;
@@ -98,7 +98,7 @@ package main;
      #require "bban_to_bic.pl";
      #require "chkbetaling_prod.pl";
      #require 'agresso_bban_bic_db_prod.pl';
-     our $version = '20231006-ERPM7TEST'; #vorige '20200625'
+     our $version = "20231006-$test_prod"; #vorige '20200625'
      our $frame;     
      our $welke_brieven_maken;   
      our $settings;
@@ -1697,8 +1697,7 @@ package main;
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
             my $soap = SOAP::Lite           
             #productie http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606
-            -> proxy("http://$ip/service.svc?ImportService/ImportV200606")
-            #-> proxy('http://s200wr2xxl01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606') # test
+            -> proxy("http://$ip/service.svc?ImportService/ImportV200606")          
             ->ns('http://services.agresso.com/ImportService/ImportV200606','imp')
             ->on_action( sub { return 'ExecuteServerProcessAsynchronously' } );
                #my $datestring = localtime();
@@ -2077,10 +2076,7 @@ package main;
      sub insert_contracten {
             my $xml_content = shift @_;
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;
-            my $proxy = "http://$ip/service.svc?CustomerService/Customer";
-            #productie http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606
-            #my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?CustomerService/Customer';
-            #my $proxy = 'http://s200wr2xxl01.mutworld.be/BusinessWorld-webservices/service.svc?CustomerService/Customer';
+            my $proxy = "http://$ip/service.svc?CustomerService/Customer";           
             my $uri   = 'http://services.agresso.com/CustomerService/Customer';
             my $soap = SOAP::Lite
                ->proxy($proxy)
@@ -2200,13 +2196,7 @@ package main;
             my ($class,$clientnummer ) = @_;
             #$clientnummer = 67122533419;#;100048 100248 166516
             my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};
-            my $proxy = "http://$ip/service.svc";
-            #productie http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?ImportService/ImportV200606
-            #my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc';
-            #my $proxy = 'http://s200wr2xxl01.mutworld.be/BusinessWorld-webservices/service.svc';
-            #use SOAP::Lite ;
-            # my $proxy = 'http://10.198.205.8/AgressoWSHost/service.svc'; # test
-            #my $proxy = 'http://10.198.206.217/AgressoWSHost/service.svc'; #10.198.206.217 productie
+            my $proxy = "http://$ip/service.svc";           
             my $uri   = 'http://services.agresso.com/CustomerService/Customer';
             my $soap = SOAP::Lite
                   ->proxy($proxy)

@@ -1248,7 +1248,8 @@ sub zoek_zelfde_dossier {
      $ENV{HTTPS_DEBUG} = 1;
      $ENV{HTTP_DEBUG} = 1;
      #$clientnummer = 102301;
-     my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101'; # productie    
+     my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
+     my $proxy = 'http://$ip/service.svc?QueryEngineService/QueryEngineV201101'; # productie    
      my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
      my $soap = SOAP::Lite
             ->proxy($proxy)
@@ -1475,8 +1476,8 @@ sub checkwonendopzelfdeadres {
      $ENV{HTTPS_DEBUG} = 1;
      $ENV{HTTP_DEBUG} = 1;
      #$clientnummer = 102301;10.198.206.217
-    # my $proxy = 'http://10.198.205.8/AgressoWSHost/service.svc?QueryEngineService/QueryEngineV201101'; #test
-     my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?QueryEngineService/QueryEngineV201101';    
+     my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
+     my $proxy = 'http://$ip/service.svc?QueryEngineService/QueryEngineV201101';    
      my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
      my $soap = SOAP::Lite
             ->proxy($proxy)
@@ -1658,7 +1659,8 @@ package webservice_pdf_to_Agresso;
 	     my $clientnummer = $main::klant->{Agresso_nummer};
 	     ##$clientnummer = 67122533419;#;100048 100248 166516
 	     use SOAP::Lite ;
-	     my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc?';	    
+           my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
+	     my $proxy = 'http://$ip/service.svc?';	    
 	     my $uri   = 'http://services.agresso.com/DocArchiveService/DocArchiveV201101';
 	     my $soap = SOAP::Lite
 		 ->proxy($proxy)
