@@ -23,20 +23,15 @@ package sql_toegang_agresso;
 #our $dbh_mssql;
 
 sub setup_mssql_connectie {
-     my ($self,$mode) = @_;
+     my ($self,$mode,$instellingen) = @_;
      my $dbh_mssql;
-     my $database='';
-     my $ip = $main::contract_cardinstellingen->{Agresso_SQL};
-     if ($mode eq 'TEST') {
-            $database='ERPM7TEST';
-     }elsif($mode eq 'PROD') {
-           $database='ERPM7PROD';
-     }
+     my $database=$instellingen->{"Agresso_Database_$mode"};
+     my $ip = $instellingen->{"Agresso_SQL_$mode"};   
      my $dsn_mssql = join "", (
          "dbi:ODBC:",
          "Driver={SQL Server};",
          #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-         "Server=$ip\\sql1;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+         "Server=$ip;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
          "UID=HOSPIPLUS;",
          "PWD=ihuho4sdxn;",
          "Database=$database",

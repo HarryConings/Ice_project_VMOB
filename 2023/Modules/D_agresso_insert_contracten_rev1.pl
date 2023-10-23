@@ -156,31 +156,18 @@ package agresso;
         my $dsn_mssql;
         my $user = 'HOSPIPLUS';
         my $passwd = 'ihuho4sdxn';
-        my $ip = $main::agresso_instellingen->{Agresso_SQL};
-        if ($mode_con eq 'PROD') {                      
-           my $database='ERPM7PROD'; 
-           $dsn_mssql = join "", (
-            "dbi:ODBC:",
-            "Driver={SQL Server};",
-            "Server=$ip\\sql1;", # nieuwe database server 2016 05
-            #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-            "UID=HOSPIPLUS;",
-            "PWD=ihuho4sdxn;",
-             "Database=$database",            
-           );
-           #print '';
-        }else {
-            my $database='ERPM7TEST';
-            $dsn_mssql = join "", (
-            "dbi:ODBC:",
-            "Driver={SQL Server};",
-            "Server=$ip\\sql1;", # nieuwe database server 2016 05
-            #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-            "UID=HOSPIPLUS;",
-            "PWD=ihuho4sdxn;",
-            "Database=$database",
-           );
-        }
+        my $ip = $main::agresso_instellingen->{"Agresso_SQL_$mode_con"};                         
+        my $database=$main::agresso_instellingen->{"Agresso_Database_$mode_con"};  
+         $dsn_mssql = join "", (
+          "dbi:ODBC:",
+          "Driver={SQL Server};",
+          "Server=$ip;", # nieuwe database server 2016 05
+          #"Server=S998XXLSQL01.CPC998.BE\\i200;",
+          "UID=HOSPIPLUS;",
+          "PWD=ihuho4sdxn;",
+           "Database=$database",            
+         );
+           #print '';       
          my $db_options = {
             PrintError => 1,
             RaiseError => 1,
@@ -209,14 +196,14 @@ package agresso;
       return ('Backup contracten naar afxvmobcontrbu gedaan');
    }
    sub delete_contract {
-      my ($self,$agresso_nr,$zkf_nr,$dossier,$startdatum,$einddatum) =  @_;     
+      my ($self,$agresso_nr,$zkf_nr,$dossier,$startdatum,$einddatum,$naam) =  @_;     
       my $client = 'VMOB';
       #print "SELECT COUNT(*) from afxvmobcontract where  client = $client and dim_value = $agresso_nr and zkf_nr = $zkf_nr";
       my $line_count = $dbh_agresso->selectrow_array("SELECT COUNT(*) from afxvmobcontract where  client = '$client' and dim_value = $agresso_nr and zkf_nr = '$zkf_nr'
                                                    and contract_nr = '$dossier' and startdatum = '$startdatum' and einddatum= '$einddatum'");
       if ($line_count > 0){         
          $dbh_agresso->do("DELETE FROM afxvmobcontract WHERE client = '$client' and dim_value = $agresso_nr and zkf_nr = '$zkf_nr'
-                           and contract_nr = '$dossier' and startdatum = '$startdatum' and einddatum= '$einddatum'") ;
+                           and contract_nr = '$dossier' and startdatum = '$startdatum' and einddatum= '$einddatum' and product = '$naam' ") ;
       }
        my $sql = ("SELECT line_no from afxvmobcontract where  client = '$client' and dim_value = $agresso_nr and zkf_nr = '$zkf_nr'");
        my @bezette_line_no = ();
@@ -389,7 +376,7 @@ package AS400;
                                        my $einddatum = $agresso_klant[8];
                                        my $startdatum = $agresso_klant[6];
                                        my $vandaag_tweejaarterug = $vandaag - 20000;                                      
-                                        if ($oud_agresso_nr != $agresso_klant[0] and $main::volledig eq 'FULL' ) {
+                                       if ($oud_agresso_nr != $agresso_klant[0] and $main::volledig eq 'FULL' ) {
                                              $line_no = 0;
                                              $oud_agresso_nr =$agresso_klant[0];
                                              if ($main::enkel_jo ne 'JA') {
@@ -401,8 +388,10 @@ package AS400;
                                              #print "\nniets doen oud contract  einddatum < vandaag_tweejaarterug -> $einddatum < $vandaag_tweejaarterug\n";
                                        }else {
                                           #print "N con $agresso_klant[0] $verz_nr $verz_nr $ext_nr $agresso_klant[9] $startdatum $einddatum\n";
+                                          #fout werkt niet 198679
                                           if ($main::enkel_jo ne 'JA') {
-                                                my (@bezette_lijnen) = agresso->delete_contract($agresso_klant[0],$zkf_nr,$agresso_klant[9],$startdatum,$einddatum);
+                                                my @bezette_lijnen =[];
+                                                my (@bezette_lijnen) = agresso->delete_contract($agresso_klant[0],$zkf_nr,$agresso_klant[9],$startdatum,$einddatum,$naam);
                                                 #print "bezet  @bezette_lijnen zkf_line_no $zkf_line_no\n";
                                                 my $gev = 0;
                                                 until ($gev == 1) {
@@ -951,6 +940,7 @@ package AS400;
       return 0;
     }
 package mail;
+   use Date::Manip::DM5 ;
    sub mail_bericht_contracten {
      #print "mail-start\n";
      my $aan = $main::agresso_instellingen->{mail_verslag_naar};

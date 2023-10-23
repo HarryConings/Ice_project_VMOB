@@ -91,7 +91,7 @@ package main;
      our $mode = 'TEST';
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
-     my $dbh = sql_toegang_agresso->setup_mssql_connectie($mode);
+     my $dbh = sql_toegang_agresso->setup_mssql_connectie($mode,$contract_cardinstellingen);
      my ($to_Block_Contracts,$aantal) = sql_toegang_agresso->Get_to_Blockcustassurcard($dbh);
      my $data;
      $data->{InsurerAssurCardIdentifier} = "$contract_cardinstellingen->{nr_verzekeraar}";

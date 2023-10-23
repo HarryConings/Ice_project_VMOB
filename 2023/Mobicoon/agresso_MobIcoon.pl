@@ -2678,7 +2678,7 @@ package Frame;
      sub new {
           my($self) = @_;
           my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};
-          $self = $self->SUPER::new(undef, -1, "MOBICOON v$main::version Milestone 6 -> $main::test_prod sessie voor $main::gebruikersnaam ->$ip",
+          $self = $self->SUPER::new(undef, -1, "MOBICOON v$main::version Milestone 7 -> $main::test_prod sessie voor $main::gebruikersnaam ->$ip",
                               wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE );#| wxMAXIMIZE
           #$self = $self->SUPER::new(undef, -1, "Berekening - Voorbeeld",
           #                    wxDefaultPosition,wxDefaultSize,wxDEFAULT_FRAME_STYLE | wxMAXIMIZE);
@@ -6062,19 +6062,15 @@ package sql_toegang_agresso;
 
      sub setup_mssql_connectie {
           my $mode = $main::test_prod;
-          my $database; 
-          if ($mode eq 'TEST') {
-                 $database='ERPM7TEST';
-          }elsif($mode eq 'PROD') {
-                $database='ERPM7TEST';
-          }
-          my $ip = $main::agresso_instellingen->{Agresso_SQL};
+          my $database;
+          $database = $main::agresso_instellingen->{"Agresso_Database_$mode"};          
+          my $ip = $main::agresso_instellingen->{"Agresso_SQL_$mode"};
           my $dbh_mssql;
           my $dsn_mssql = join "", (
               "dbi:ODBC:",
               "Driver={SQL Server};",
               #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-              "Server=$ip\\sql1;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+              "Server=$ip;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
               "UID=HOSPIPLUS;",
               "PWD=ihuho4sdxn;",
               "Database=$database",

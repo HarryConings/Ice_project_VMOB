@@ -46,6 +46,7 @@ package verwerk_files;
      my $today_day=$mday;
      sub new {
          verwerk_files->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
+         #my $dbh = sql_toegang_agresso->setup_mssql_connectie($main::mode,$agresso_instellingen);
          print '';
          &search_cache;
          print "\nEINDE\n____________\n";
@@ -146,7 +147,7 @@ package verwerk_files;
                           my $dagen_eerste_herinnering = $weken*7;
                           my $dagen_tweede_herinnering = $agresso_instellingen->{dagen_tweede_herinnering};
                           my $dagen_nagging = $agresso_instellingen->{dagen_nagging_herrinering};
-                          my $dbh = sql_toegang_agresso->setup_mssql_connectie();
+                          my $dbh = sql_toegang_agresso->setup_mssql_connectie($main::mode,$agresso_instellingen);
                           my $sjabloon= "$agresso_instellingen->{plaats_brieven}\\$files_cache";
                           sql_toegang_agresso->afxvmobtoremind_insert_row($dbh,$main::klant->{Agresso_nummer},$sjabloon,''
                                                                           ,$dagen_eerste_herinnering,$dagen_tweede_herinnering,
@@ -278,13 +279,9 @@ package verwerk_files;
  package sql_toegang_agresso;
      use DBI::DBD;
      sub setup_mssql_connectie {
-        my $database = '';
-        my $database_server= $agresso_instellingen->{Agresso_SQL};
-        if ($agresso_instellingen->{mode} eq 'TEST') {
-            $database = 'agraccept';
-        }elsif ($agresso_instellingen->{mode} eq 'PROD') {
-             $database ='agrprod',
-            }
+        my ($self,$mode,$agresso_instellingen) = @_;
+        my $database = $agresso_instellingen->{"Agresso_Database_$mode"};
+        my $database_server= $agresso_instellingen->{"Agresso_SQL_$mode"};       
         my $dbh_mssql;
         my $dsn_mssql = join "", (
             "dbi:ODBC:",

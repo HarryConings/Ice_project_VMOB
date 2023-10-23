@@ -210,7 +210,7 @@ sub load_assurcard_setting_feedback  {
     
     }
 sub zet_approved_to_yes_agresso {
-     &setup_mssql_connectie;
+     $dbh_mssql = &setup_mssql_connectie;
      my $teller = 0;
      foreach my $invoice_nr (@invoice_processed) {
          print "->$invoice_nr<-\n";
@@ -243,17 +243,21 @@ sub zet_approved_to_yes_agresso {
         }
      $mail_feedback = $mail_feedback."$teller facturen op feedwack yes in Agresso gezet\n";
     }
-sub setup_mssql_connectie {
-     my $dsn_mssql = join "", (
-         "dbi:ODBC:",
-         "Driver={SQL Server};",
-         "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
-         #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-         "UID=HOSPIPLUS;",
-         "PWD=ihuho4sdxn;",
-         "Database=agrprod",
-         #"Database=agresso",
-        );
+sub setup_mssql_connectie {         
+          my $database;
+          $database = $assurcard_instellingen->{"Agresso_Database_$mode"};          
+          my $ip = $assurcard_instellingen->{"Agresso_SQL_$mode"};
+          my $dbh_mssql;
+          my $dsn_mssql = join "", (
+              "dbi:ODBC:",
+              "Driver={SQL Server};",
+              #"Server=S998XXLSQL01.CPC998.BE\\i200;",
+              "Server=$ip;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+              "UID=HOSPIPLUS;",
+              "PWD=ihuho4sdxn;",
+              "Database=$database",
+              #"Database=agraccept",
+             );
       my $user = 'HOSPIPLUS';
       my $passwd = 'ihuho4sdxn';
      
@@ -269,6 +273,7 @@ sub setup_mssql_connectie {
      #
      $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or exit_msg("Can't connect: $DBI::errstr");
      print "";
+     return($dbh_mssql)
     }
 
 sub disconnect_mssql {

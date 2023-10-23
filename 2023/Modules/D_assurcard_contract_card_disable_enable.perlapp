@@ -1,16 +1,16 @@
 #!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
-Script: D_assurcard_contract_card_disable_enable_prod.pl
+Script: D_assurcard_contract_card_disable_enable.pl
 Cwd: P:\komodoproject\Ice_project_VMOB\2023\Modules
 Add: Log::Report::
 Add: XML::Compile::
 Clean: 0
-Date: 2023-10-13 13:22:42
+Date: 2023-10-18 13:38:03
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: D_assurcard_contract_card_disable_enable_prod.exe
+Exe: D_assurcard_contract_card_disable_enable.exe
 Force: 0
 Gui: 0
 Hostname: VSOC-HARRY

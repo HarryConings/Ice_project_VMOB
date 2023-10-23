@@ -205,14 +205,14 @@ package agresso;
       return ('Backup contracten naar afxvmobcontrbu gedaan');
    }
    sub delete_contract {
-      my ($self,$agresso_nr,$zkf_nr,$dossier,$startdatum,$einddatum) =  @_;     
+      my ($self,$agresso_nr,$zkf_nr,$dossier,$startdatum,$einddatum,$naam) =  @_;     
       my $client = 'VMOB';
       #print "SELECT COUNT(*) from afxvmobcontract where  client = $client and dim_value = $agresso_nr and zkf_nr = $zkf_nr";
       my $line_count = $dbh_agresso->selectrow_array("SELECT COUNT(*) from afxvmobcontract where  client = '$client' and dim_value = $agresso_nr and zkf_nr = '$zkf_nr'
                                                    and contract_nr = '$dossier' and startdatum = '$startdatum' and einddatum= '$einddatum'");
       if ($line_count > 0){         
          $dbh_agresso->do("DELETE FROM afxvmobcontract WHERE client = '$client' and dim_value = $agresso_nr and zkf_nr = '$zkf_nr'
-                           and contract_nr = '$dossier' and startdatum = '$startdatum' and einddatum= '$einddatum'") ;
+                           and contract_nr = '$dossier' and startdatum = '$startdatum' and einddatum= '$einddatum' and product = '$naam' ") ;
       }
        my $sql = ("SELECT line_no from afxvmobcontract where  client = '$client' and dim_value = $agresso_nr and zkf_nr = '$zkf_nr'");
        my @bezette_line_no = ();
@@ -398,7 +398,7 @@ package AS400;
                                        }else {
                                           #print "N con $agresso_klant[0] $verz_nr $verz_nr $ext_nr $agresso_klant[9] $startdatum $einddatum\n";
                                           if ($main::enkel_jo ne 'JA') {
-                                                my (@bezette_lijnen) = agresso->delete_contract($agresso_klant[0],$zkf_nr,$agresso_klant[9],$startdatum,$einddatum);
+                                                my (@bezette_lijnen) = agresso->delete_contract($agresso_klant[0],$zkf_nr,$agresso_klant[9],$startdatum,$einddatum,$naam);
                                                 #print "bezet  @bezette_lijnen zkf_line_no $zkf_line_no\n";
                                                 my $gev = 0;
                                                 until ($gev == 1) {

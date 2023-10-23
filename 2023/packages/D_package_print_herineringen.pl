@@ -20,12 +20,13 @@ package main;
      our $mode = 'TEST';
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
-     my $dbh= sql_toegang_agresso->setup_mssql_connectie($main::mode);
+     main->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
+     main->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\\brieven_settings.xml');
+     my $dbh= sql_toegang_agresso->setup_mssql_connectie($main::mode,$agresso_instellingen);
      sql_toegang_agresso->afxvmobreminded_replace_to_P($dbh);
      sql_toegang_agresso->afxvmobtoprint_replace_to_P($dbh);
      main->delfiles("D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten");
-     main->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
-     main->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\\brieven_settings.xml');
+    
      my $alternatieve_drive = $agresso_instellingen->{plaats_brieven_print_herinneringen};
      our $te_herinneren = sql_toegang_agresso->afxvmobtoremind_first_time($dbh,$alternatieve_drive);
     
@@ -229,36 +230,24 @@ package main;
 package sql_toegang_agresso;
      use DBI::DBD;
      sub setup_mssql_connectie {
-        my ($self,$mode_con) = @_;
+        my ($self,$mode_con,$agresso_instellingen) = @_;
         my $dbh_mssql;
         my $dsn_mssql;
         my $user = 'HOSPIPLUS';
         my $passwd = 'ihuho4sdxn';
-        my $ip = $main::agresso_instellingen->{Agresso_SQL};
-        if ($mode_con eq 'PROD') {                      
-           my $database='ERPM7PROD'; 
+        my $ip = $agresso_instellingen->{"Agresso_SQL_$mode_con"};
+        my $database=$agresso_instellingen->{"Agresso_Database_$mode_con"};
            $dsn_mssql = join "", (
             "dbi:ODBC:",
             "Driver={SQL Server};",
-            "Server=$ip\\sql1;", # nieuwe database server 2016 05
+            "Server=$ip;", # nieuwe database server 2016 05
             #"Server=S998XXLSQL01.CPC998.BE\\i200;",
             "UID=HOSPIPLUS;",
             "PWD=ihuho4sdxn;",
              "Database=$database",            
            );
-           #print '';
-        }else {
-            my $database='ERPM7TEST';
-            $dsn_mssql = join "", (
-            "dbi:ODBC:",
-            "Driver={SQL Server};",
-            "Server=$ip\\sql1;", # nieuwe database server 2016 05
-            #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-            "UID=HOSPIPLUS;",
-            "PWD=ihuho4sdxn;",
-            "Database=$database",
-           );
-        }
+           #print ''
+    
          my $db_options = {
             PrintError => 1,
             RaiseError => 1,

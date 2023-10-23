@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 package main;
-     require "package_cnnectdb_prod.pl";
+     require "package_cnnectdb_as400.pl";
      require "package_settings_prod.pl";
      our $klant;
      our $mode = 'TEST';
@@ -28,10 +28,10 @@ package verwerk_files;
      my $today_month = $mon+1;
      my $today_day=$mday;
      sub new {
-         verwerk_files->load_agresso_setting('P:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
-         verwerk_files->load_brieven_setting('P:\OGV\ASSURCARD_2023\assurcard_settings_xml\Brieven_settings.xml');
-         verwerk_files->load_PdfToAgresso_instellingen('P:\OGV\ASSURCARD_2023\assurcard_settings_xml\PdfToAgresso_settings.xml');
-         verwerk_files->load_PdfToAgressoScanning_settings('P:\OGV\ASSURCARD_2023\assurcard_settings_xml\PdfToAgressoScanning_settings.xml');
+         verwerk_files->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
+         verwerk_files->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\Brieven_settings.xml');
+         verwerk_files->load_PdfToAgresso_instellingen('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\PdfToAgresso_settings.xml');
+         verwerk_files->load_PdfToAgressoScanning_settings('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\PdfToAgressoScanning_settings.xml');        
          &search_Map;
          print "";
          
@@ -292,25 +292,29 @@ package verwerk_files;
  package sql_toegang_agresso;
      use DBI::DBD;
      sub setup_mssql_connectie {
-        my $dbh_mssql;
-        my $dsn_mssql = join "", (
-            "dbi:ODBC:",
-            "Driver={SQL Server};",
-            "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
-            "UID=HOSPIPLUS;",
-            "PWD=ihuho4sdxn;",           
-            "Database=agrprod",
-           );
-         my $user = 'HOSPIPLUS';
-         my $passwd = 'ihuho4sdxn';
-        
-         my $db_options = {
-            PrintError => 1,
-            RaiseError => 1,
-            AutoCommit => 1, #0 werkt niet in
-            LongReadLen =>2000,
-   
-           };
+         my $database;
+         $database = $agresso_instellingen->{"Agresso_Database_$mode"};          
+          my $ip = $agresso_instellingen->{"Agresso_SQL_$mode"};
+          my $dbh_mssql;
+          my $dsn_mssql = join "", (
+              "dbi:ODBC:",
+              "Driver={SQL Server};",
+              #"Server=S998XXLSQL01.CPC998.BE\\i200;",
+              "Server=$ip;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+              "UID=HOSPIPLUS;",
+              "PWD=ihuho4sdxn;",
+              "Database=$database",
+              #"Database=agraccept",
+             );
+      my $user = 'HOSPIPLUS';
+      my $passwd = 'ihuho4sdxn';
+        my $db_options = {
+           PrintError => 1,
+           RaiseError => 1,
+           AutoCommit => 1, #0 werkt niet in
+           LongReadLen =>2000,
+    
+          };
         #
         # connect to database
         #
