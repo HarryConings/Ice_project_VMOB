@@ -272,10 +272,11 @@ use Date::Manip::DM5 ;
         my ($class,$DocId_nr ) = @_;
         my $clientnummer = $main::klant->{Agresso_nummer};
         my $alle_facturen;
+        my $agresso_proxy = $main::agresso_instellingen->{"Agresso_IP_$main::mode"};
         ##$clientnummer = 67122533419;#;100048 100248 166516
         use SOAP::Lite ;
        # my $proxy = 'http://10.198.205.8/AgressoWSHost/service.svc';
-        my $proxy = 'http://S200WP1XXL01.mutworld.be/BusinessWorld-webservices/service.svc';
+        my $proxy = 'http://$agresso_proxy/service.svc';
         #my $proxy ='http://S200WR2XXL01.mutworld.be/BusinessWorld-webservices/service.svc';
         #my $proxy = 'http://10.198.206.217/AgressoWSHost/service.svc';
         my $uri   = 'http://services.agresso.com/DocArchiveService/DocArchiveV201101';

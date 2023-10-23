@@ -1,0 +1,33 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: D_package_delete_lock_empty_xml.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\2023\packages
+Clean: 0
+Date: 2023-10-23 10:02:47
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: D_package_delete_lock_empty_xml.exe
+Force: 0
+Gui: 0
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: 
+Version-CompanyName: 
+Version-FileDescription: 
+Version-FileVersion: 
+Version-InternalName: 
+Version-LegalCopyright: 
+Version-LegalTrademarks: 
+Version-OriginalFilename: 
+Version-ProductName: 
+Version-ProductVersion: 
+Warnings: 0
+Xclude: 0
