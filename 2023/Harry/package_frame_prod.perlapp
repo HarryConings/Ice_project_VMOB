@@ -12,13 +12,13 @@ Add: Class::Load
 Add: Log::Report::
 Add: DateTime::Locale::
 Clean: 0
-Date: 2023-10-23 14:37:19
+Date: 2023-10-23 15:32:02
 Debug: 
 Dependent: 0
 Dyndll: 0
 Exe: package_frame_prod.exe
 Force: 0
-Gui: 0
+Gui: 1
 Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0
