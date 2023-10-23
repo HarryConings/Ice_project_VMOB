@@ -34,7 +34,7 @@ require 'package_gkd_tab_prod.pl';
 require 'Decryp_Encrypt.pl';
 package main;
      our $version = 'v20230925_V7_'; # periode gezet op 2021 aangepast voor windows 10 geen tandplus mail weg in package_invoice_to_agresso_prod
-     our $mode = 'TEST'; #TEST voor test   PROG voor productie
+     our $mode = 'PROD'; #TEST voor test   PROG voor productie
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
      BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
@@ -129,8 +129,7 @@ package main;
      our $psk_plus_suppl =0;
      our @nomenclaturen_met_wachttijd;
      our $wachttijden_per_nomenclatuur;
-     our $as400;
-     our $plaats_sjablonen;
+     our $as400;    
      our $mobicoon_al_opgestart =0;     
      #kolom 1("P. tsk."));
      #kolom 2 (2, _T("Sup."));
@@ -140,7 +139,6 @@ package main;
      #kolom 6 (6, _T("Verschil"));
      main->load_agresso_setting("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$mode\\harry_agresso_settings.xml"); #nagekeken     
      my $instpath = $main::agresso_instellingen->{plaats_mobicoon};
-     #my $test3 =system(1,"$instpath",60073024369);              
      my $periode= "periode_20230101-20231231"; #opgelet ook aanpassen in package_ToolBarMainFrame
      our $gebruikersnaam = package_invoice_to_agresso->get_windows_user;
      #$gebruikersnaam = 'M203DUVI' if (uc $gebruikersnaam eq 'M203HCON');  

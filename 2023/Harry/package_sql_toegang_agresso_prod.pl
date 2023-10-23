@@ -10,21 +10,13 @@ package sql_toegang_agresso;
 #our $dbh_mssql;
 
 sub setup_mssql_connectie {
-     my $database;
-     if ($main::mode eq 'TEST') {
-         $database = 'ERPM7TEST';
-     }elsif  ($main::mode eq 'PROD') {
-        $database = 'ERPM7TEST'
-     }else {
-          die;
-     }
-      
+     my $database =  $main::agresso_instellingen->{"Agresso_Database_$main::mode"};
+     my $server = $main::agresso_instellingen->{"Agresso_SQL_$main::mode"};
      my $dbh_mssql;
      my $dsn_mssql = join "", (
          "dbi:ODBC:",
-         "Driver={SQL Server};",
-         #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-         "Server=S250WR2XXL01.zkf200mut.prd\\sql1;", # nieuwe database server 2016 05 S000WP1XXLSQL01.mutworld.be\i200
+         "Driver={SQL Server};",        
+         "Server=$server;", # nieuwe database server 2023
          "UID=HOSPIPLUS;",
          "PWD=ihuho4sdxn;",
          "Database=$database",        

@@ -76,15 +76,7 @@ package settings;
                      'zkfnummer' => $zkf,
                      'HF_formule1' => $HF_formule1,
                      'HF_formule2' => $HF_formule2,
-                     'HF_formule3' => $HF_formule3,
-                     'pathtofiles' => $main::plaats_sjablonen->{pathtofiles},
-                     'sjabloonplaats' => $main::plaats_sjablonen->{sjabloonplaats},
-                     'documentplaatst_brieven' => $main::plaats_sjablonen->{documentplaatst_brieven},
-                     'documentplaatst_etiketten' => $main::plaats_sjablonen->{documentplaatst_etiketten},
-                     'pathtoprogram' => "C:\\macros\\mob",
-                     #'sjabloonplaats' =>  "C:\\macros\\mob\\sjabloon_odt",
-                     #'documentplaatst_brieven' => "C:\\macros\\mob\\ooopslag"
-                     
+                     'HF_formule3' => $HF_formule3,      
                     };                
        
            return ($settings)  ;
