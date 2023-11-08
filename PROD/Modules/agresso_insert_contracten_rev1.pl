@@ -496,6 +496,7 @@ package AS400;
                                           #(A4,$agresso_klant[0],$zkf_line_no,VMOB,$naam,$agresso_klant[6],$agresso_klant[7],$agresso_klant[8],$agresso_klant[9],
                                           #$zkf,$info,getdate(),WEBSERV,$aansluitingscode,$ontslagcode)\n";
                                           my $ok=1;
+                                          $betaler_naam =~ s/'/''/;
                                           if ($main::enkel_jo ne 'JA') {
                                              $ok = $dbh_agresso->do("INSERT INTO afxvmobcontract (attribute_id,dim_value,line_no,client,product,startdatum,
                                                                     wachtdatum,einddatum,contract_nr,zkf_nr,info,last_update,user_id,aansluitingscode_fx,
