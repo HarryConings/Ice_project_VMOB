@@ -115,7 +115,7 @@ $vandaag = substr ($vandaag,0,8);
 BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
 $mode = $ARGV[0] if (defined $ARGV[0]);
 if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
-our $mail = "VERSLAG KLANTENSYNCHRONISATE MET AGRESSO $mode\n-----------------------------------------\n\n";
+our $mail = "V7 VERSLAG KLANTENSYNCHRONISATE MET AGRESSO $mode\n-----------------------------------------\n\n";
 &load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
 our $file_agresso = $agresso_instellingen->{"Agresso_import_klanten_$mode"} ;
 &zoek_verzekeringen;
@@ -362,7 +362,9 @@ sub zoek_verzekerden {
                 }elsif ($CountryCode eq 'CRS' or $CountryCode eq 'crs'){
                      $CountryCode = 'KR';
                 }elsif ($CountryCode eq 'PER' or $CountryCode eq 'crs'){
-                     $CountryCode = 'PE';     
+                     $CountryCode = 'PE';
+                }elsif ($CountryCode eq 'KEN' or $CountryCode eq 'KEN'){
+                     $CountryCode = 'KE';      
                     }
              my $Email = &zoekemailadres ($dbh,$nrzkfcheck,$agresso_klant[13],$vandaag);
              my $EmailCc = 'geen';
@@ -541,7 +543,9 @@ sub zoek_verzekerden {
                     }elsif ($CountryCode eq 'CRS' or $CountryCode eq 'crs'){
                          $CountryCode = 'KR';
                     }elsif ($CountryCode eq 'PER' or $CountryCode eq 'crs'){
-                         $CountryCode = 'PE';   
+                         $CountryCode = 'PE';
+                    }elsif ($CountryCode eq 'KEN' or $CountryCode eq 'KEN'){
+                     $CountryCode = 'KE';         
                     }
                    
                  #print "$adres_onderdeel\n ";
