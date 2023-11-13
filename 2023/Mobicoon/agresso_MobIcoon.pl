@@ -67,7 +67,7 @@ require "package_sql_toegang_agresso_MI.pl";
 #
 #    };
 package main;
-     our $test_prod = 'PROD'; # test = 'TEST' productie = 'PROD'
+     our $test_prod = 'TEST'; # test = 'TEST' productie = 'PROD'
      BEGIN { $ENV{HARNESS_ACTIVE} = 1 }
      use strict;
      use MIME::Base64;

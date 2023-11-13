@@ -1476,7 +1476,7 @@ sub checkwonendopzelfdeadres {
      $ENV{HTTPS_DEBUG} = 1;
      $ENV{HTTP_DEBUG} = 1;
      my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
-     my $proxy = 'http://$ip/service.svc?QueryEngineService/QueryEngineV201101';    
+     my $proxy = "http://$ip/service.svc?QueryEngineService/QueryEngineV201101";    
      my $uri   = 'http://services.agresso.com/QueryEngineService/QueryEngineV201101';
      my $soap = SOAP::Lite
             ->proxy($proxy)
@@ -1659,7 +1659,7 @@ package webservice_pdf_to_Agresso;
 	     ##$clientnummer = 67122533419;#;100048 100248 166516
 	     use SOAP::Lite ;
            my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::test_prod"};;      
-	     my $proxy = 'http://$ip/service.svc?';	    
+	     my $proxy = "http://$ip/service.svc?";	    
 	     my $uri   = 'http://services.agresso.com/DocArchiveService/DocArchiveV201101';
 	     my $soap = SOAP::Lite
 		 ->proxy($proxy)
