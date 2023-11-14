@@ -709,6 +709,14 @@ package ToolBarMainFrame;
                  foreach my $nr (sort keys $main::invoice->{$factuur_nummer}){
                      $begindatum = $main::invoice->{$factuur_nummer}->{$nr}->{begindatum} if ($main::invoice->{$factuur_nummer}->{$nr}->{begindatum} < $begindatum and $main::invoice->{$factuur_nummer}->{$nr}->{begindatum} > 0);
                      $einddatum = $main::invoice->{$factuur_nummer}->{$nr}->{einddatum} if ($main::invoice->{$factuur_nummer}->{$nr}->{einddatum} >$einddatum  );
+                     eval {my $dienst_f= $main::invoice->{$factuur_nummer}->{$nr}->{dienst}} ; # bevalling 2024 geen franchise 1 persoonskamer
+                     if (!$@) {
+                        my $dienst_f= $main::invoice->{$factuur_nummer}->{$nr}->{dienst} ;
+                        if ($dienst_f == 260) {
+                            $main::is_bevalling = $dienst_f;
+                        }
+                     }
+          
                     }
                  $main::einddatum_opname = $einddatum;
                  $frame->{lov_Txt_0_Eind_Opname}->SetValue($main::einddatum_opname);

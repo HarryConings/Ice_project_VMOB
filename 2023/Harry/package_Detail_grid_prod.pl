@@ -499,9 +499,9 @@ sub Toolbar_Herbereken {
 
 sub Herberekenen {
        my ($grid, $nomenclatuur,$soort_werkblad,$force_pas_totaalwerkblad_aan) = @_;
-       if ($nomenclatuur == 882001) {
-                    print '';
-                 }
+       #if ($nomenclatuur == 882001) {
+       #             print '';
+       #          }
        if ($main::type_grid{$nomenclatuur} eq 'VnZ') {
                
           }else {
@@ -958,9 +958,19 @@ sub eenmalig_bedrag_jaar {
       my $rows = $grid->GetNumberRows;
       my $verschil =0;
       my $eenmalig_bedrag_jaar=0;
+      my $is_bevalling = $main::is_bevalling;
       foreach my $regel (keys $main::rekenregels_per_nomenclatuur->{$nomenclatuur}) {
            if ($regel eq 'eenmalig_bedrag_jaar') {
+                #if ($nomenclatuur==882206 or $nomenclatuur==882000 ){                   
+                #    my $test =  $main::overzicht_per_nomenclatuur->{$nomenclatuur};
+                #    my $testbegind = $main::begindatum_opname;
+                #    print '';
+                #}
                 $eenmalig_bedrag_jaar = $main::rekenregels_per_nomenclatuur->{$nomenclatuur}->{$regel};#code
+                if ($is_bevalling > 0 and $nomenclatuur==882206 and $main::begindatum_opname > 20240000) { # geen franchise bij bevalling na 2024
+                     $eenmalig_bedrag_jaar = 0;
+                    
+                }
                 for  (my $overzicht_rij =0 ; $overzicht_rij < $main::aantal_rij_overzicht_matrix; $overzicht_rij++) {
                      if ($main::overzicht_matrix[$overzicht_rij][1] == $nomenclatuur and $nomenclatuur > 1) {
                           $k_jaar = $main::overzicht_matrix[$overzicht_rij][10];#code
@@ -972,12 +982,18 @@ sub eenmalig_bedrag_jaar {
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][3] =0;
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][7]=0;
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][6]=0;
+                     if ($nomenclatuur==882206 and $is_bevalling == 260 and $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][0] > 0
+                         and $main::begindatum_opname > 20240000) {                        
+                          #bevalling vanaf 2024 geen franchise
+                          $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][8] ="Geen franchische Bevalling na 2024";
+                          $main::is_bevalling = 0;
+                     }
                 }elsif ($main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][0] > 0) {
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][2] =0;#code
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][3] =0;
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][7]=$eenmalig_bedrag_jaar;
                      $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][6]=-$eenmalig_bedrag_jaar;
-                     $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][8] ="$regel :$eenmalig_bedrag_jaar";
+                     $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][8] ="$regel :$eenmalig_bedrag_jaar";                     
                      foreach my $regel1 (keys $main::tekst_rekenregels_per_nomenclatuur->{$nomenclatuur}) {
                           if ($regel1 eq 'eenmalig_bedrag_jaar') {
                                if (lc ($main::klant->{Taal}) eq 'nl') {
@@ -1002,12 +1018,14 @@ sub eenmalig_bedrag_jaar {
                                $main::overzicht_matrix[$overzicht_rij][13] = 1;#code
                               }
                          }
-                    }else {
-                     $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][2] =0;#code
-                     $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][3] =0;
-                     $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][7]=0;
-                     $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][6]=0;
-                    }
+                }else {
+                    $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][2] =0;#code
+                    $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][3] =0;
+                    $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][7]=0;
+                    $main::overzicht_per_nomenclatuur->{$nomenclatuur}[$rij][6]=0;
+                    
+                }
+               
                 $grid->Kolom_twee_plus_drie_is_vier($rij);
                }
           }
@@ -1573,7 +1591,7 @@ sub overname_aantal_dagen {
       my @naarwaar = ();
       my @reset_naarwaar=();
       my $ja_nee_nom = 0;
-      #my $test_rekenregels = $main::rekenregels_per_nomenclatuur->{$nomenclatuur};
+      my $test_rekenregels = $main::rekenregels_per_nomenclatuur->{$nomenclatuur};
       #if ($nomenclatuur==882206 or $nomenclatuur==882000 ){
       #         print '';
       #    }
