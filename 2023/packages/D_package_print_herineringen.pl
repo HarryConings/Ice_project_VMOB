@@ -17,15 +17,15 @@ package main;
      our $agresso_instellingen;
      our $brieven_instellingen;
      our $overzichts_mail = "Herinnerings brieven die moeten worden afgedrukt\n___________________________________________________________________________\n\n";
-     our $mode = 'TEST';
+     our $mode = 'PROD';
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
      main->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
      main->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\\brieven_settings.xml');
      my $dbh= sql_toegang_agresso->setup_mssql_connectie($main::mode,$agresso_instellingen);
-     sql_toegang_agresso->afxvmobreminded_replace_to_P($dbh);
-     sql_toegang_agresso->afxvmobtoprint_replace_to_P($dbh);
-     main->delfiles("D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten");
+     # sql_toegang_agresso->afxvmobreminded_replace_to_P($dbh);
+     # sql_toegang_agresso->afxvmobtoprint_replace_to_P($dbh);
+     main->delfiles("D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herprinten");
     
      my $alternatieve_drive = $agresso_instellingen->{plaats_brieven_print_herinneringen};
      our $te_herinneren = sql_toegang_agresso->afxvmobtoremind_first_time($dbh,$alternatieve_drive);
@@ -214,7 +214,7 @@ package main;
     sub delfiles {
         #haal de directorY
         my ($self,$dirtoempty)= @_;
-        #print "\n dir delete $dirtoempty\n";
+        print "\n 217 dir delete $dirtoempty\n";
         my $extension_to_delete = ".*";
         opendir (DIR,"$dirtoempty");
         my @files = grep(/.*$extension_to_delete$/, readdir (DIR));
@@ -312,6 +312,7 @@ package sql_toegang_agresso;
          $sth->execute();
              my $nr=0;
          while (my @to_remind = $sth->fetchrow_array) {
+             print "to_remind @to_remind\n";
              my $datingezet = substr($to_remind[3],0,10);
              $datingezet =~ s/-//g;
              my $nr1="$to_remind[0]-$datingezet-$to_remind[1]-$nr";
