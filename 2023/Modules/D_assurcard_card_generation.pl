@@ -64,8 +64,10 @@ require "chk_of_in_rusthuis.pl";
 require "assurcard_card_updates.pl";
 our $teller_aantal_brieven = 0;
 $mail='';
+our $mode = 'PROD';
 $mode = $ARGV[0] if (defined $ARGV[0]);
 if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
+print "start\n";
 &load_assurcard_generation_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\assurcard_card_generation_settings.xml');
 &zoek_verzekerden_die_een_kaart_moeten_krijgen;
 print "gedaan\n";
