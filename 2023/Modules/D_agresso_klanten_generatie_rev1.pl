@@ -361,9 +361,9 @@ sub zoek_verzekerden {
                      $CountryCode = 'UA';
                 }elsif ($CountryCode eq 'CRS' or $CountryCode eq 'crs'){
                      $CountryCode = 'KR';
-                }elsif ($CountryCode eq 'PER' or $CountryCode eq 'crs'){
+                }elsif ($CountryCode eq 'PER' or $CountryCode eq 'per'){
                      $CountryCode = 'PE';
-                }elsif ($CountryCode eq 'KEN' or $CountryCode eq 'KEN'){
+                }elsif ($CountryCode eq 'KEN' or $CountryCode eq 'ken'){
                      $CountryCode = 'KE';      
                     }
              my $Email = &zoekemailadres ($dbh,$nrzkfcheck,$agresso_klant[13],$vandaag);
@@ -542,9 +542,9 @@ sub zoek_verzekerden {
                          $CountryCode = 'UA';
                     }elsif ($CountryCode eq 'CRS' or $CountryCode eq 'crs'){
                          $CountryCode = 'KR';
-                    }elsif ($CountryCode eq 'PER' or $CountryCode eq 'crs'){
+                    }elsif ($CountryCode eq 'PER' or $CountryCode eq 'per'){
                          $CountryCode = 'PE';
-                    }elsif ($CountryCode eq 'KEN' or $CountryCode eq 'KEN'){
+                    }elsif ($CountryCode eq 'KEN' or $CountryCode eq 'ken'){
                      $CountryCode = 'KE';         
                     }
                    

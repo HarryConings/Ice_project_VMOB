@@ -2221,7 +2221,7 @@ sub send_via_webserv_client_invoice {
             ->value(\SOAP::Data->value($Username, $Client,$Password));
      my $soap = SOAP::Lite
      #-> proxy('http://10.198.205.8/AgressoWSHost/service.svc?ImportService/ImportV200606')
-     -> proxy("http://$agresso_proxy/service.svc?ImportService/ImportV200606") #productie
+     -> proxy("http://$agresso_proxy/service.svc?ImportService/ImportV200606", timeout => 960 ) #productie
      #-> proxy('http://10.198.206.217/AgressoWSHost/service.svc?ImportService/ImportV200606')
      ->ns('http://services.agresso.com/ImportService/ImportV200606','imp')
      ->on_action( sub { return 'ExecuteServerProcessAsynchronously' } );

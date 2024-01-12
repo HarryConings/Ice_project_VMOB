@@ -10,13 +10,13 @@ Add: MIME::Types::
 Add: Algorithm::Diff::
 Add: XML::Compile::
 Clean: 0
-Date: 2023-10-13 11:57:52
+Date: 2023-12-10 19:23:57
 Debug: 
 Dependent: 0
 Dyndll: 0
 Exe: D_assurcard_card_generation.exe
 Force: 0
-Gui: 1
+Gui: 0
 Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0

@@ -10,13 +10,13 @@ Add: Params::Validate::PP::
 Add: XML::Compile::
 Add: XML::SAX::
 Clean: 0
-Date: 2023-10-23 16:14:09
+Date: 2023-12-04 13:21:31
 Debug: 
 Dependent: 0
 Dyndll: 0
-Exe: agresso_MobIcoon.exe
+Exe: agresso_MobIcoon_prod_cmd.exe
 Force: 0
-Gui: 1
+Gui: 0
 Hostname: VSOC-HARRY
 Manifest: 
 No-Compress: 0

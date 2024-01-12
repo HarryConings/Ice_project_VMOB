@@ -17,15 +17,15 @@ package main;
      our $agresso_instellingen;
      our $brieven_instellingen;
      our $overzichts_mail = "Herinnerings brieven die moeten worden afgedrukt\n___________________________________________________________________________\n\n";
-     our $mode = 'TEST';
+     our $mode = 'PROD';
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
      main->load_agresso_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
      main->load_brieven_setting('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\\brieven_settings.xml');
      my $dbh= sql_toegang_agresso->setup_mssql_connectie($main::mode,$agresso_instellingen);
-     sql_toegang_agresso->afxvmobreminded_replace_to_P($dbh);
-     sql_toegang_agresso->afxvmobtoprint_replace_to_P($dbh);
-     main->delfiles("D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten");
+     # sql_toegang_agresso->afxvmobreminded_replace_to_P($dbh);
+     # sql_toegang_agresso->afxvmobtoprint_replace_to_P($dbh);
+     main->delfiles("D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herprinten");
     
      my $alternatieve_drive = $agresso_instellingen->{plaats_brieven_print_herinneringen};
      our $te_herinneren = sql_toegang_agresso->afxvmobtoremind_first_time($dbh,$alternatieve_drive);
@@ -50,6 +50,7 @@ package main;
                 my $datum_eerste_her_geprint = $te_herinneren->{$nr}->{'datum_eerste_her_geprint'};       #'datum_eerste_her_geprint' => $to_remind[5],
                 my $nrtest = $nr;
                 $nrtest =~ s/-\d+$//;
+                #print "53 -> $nr agresno: $agresso_nr -> sjabloon:$sjabloon\n";
                 #$a_ref = \@a; 
                 if ($nrtest eq $nr_old) {
                     if ($wat_moet_binnen_gebracht ne '') {
@@ -73,6 +74,7 @@ package main;
             foreach my $nr(sort keys $brieven_aan_te_maken) {
                 my $agresso_nr= $brieven_aan_te_maken->{$nr}->{'agresso_nr'};
                 my $sjabloon= $brieven_aan_te_maken->{$nr}->{'sjabloon'};
+                #print"77 $nr agressono:$agresso_nr sjabloon ->$sjabloon\n";
                 my $datum_ingezet = $brieven_aan_te_maken->{$nr}->{'datum_ingezet'};         #'datum_ingezet' => $to_remind[3],
                 my $jaar_ingezet = substr ($datum_ingezet,0,4);
                 my $maand_ingezet = substr ($datum_ingezet,5,2);
@@ -86,14 +88,14 @@ package main;
                     my @wat_binnenbrengen;           
                     foreach my $tekst (@{$brieven_aan_te_maken->{$nr}->{'wat_moet_binnen_gebracht'}}) {
                         push (@wat_binnenbrengen,$tekst);
-                        print "";
+                        #print "";
                        }
                      insert_eerste_herinnering_in_frame->new($sjabloon,$datum_ingezet,$datum_ingezet_text,@wat_binnenbrengen);
                    
                    }else {
                     #brief van vorige brief
                      insert_eerste_herinnering_in_frame->new($sjabloon,$datum_ingezet,$datum_ingezet_text);
-                    print "";
+                    #print "";
                    }
                 my $ok =  sql_toegang_agresso->afxvmobreminded_first_time($dbh,$agresso_nr,$sjabloon);
                 print "$ok ->sql_toegang_agresso->afxvmobreminded_first_time($agresso_nr,$sjabloon)\n";
@@ -101,7 +103,7 @@ package main;
      }
      
     
-     print "";
+     # print "";
      undef $te_herinneren;
      undef $brieven_aan_te_maken;
      $nr_old = "";
@@ -153,17 +155,17 @@ package main;
                     my @wat_binnenbrengen;           
                     foreach my $tekst (@{$brieven_aan_te_maken->{$nr}->{'wat_moet_binnen_gebracht'}}) {
                         push (@wat_binnenbrengen,$tekst);
-                        print "";
+                        # print "";
                        }
                     insert_tweede_herinnering_in_frame->new($sjabloon,$datum_ingezet,$datum_ingezet_text,@wat_binnenbrengen);
                    
                    }else {
                     #brief van vorige brief
                     insert_tweede_herinnering_in_frame->new($sjabloon,$datum_ingezet,$datum_ingezet_text);
-                    print "";
+                    # print "";
                    }
                 my $ok =  sql_toegang_agresso->afxvmobreminded_second_time($dbh,$agresso_nr,$sjabloon);
-                print "";
+                #print "";
             }
         }
      $te_herinneren = sql_toegang_agresso->afxvmobtonag($dbh);
@@ -184,7 +186,7 @@ package main;
      sub load_agresso_setting  {
          my ($class,$file_name) =  @_;
          $agresso_instellingen = XMLin("$file_name");
-          print "ingelezen\n";
+          print "ingelezen $file_name\n";
           #foreach my $zkf_inst (keys $agresso_instellingen->{verzekeringen}) {
           #   #my $verz_inst =$agresso_instellingen->{verzekeringen}->{$zkf_inst};
           #   foreach my $verz_inst  (sort keys $agresso_instellingen->{verzekeringen}->{$zkf_inst}) {
@@ -199,7 +201,7 @@ package main;
      sub load_brieven_setting  {
          my ($class,$file_name) =  @_;
          $brieven_instellingen = XMLin("$file_name");
-          print "ingelezen\n";
+          print "ingelezen $file_name\n";
           #foreach my $zkf_inst (keys $agresso_instellingen->{verzekeringen}) {
           #   #my $verz_inst =$agresso_instellingen->{verzekeringen}->{$zkf_inst};
           #   foreach my $verz_inst  (sort keys $agresso_instellingen->{verzekeringen}->{$zkf_inst}) {
@@ -214,7 +216,7 @@ package main;
     sub delfiles {
         #haal de directorY
         my ($self,$dirtoempty)= @_;
-        #print "\n dir delete $dirtoempty\n";
+        print "\n 217 dir delete $dirtoempty\n";
         my $extension_to_delete = ".*";
         opendir (DIR,"$dirtoempty");
         my @files = grep(/.*$extension_to_delete$/, readdir (DIR));
@@ -279,7 +281,7 @@ package sql_toegang_agresso;
            my $sth= $dbh ->prepare($zetin);
            $sth -> execute();
            $sth -> finish();
-           print "";
+           # print "";
         }
      sub afxvmobtoremind_insert_row {
          my ($class,$dbh,$dim_value,$naam_sjabloon,$wat_moet_binnen_gebracht,$dagen_eerste_her,$dagen_tweede_her,$dagen_nag) = @_; #$dim_value is agresso nr
@@ -297,7 +299,7 @@ package sql_toegang_agresso;
          my $sth= $dbh ->prepare($zetin);
          $sth -> execute();
          $sth -> finish();
-         print "";
+         # print "";
         }
      sub  afxvmobtoremind_first_time {
          my ($class,$dbh,$alternatieve_drive) = @_;
@@ -311,11 +313,11 @@ package sql_toegang_agresso;
          my $sth = $dbh->prepare($sql);
          $sth->execute();
              my $nr=0;
-         while (my @to_remind = $sth->fetchrow_array) {
+         while (my @to_remind = $sth->fetchrow_array) {           
              my $datingezet = substr($to_remind[3],0,10);
              $datingezet =~ s/-//g;
              my $nr1="$to_remind[0]-$datingezet-$to_remind[1]-$nr";
-             $to_remind[1] =~ s/^\w:/$alternatieve_drive/;
+             $to_remind[1] =~ s/^\w:/$alternatieve_drive/i;
              $To_Remind->{$nr1} = {
                  'agresso_nr' => $to_remind[0],
                  'sjabloon' => $to_remind[1],
@@ -326,7 +328,7 @@ package sql_toegang_agresso;
                  };
              $nr += 1;
              $main::overzichts_mail = $main::overzichts_mail."$nr -> @to_remind\n";
-             print "$nr -> @to_remind\n";
+             # print "$nr -> @to_remind\n";
             }
          return ($To_Remind);
      }
@@ -367,7 +369,7 @@ package sql_toegang_agresso;
                  };
              $nr += 1;
              $main::overzichts_mail = $main::overzichts_mail."$nr -> @to_remind\n";
-             print "$nr1 -> @to_remind\n";
+             # print "$nr1 -> @to_remind\n";
             }
          return ($To_Remind);
      }
@@ -405,7 +407,7 @@ package sql_toegang_agresso;
                  
                  };
              $nr += 1;
-             print "$nr -> @to_remind\n";
+             # print "$nr -> @to_remind\n";
             }
          return ($To_Remind);
         }
@@ -436,7 +438,7 @@ package insert_eerste_herinnering_in_frame ;
          my $brief1=$brief;
          $brief1 =~ s%\\%/%g;
          if (-e $brief) {
-              print "bestaat->$brief\n";
+              print "bestaat->$brief ->";
               copy ($brief  => $home_file);
               print "home-file->$home_file\n";
               if (-e $home_file) {                
@@ -504,7 +506,8 @@ package insert_eerste_herinnering_in_frame ;
                 #$doc-> save("$brief_nieuw_file_naam");
                 $doc-> dispose;
                 copy ($home_file  => $brief_nieuw_file_naam);
-                copy ($home_file  => "D:\\OGV\\ASSURCARD_PROG\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten");      
+                copy ($home_file  => "D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten");
+                print"copy ($home_file  => D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten); \n";
                 my $OO_instpath = &dir__OO;
                 $OO_instpath =~  s/\\/\\\\/g;
                 print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
@@ -523,7 +526,7 @@ package insert_eerste_herinnering_in_frame ;
                  print " home file $home_file -> bestaat niet !!!!!! -> NIETS GEDAAN !!!-> $brief\n";
                  $main::overzichts_mail = $main::overzichts_mail."home file $home_file -> bestaat niet !!!!!! -> NIETS GEDAAN !!!-> brief\n"
               }
-                print "";
+                # print "";
          }else {
              print "\nbestaat niet ->$brief\--\n";
              print "testen op->$brief1\--\n";
@@ -591,7 +594,7 @@ package insert_tweede_herinnering_in_frame ;
          my $brief1=$brief;
          $brief1 =~ s%\\%/%g;
          if (-e $brief) {
-                print "bestaat->$brief\n";
+                print "bestaat->$brief->home_file $home_file\n";
                 copy ($brief  => $home_file);
                 #die;
                 if (-e $home_file) {                    
@@ -659,7 +662,7 @@ package insert_tweede_herinnering_in_frame ;
                     #$doc-> save("$brief_nieuw_file_naam");
                     $doc-> dispose;
                     copy ($home_file  => $brief_nieuw_file_naam);
-                    copy ($home_file  => "D:\\OGV\\ASSURCARD_PROG\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten");
+                    copy ($home_file  => "D:\\OGV\\ASSURCARD_2023\\programmas\\Brieven\\te_herpinten\\$brief_te_herprinten");
                     my $OO_instpath = &dir__OO;
                     $OO_instpath =~  s/\\/\\\\/g;
                     print "$OO_instpath\\program\\swriter.exe, -norestore,-headless,-pt,+ $printer,+ $home_file\n";
@@ -675,7 +678,7 @@ package insert_tweede_herinnering_in_frame ;
                     #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);#, '-norestore','-headless','-pt',+ $printer,+ "$brief_nieuw_file_naam"); #,'-pt',+ $printer,+ "$brief_nieuw_file_naam"
                     #system(1,"$OO_instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,+ $home_file);
                     sleep (5);
-                    print "";
+                    # print "";
                     #system(1,"$instpath\\program\\swriter.exe", '-norestore','-headless','-pt',+ $printer,
                     #   + $printfilename);
                 }else {

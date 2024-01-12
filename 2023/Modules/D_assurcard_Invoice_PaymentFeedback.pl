@@ -148,7 +148,7 @@ sub ask_feedback_via_webserv_client_feedback {
                            };
     
      
-     my $xsd = 'D:\OGV\ASSURCARD_PROG\asurcard_xsd\invoiceFeedbacks-har.xsd';
+     my $xsd = 'D:\OGV\ASSURCARD_2023\asurcard_xsd\invoiceFeedbacks-har.xsd';
      my $schema = XML::Compile::Schema->new($xsd);
      $schema->printIndex();
      warn $schema->template('PERL', 'InvoiceFeedbacks');
