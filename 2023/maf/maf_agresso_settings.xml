@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instellingen>
+     <mode>PROD</mode> <!--TEST voor test files gaan niet naar het GKD /PROG  voor productie files gaan wel naar het GKD--> 
+	 <Agresso_IP_TEST>10.198.216.91</Agresso_IP_TEST> <!-- 10.198.216.91 test s200wr2xxl01.mutworld.be -->
+	 <Agresso_IP_PROG>10.198.216.90</Agresso_IP_PROG> <!-- 10.198.216.90 S200WP1XXL01.mutworld.be productie -->
+	 <Agresso_SQL>10.198.216.89</Agresso_SQL> <!--Server=S998XXLSQL01.CPC998.BE\\i200-->	 
+     <CompanyCode>VMOB</CompanyCode>                             <!--naam van het bedrijf in Agresso-->
+     <ApArType_klant>R</ApArType_klant>                                     <!--ApArType is altijd R   staat in de xml van agresso -->
+     <ApArType_leverancier>P</ApArType_leverancier>                                 <!-- ApArInfo ApArType -->
+	 <Default_variant_LG04>3</Default_variant_LG04> <!-- als we de user niet vinden gebruieken we deze variant als default bij LG04 -->
+     <assurcard_invoice_import_interface>RF</assurcard_invoice_import_interface> <!-- is altijs BI -->
+     <agresso_voucher_type>RZ</agresso_voucher_type>  <!--This must be a valid transaction type that has been setup in the Transaction types screen in AGRESSO Common-->
+     <plaats_file>P:\OGV\ASSURCARD_TEST\asurcard_xml</plaats_file> <!--plaats waar de klanten_naar_agresso_xml wordt geplaatst-->
+     <plaats_ABWSupplierCustomer_xsd>P:\\OGV\\ASSURCARD_TEST\\asurcard_xsd\\agresso\\ABWSupplierCustomer.xsd</plaats_ABWSupplierCustomer_xsd> <!--plaats waar de ABWSupplierCustomer.xsd staat dubbele \\ gebruiken ipv \-->
+     <plaats_ABWSchemaLib_xsd>P:\\OGV\\ASSURCARD_TEST\\asurcard_xsd\\agresso\\ABWSchemaLib.xsd</plaats_ABWSchemaLib_xsd> <!--plaats waar de ABWSchemaLib xsd staat dubbele \\ gebruiken ipv \-->
+     <plaats_ABWOrder_xsd>P:\\OGV\\ASSURCARD_TEST\\asurcard_xsd\\agresso\\ABWOrder.xsd</plaats_ABWOrder_xsd>
+     <plaats_assurcard_invoices>\\10.63.120.24\assurcard\assurcard\Invoices</plaats_assurcard_invoices> <!-- plaats waar de assurcard facturen zich bevinden-->
+     <plaats_invoices_zip_op_P>P:\OGV\ASSURCARD_TEST\assurcard_invoices\zip</plaats_invoices_zip_op_P>  <!-- plaats waarnaar de zip gekopieerd worden-->
+     <plaats_invoices_xml_op_P>P:\OGV\ASSURCARD_TEST\assurcard_invoices\xml</plaats_invoices_xml_op_P>  <!-- plaats waar de xml 's naar gekopieerd worden -->
+     <plaats_invoices_verwerkt_P>P:\OGV\ASSURCARD_TEST\assurcard_invoices\verwerkt</plaats_invoices_verwerkt_P>  <!-- plaats naarwaar ze gekopieerd worden als ze verwerkt zijn -->
+     <plaats_mobicoon>P:\OGV\ASSURCARD_TEST\programmas\agresso_MobIcoon.exe</plaats_mobicoon>
++	<plaats_mobicoon_on_top>P:\OGV\ASSURCARD_TEST\programmas\agresso_zet_een_klant_in_on_top.exe</plaats_mobicoon_on_top>
+	<plaats_sjablonen_brieven>W:\OGV\BRIEFWISSELING_NIEUW\Sjablonen</plaats_sjablonen_brieven> <!-- plaats waar de sjablonen zich bevinden -->
+     <plaats_background_pdf>W:\OGV\BRIEFWISSELING_NIEUW\Sjablonen\background.pdf</plaats_background_pdf>
+     <plaats_brieven>W:\OGV\BRIEFWISSELING_NIEUW\Documenten</plaats_brieven>
+     <plaats_brieven_cache>W:\OGV\BRIEFWISSELING_NIEUW\Documenten\cache</plaats_brieven_cache>
+	<stop_tijd_contracten>8:00:00</stop_tijd_contracten> <!-- wanneer contract stopt formaat 23:00:OO uren in 24uren:minuten:seconden -->
+	<plaats_teller_insert_contracten>P:\OGV\ASSURCARD_TEST\INSERT_CONTRACT_TELLER</plaats_teller_insert_contracten> <!-- 's nachts draait insert contracten stopt 's morgens houd teller bij-->
+     <herinneringen_tekst>HERINNERING AAN ONZE BRIEF VAN </herinneringen_tekst> <!-- gevolgd door dag maand in tekst jaar oorspronkelijke brief-->
+     <tweede_herinneringen_tekst>TWEEDE HERINNERING AAN ONZE BRIEF VAN </tweede_herinneringen_tekst> <!-- gevolgd door dag maand in tekst jaar oorspronkelijke brief-->
+     <dagen_tweede_herinnering>21</dagen_tweede_herinnering> <!--bij brrieven _herX waar X is aantal weken hoeveel dagen na eerste herinering moet de tweese gestuurd-->
+     <dagen_nagging_herrinering>14</dagen_nagging_herrinering><!--bij brrieven _herX waar X is aantal weken hoeveel dagen na tweede herinnering moeten er mails gestuurd-->
+     <printer_herineringen>P235OGVL01_lade2</printer_herineringen>  
+     <mail_verslag_naar>harry.conings@vnz.be</mail_verslag_naar> <!--mail adressen naar waar dat de uitlag moet worden gemaild-->
+     <PayTerms>30</PayTerms>                                    <!-- voorlopig gaat 30 45 niet -->
+     <CreditLimit>0</CreditLimit>                               <!-- hoeveel crediet we de mensen geven -->
+     <Currency>EUR</Currency>                                   <!-- De munteenheid die we gebruiken -->
+     <TaxCode>0</TaxCode>                                   <!-- geen BTW -->
+     <AP_Account>4801009</AP_Account>                       <!-- boekhoudrekening voor AP-->
+     <GL_Account>9000001</GL_Account>                       <!-- boekhoudingrekening voor general ledger -->
+     <ApArNo>71009938000</ApArNo>
+     <invoice_payment_delay>14</invoice_payment_delay>      <!-- factuur van hospitaal wordt na x dagen betaald-->
+     <PayMethod>IP</PayMethod>                                  <!-- Betalingsmethode moet op IP staan -->
+     <Default_Language>NL</Default_Language>                    <!-- standaard taal -->
+     <blok_grootte>2000</blok_grootte>                           <!-- aantal personen die per keer naar de websevice gaan -->
+     <blok_grootte_invoices>200</blok_grootte_invoices>         <!--aantal facturen die per keer naar de webservice worden geschreven -->
+     <maf_maximum>1000</maf_maximum> 						<!-- maximum dat de maf mag uitkeren -->
+	<maf_sjabloon>P:\OGV\ASSURCARD_PROG\excel_sjablonen\sjabloonmaf.xls</maf_sjabloon>			<!-- sjabloon overzicht maf -->
+	<maf_verslag>P:\OGV\ASSURCARD_PROG\programmas\MAF\excel</maf_verslag>							<!-- map waar de excel verslagen woren bedwaard -->
+	<verzekeringen>                                                   <!--verzekeringen waar een kaart voor gegenereerd wordt-->
+         <ZKF203>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+             <ambuplus>64</ambuplus>
+             <ambuplan>63</ambuplan>
+             <hospiforfait hospiforfait="39">
+                <HOSPIFORFAIT12>24</HOSPIFORFAIT12>
+                <HOSPIFORFAIT25>21</HOSPIFORFAIT25>
+                <HOSPIFORFAIT50>22</HOSPIFORFAIT50>
+             </hospiforfait>
+             <hospicontinu>53</hospicontinu>
+			 <tandplus>68</tandplus>
+		   <maxiplan>69</maxiplan>
+         </ZKF203>
+         <ZKF235>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+             <ambuplus>64</ambuplus>
+             <ambuplan>63</ambuplan> <!-- 9/12/15 -->
+             <hospiforfait hospiforfait="50">
+                <HOSPIFORFAIT12>12</HOSPIFORFAIT12>
+                <HOSPIFORFAIT25>11</HOSPIFORFAIT25>
+                <HOSPIFORFAIT50>10</HOSPIFORFAIT50>
+             </hospiforfait>
+             <hospicontinu>53</hospicontinu>
+			 <tandplus>68</tandplus>
+		   <maxiplan>69</maxiplan>  <!-- 9/12/15 -->
+         </ZKF235>
+     </verzekeringen>
+	 <verzekeringen_met_kaart>                                  <!--verzekeringen waar een kaart voor gegenereerd wordt-->
+         <ZKF203>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+         </ZKF203>
+         <ZKF235>
+             <hospiplan_ambuplan>51</hospiplan_ambuplan>
+             <hospiplus_ambuplus>52</hospiplus_ambuplus>
+             <hospiplan>61</hospiplan>
+             <hospiplus>62</hospiplus>
+         </ZKF235>
+     </verzekeringen_met_kaart>
+	 <as400>
+		<ZKF203>
+			 <as400_name>AIRBUS</as400_name>
+                <username>M203CGK2</username>
+                <password>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</password>
+                <mut_nbr>203</mut_nbr>
+                <libcxfil>libcxfil03</libcxfil>
+                <libsxfil>libsxfil03</libsxfil>
+                <libcxref>libcxref03</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus203</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</ZKF203>
+		<ZKF235>
+			 <as400_name>AIRBUS</as400_name>
+                <username>M235CGK2</username>
+                <password>ZWthMjAxNlBhdGVyNDc4N25vc3RlckVlcnN0MTg0NTdjZWdKYW56aW5ndGNlZzQ3TG9uZG9uY2FsbGluZzc=</password>
+                <mut_nbr>235</mut_nbr>
+                <libcxfil>libcxfil35</libcxfil>
+                <libsxfil>libsxfil03</libsxfil> <!-- files staan in sxfil03 -->
+                <libcxref>libcxref35</libcxref>
+                <libcxcom>libcxcom20</libcxcom>
+                <libcxarh>libcxarh20</libcxarh>
+                <libcxari>libcxari20</libcxari>
+                <jadebus>jadebus235</jadebus>
+                <administrator_mail>informatica@vnz.be</administrator_mail>
+		</ZKF235>
+	</as400>	
+</instellingen>
+

@@ -1,0 +1,36 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: package_maf_to_agresso_prod.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\2023\maf
+Add: Log::Report::
+Add: DateTime::
+Add: Params::Validate::
+Clean: 0
+Date: 2024-01-12 08:41:41
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: package_maf_to_agresso_prod.exe
+Force: 0
+Gui: 0
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: 
+Version-FileVersion: 1.0
+Version-InternalName: 
+Version-LegalCopyright: Harry conings
+Version-LegalTrademarks: 
+Version-OriginalFilename: maf
+Version-ProductName: maf
+Version-ProductVersion: 1.0.0
+Warnings: 0
+Xclude: 0

@@ -1,0 +1,33 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: D_zet_BA_en_EZ_in_GKD.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\2023\packages
+Clean: 0
+Date: 2023-11-13 15:47:02
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: D_zet_BA_en_EZ_in_GKD.exe
+Force: 0
+Gui: 0
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: 
+Version-FileVersion: 1.0.0
+Version-InternalName: zet BA en EZ in gkd
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: B zet BA en EZ in gkd
+Version-ProductName: zet BA en EZ in gkd
+Version-ProductVersion: 1.0.0
+Warnings: 0
+Xclude: 0

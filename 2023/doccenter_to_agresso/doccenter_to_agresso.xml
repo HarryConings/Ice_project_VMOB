@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instellingen>
+     <Agresso_IP>10.198.216.91</Agresso_IP> <!-- 10.198.216.90 productie 10.198.216.91 test  -->
+	<mode>TEST</mode> <!--TEST -->
+	<CompanyCode>VMOB</CompanyCode>    <!--naam van het bedrijf in Agresso-->
+	<locatie_log>P:\OGV\ASSURCARD_PROG\programmas\Brieven\log</locatie_log>
+	<page_size_doccenter>5000</page_size_doccenter>
+	<Agresso_Doctype>
+		<DocType>KLANTBRIEF</DocType>     
+		<DocType>EMAIL</DocType>
+		<DocType>POLISBEHEER</DocType>
+		<DocType>POLISBRIEVEN</DocType>
+		<DocType>SCHADEBRIEVE</DocType>	
+	</Agresso_Doctype>
+	<ziekenfondsen>
+		<zkf203>
+               <nr>203</nr>
+               <name_as400>AIRBUS</name_as400>			  
+               <as400_user>M203CGK2</as400_user>
+               <as400_paswoord>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</as400_paswoord> <!-- nieuw paswoord AS400 aanpassen via versleutel paswoord -->
+               <as400_library>libcxfil03</as400_library>
+		</zkf203>
+		<zkf235>
+               <nr>235</nr>
+               <name_as400>AIRBUS</name_as400>			  
+               <as400_user>M235CGK2</as400_user>
+               <as400_paswoord>ZWthMjAxNkhlZGVuZGFhZ3NlS3Vuc3RjZWdMYWdlcmZlbGRab25lMzgxNmNlZ2EzNjUw</as400_paswoord> <!-- okt2015 -->
+               <as400_library>libcxfil35</as400_library>
+		</zkf235>
+	</ziekenfondsen>
+</instellingen>

@@ -1,0 +1,37 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: D_doccenter_to_agresso.pl
+Cwd: P:\komodoproject\Ice_project_VMOB\2023\doccenter_to_agresso
+Add: Params::Validate::XS::
+Add: Params::Validate::PP::
+Add: DateTime::Locale::
+Bind: types.db[file=C:\Perl\site\lib\MIME\types.db,text,extract,mode=777]
+Clean: 0
+Date: 2023-10-20 14:41:24
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: D_doccenter_to_agresso.exe
+Force: 0
+Gui: 1
+Hostname: VSOC-HARRY
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garantie
+Version-CompanyName: ICE
+Version-FileDescription: vanuit doccenter mailen
+Version-FileVersion: 2.0.0
+Version-InternalName: van doccenter naar agresso
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: van doccenter naar agresso
+Version-ProductName: van doccenter naar agresso
+Version-ProductVersion: 2.0.0
+Warnings: 0
+Xclude: 0

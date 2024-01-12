@@ -1,0 +1,13 @@
+D:\OGV\ASSURCARD_2023\assurcard_settings_xml
+		volgende files ->
+		maf_calculation_settings.xml
+		maf_agresso_settings.xml
+		maf_calculation_settings_teksten.xml
+Directory structuur maken
+		D:\OGV\ASSURCARD_2023\programmas\MAF\excel
+		D:\OGV\ASSURCARD_2023\excel_sjablonen
+In D:\OGV\ASSURCARD_2023\programmas\MAF\
+		package_maf_to_agresso_prod.exe
+In D:\OGV\ASSURCARD_2023\excel_sjablonen het sjabloon
+		sjabloonmaf.xlsx
+		
