@@ -1,0 +1,13 @@
+D:\OGV\ASSURCARD_2023\assurcard_settings_xml
+		volgende files ->
+		Tandplus_calculation_settings.xml
+		Tandplus_agresso_settings.xml
+		Tandplus_calculation_settings_teksten.xml
+Directory structuur maken
+		D:\OGV\ASSURCARD_2023\programmas\Tandplus\excel
+		D:\OGV\ASSURCARD_2023\excel_sjablonen
+In D:\OGV\ASSURCARD_2023\programmas\MAF\
+		Tandplus_to_agresso_prod.exe
+In D:\OGV\ASSURCARD_2023\excel_sjablonen het sjabloon
+		sjabloonTandplus.xlsx
+		
