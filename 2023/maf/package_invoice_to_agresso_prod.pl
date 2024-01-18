@@ -388,7 +388,7 @@ sub send_order_via_webserv_client {
             ->value(\SOAP::Data->value($Username, $Client,$Password));
      my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"};         
      my $soap = SOAP::Lite
-      -> proxy("http://$ip/BusinessWorld-webservices/service.svc?ImportService/ImportV200606")    
+      -> proxy("http://$ip/service.svc?ImportService/ImportV200606")    
       ->ns('http://services.agresso.com/ImportService/ImportV200606','imp')
       ->on_action( sub { return 'ExecuteServerProcessAsynchronously' } );
      my $response = $soap->ExecuteServerProcessAsynchronously($Input,$Credentials);
