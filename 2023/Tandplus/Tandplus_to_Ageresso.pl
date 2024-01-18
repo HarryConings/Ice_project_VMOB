@@ -104,9 +104,11 @@ package main;
                   print"$teller_al_gedaan $client_id al gedaan\n";
                }else{
                   #my @proefpersonen = (127891,128759,128769,128770,128884,129063,132934,132935,132936,134389,134473,136710,137487);  
-                  #my @proefpersonen = (134389);
+                  #my @proefpersonen = (100624,102177,103783,103955,104863,106730,107350,109520,110102,2016991,219483,219642,220494,221264);
                   #my @proefpersonen = (220224,220744);
-                  if ($client_id != 999999){   #for testing purposes if ( $client_id = 109690 )  if ( $client_id = 191887 )if ( $client_id != 999999
+                  #my @proefpersonen = (133388,134189,135411);
+                  # if ($client_id ~~ @proefpersonen){ 
+                if ($client_id != 999999){   #for testing purposes if ( $client_id = 109690 )  if ( $client_id = 191887 )if ( $client_id != 999999
                    my $excel_rij;
                    $test_teller += 1;                 
                    my $begindatum = $tandplussers->{$client_id}->{begin_datum};
@@ -132,9 +134,13 @@ package main;
                    my $inz =$klant->{Rijksreg_Nr};
                    my $naam = $klant->{naam};
                    $mail_msg = $mail_msg."\t\t$client_id $inz $naam begin $begindatum wacht $wachtdatum eind $einddatum\n";
+                   # 2024 aapassing  
                    my $eerstejaar_Remgeld_TandPlus = $klant->{TandPlus}->{$eerstejaar}->{totalen}->{totaal_remgeld};
+                   $eerstejaar_Remgeld_TandPlus += $klant->{TandPlus_archief}->{$eerstejaar}->{totalen}->{totaal_remgeld} if $klant->{TandPlus_archief}->{$eerstejaar}->{totalen}->{totaal_remgeld};
                    my $tweedejaar_Remgeld_TandPlus = $klant->{TandPlus}->{$tweedejaar}->{totalen}->{totaal_remgeld};
+                   # $tweedejaar_Remgeld_TandPlus += $klant->{TandPlus_archief}->{$tweedejaar}->{totalen}->{totaal_remgeld} if $klant->{TandPlus_archief}->{$tweedejaar}->{totalen}->{totaal_remgeld};
                    my $derdejaar_Remgeld_TandPlus = $klant->{TandPlus}->{$derdejaar}->{totalen}->{totaal_remgeld};
+                   # $derdejaar_Remgeld_TandPlus += $klant->{TandPlus_archief}->{$derdejaar}->{totalen}->{totaal_remgeld} if $klant->{TandPlus_archief}->{$derdejaar}->{totalen}->{totaal_remgeld};
                    my $eerstejaar_al_betaald_Remgeld_TandPlus = abs($klant->{TandPlus}->{$eerstejaar}->{totalen}->{al_betaald_remgeld_door_VMOB});
                    my $tweedejaar_al_betaald_Remgeld_TandPlus = abs($klant->{TandPlus}->{$tweedejaar}->{totalen}->{al_betaald_remgeld_door_VMOB});
                    my $derdejaar_al_betaald_Remgeld_TandPlus = abs($klant->{TandPlus}->{$derdejaar}->{totalen}->{al_betaald_remgeld_door_VMOB});         
@@ -379,7 +385,7 @@ package Frame;
                use Wx::Locale gettext => '_T';
                my($frame) = @_;
                 my $ip = $main::agresso_instellingen->{"Agresso_IP_$main::mode"};   
-               $frame = $frame->SUPER::new(undef, -1,_T("Berekeningsjaren TandPlus Agresso $main::mode -> ip $ip ->  variant = $variant_LG04 V20240114"),
+               $frame = $frame->SUPER::new(undef, -1,_T("Berekeningsjaren TandPlus Agresso $main::mode -> ip $ip ->  variant = $variant_LG04 V20240118"),
                                         [-1,-1],[980,280], wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL ); # | wxSTAY_ON_TOP
                #$frame->Wx::Size->new(800,600) ;
                my $dryrun = 1;

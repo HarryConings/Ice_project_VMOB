@@ -2,12 +2,12 @@
 PAP-Version: 1.0
 Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
 Script: Tandplus_to_Ageresso.pl
-Cwd: P:\komodoproject\Ice_project_VMOB\TEST\Tandplus
+Cwd: P:\komodoproject\Ice_project_VMOB\2023\Tandplus
 Add: Log::Report::
 Add: DateTime::
 Add: Params::Validate::
 Clean: 0
-Date: 2023-04-13 20:13:49
+Date: 2024-01-18 14:00:17
 Debug: 
 Dependent: 0
 Dyndll: 0
