@@ -33,7 +33,7 @@ require 'package_gkd_tab_prod.pl';
 #require 'package_maak_brief.pl';
 require 'Decryp_Encrypt.pl';
 package main;
-     our $version = 'v20231114_V7_'; # periode gezet op 2021 geen fanchise na bevalling 2024 aangepast voor windows 10 geen tandplus mail weg in package_invoice_to_agresso_prod
+     our $version = 'v20240125_V7_'; # periode gezet op 2021 geen fanchise na bevalling 2024 aangepast voor windows 10 geen tandplus mail weg in package_invoice_to_agresso_prod
      our $mode = 'PROD'; #TEST voor test   PROG voor productie
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}

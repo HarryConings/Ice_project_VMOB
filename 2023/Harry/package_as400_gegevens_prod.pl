@@ -91,7 +91,7 @@ sub zet_history_gkd_in {
       if (!defined $ext_nr or !defined $zkf) {
            return ('kies lid');#code
           }
-      if ($main::mode eq 'PROG') {
+      if ($main::mode eq 'PROD') {
             #&settings($zkf);
                $settings= settings->new($zkf);
                my $dbh = connectdb->connect_as400($settings->{user_name},$settings->{password},$settings->{name_as400});
