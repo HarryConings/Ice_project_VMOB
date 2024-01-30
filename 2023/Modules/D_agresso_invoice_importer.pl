@@ -703,13 +703,21 @@ sub maak_volgende_transactie_invoice {
                                    }
                              eval {my $bestaat = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}};
                              if (!$@) {
-                               eval {my $bestaat1 = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}};
-                               if (!$@) {
-                                    my $code_warning = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}->{Code};
-                                    my $Description_warning= $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}->{Description};
+                               eval {my $bestaat1 = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}};                               
+                               if (!$@) {                                  
+                                    my $code_warning = 0;
+                                    my $Description_warning= '';
+                                    eval {my $bestaat1 = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}[0]->{Code}};
+                                    if (!$@) {
+                                       $code_warning = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}[0]->{Code};
+                                       $Description_warning= $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}[0]->{Description};
+                                    }else {
+                                        $code_warning = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}->{Code};
+                                        $Description_warning= $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}->{Warning}->{Description}; 
+                                    }
                                     $Description_warning = substr ($Description_warning,0,235);
                                     $ExternalRef = "$code_warning : $Description_warning";
-                                     $ExternalRef = '' if ($ExternalRef eq ' : ') ;
+                                    $ExternalRef = '' if ($ExternalRef eq ' : ') ;
                                    }else {
                                     eval {my $bestaat2 = $assurcard->{Invoice}->{Groups}->{Group}->{Line}[$volgnr_Line]->{Warnings}[0]->{Warning}};
                                     if (!$@) {
