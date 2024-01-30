@@ -14,7 +14,7 @@ package main;
      our $mail_niet_gelukt = "\n\nV7 FACTUREN DIE WE NIET IN HET GKD HEBBEN KUNNEN ZETTEN\n___________________________________________________\n\n";
      #$ARGV[1] = 20200120;
      #$ARGV[2] = 20200122;
-     our $mode = 'TEST';
+     our $mode = 'PROD';
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
      if ($ARGV[1]) {
@@ -276,7 +276,7 @@ use Date::Manip::DM5 ;
         ##$clientnummer = 67122533419;#;100048 100248 166516
         use SOAP::Lite ;
        # my $proxy = 'http://10.198.205.8/AgressoWSHost/service.svc';
-        my $proxy = 'http://$agresso_proxy/service.svc';
+        my $proxy = "http://$agresso_proxy/service.svc";
         #my $proxy ='http://S200WR2XXL01.mutworld.be/BusinessWorld-webservices/service.svc';
         #my $proxy = 'http://10.198.206.217/AgressoWSHost/service.svc';
         my $uri   = 'http://services.agresso.com/DocArchiveService/DocArchiveV201101';
