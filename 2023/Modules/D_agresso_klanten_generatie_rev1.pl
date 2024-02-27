@@ -414,7 +414,7 @@ sub zoek_verzekerden {
              my $ZipCode = $agresso_klant[7];
              my $Place = $agresso_klant[8];
              $Address = "$agresso_klant[4] $agresso_klant[5] " if ($agresso_klant[6] eq '') ;
-             $Address = "$agresso_klant[4] $agresso_klant[5] B $agresso_klant[6]" if ($agresso_klant[6] ne '') ;
+             $Address = "$agresso_klant[4] $agresso_klant[5] bus $agresso_klant[6]" if ($agresso_klant[6] ne '') ;
              #print "$nrzkfcheck:$record_teller->@agresso_klant\n ";
              #aanmaken adresInfo
              my %masterfile_onderdeel;
@@ -950,7 +950,7 @@ sub checkadres {
             }
      my $Address ='';
      $Address = "$domi_adres[3] $domi_adres[4] " if ($domi_adres[5] eq '') ;
-     $Address = "$domi_adres[3] $domi_adres[4] B $domi_adres[5]" if ($domi_adres[5] ne '') ;
+     $Address = "$domi_adres[3] $domi_adres[4] bus $domi_adres[5]" if ($domi_adres[5] ne '') ;
      my $CountryCode =  $domi_adres[6];
      my $ZipCode = $domi_adres[7];
      my $Place = $domi_adres[8];
