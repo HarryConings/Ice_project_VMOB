@@ -14,7 +14,7 @@ package main;
      our $vandaag = ParseDate("today");
      $vandaag = substr ($vandaag,0,8);     
      our $mail = "V7 zet Bestaande aandoeningen en Ernstige Ziektes in GKD\n_________________________________________________________________\n";
-     our $mode = 'TEST';
+     our $mode = 'PROD';
      $mode = $ARGV[0] if (defined $ARGV[0]);
      if ( $mode eq 'TEST' or $mode eq 'PROD'){}else{die}
      our $agresso_instellingen = XMLin('D:\OGV\ASSURCARD_2023\assurcard_settings_xml\agresso_settings.xml');
@@ -340,30 +340,59 @@ package as400;
          
      }
 package sql_toegang_agresso;
-      sub setup_mssql_connectie {
-        my ($self,$mode_con) = @_;
+    sub setup_mssql_connectie {
+        my $database =  $main::agresso_instellingen->{"Agresso_Database_$main::mode"};
+        my $server = $main::agresso_instellingen->{"Agresso_SQL_$main::mode"};
         my $dbh_mssql;
-        my $dsn_mssql;
-        my $user = 'HOSPIPLUS';
-        my $passwd = 'ihuho4sdxn';      
-        $dsn_mssql = join "", (
-         "dbi:ODBC:",
-         "Driver={SQL Server};",
-         "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05
-         #"Server=S998XXLSQL01.CPC998.BE\\i200;",
-         "UID=HOSPIPLUS;",
-         "PWD=ihuho4sdxn;",
-          "Database=agrprod",            
-        );
-        my $db_options = {
+        my $dsn_mssql = join "", (
+            "dbi:ODBC:",
+            "Driver={SQL Server};",        
+            "Server=$server;", # nieuwe database server 2023
+            "UID=HOSPIPLUS;",
+            "PWD=ihuho4sdxn;",
+            "Database=$database",        
+           );
+         my $user = 'HOSPIPLUS';
+         my $passwd = 'ihuho4sdxn';
+        
+         my $db_options = {
             PrintError => 1,
             RaiseError => 1,
             AutoCommit => 1, #0 werkt niet in
             LongReadLen =>2000,
-        };   
-       $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or exit_msg("Can't connect: $DBI::errstr");
-       return ($dbh_mssql)
-      }
+   
+           };
+        #
+        # connect to database
+        #
+        $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or exit_msg("Can't connect: $DBI::errstr");
+        return ($dbh_mssql)
+       }
+ 
+      #sub setup_mssql_connectie {
+      #  my ($self,$mode_con) = @_;
+      #  my $dbh_mssql;
+      #  my $dsn_mssql;
+      #  my $user = 'HOSPIPLUS';
+      #  my $passwd = 'ihuho4sdxn';      
+      #  $dsn_mssql = join "", (
+      #   "dbi:ODBC:",
+      #   "Driver={SQL Server};",
+      #   "Server=S000WP1XXLSQL01.mutworld.be\\i200;", # nieuwe database server 2016 05
+      #   #"Server=S998XXLSQL01.CPC998.BE\\i200;",
+      #   "UID=HOSPIPLUS;",
+      #   "PWD=ihuho4sdxn;",
+      #    "Database=agrprod",            
+      #  );
+      #  my $db_options = {
+      #      PrintError => 1,
+      #      RaiseError => 1,
+      #      AutoCommit => 1, #0 werkt niet in
+      #      LongReadLen =>2000,
+      #  };   
+      # $dbh_mssql = DBI->connect($dsn_mssql, $user, $passwd, $db_options) or exit_msg("Can't connect: $DBI::errstr");
+      # return ($dbh_mssql)
+      #}
     # sub setup_mssql_connectie {
     #      my $mode = $main::mode;
     #      my $database;
