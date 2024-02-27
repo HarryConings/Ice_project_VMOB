@@ -140,7 +140,6 @@ package main;
      #kolom 6 (6, _T("Verschil"));
      main->load_agresso_setting("\\\\s298file101.zkf200mut.prd\\250-B\\Applicaties\\Assurcard\\assurcard_settings_xml_$mode\\harry_agresso_settings.xml"); #nagekeken     
      my $instpath = $main::agresso_instellingen->{plaats_mobicoon};
-
      my $periode= "periode_20230101-20231231"; #opgelet ook aanpassen in package_ToolBarMainFrame
      our $gebruikersnaam = package_invoice_to_agresso->get_windows_user;
      #$gebruikersnaam = 'M203DUVI' if (uc $gebruikersnaam eq 'M203HCON');  

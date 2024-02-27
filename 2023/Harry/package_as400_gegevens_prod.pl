@@ -140,30 +140,82 @@ sub zet_history_gkd_in {
                 $max_insert +=1 ;
                 last if ($max_insert >=10);
                }
-          
-              my $zetin = "INSERT INTO $settings->{'gkd_hist_fil'} values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-              $sth = $dbh ->prepare($zetin);
-                  $sth->bind_param(1,$settings->{'zkfnummer'});
-                  $sth->bind_param(2,$volgnummer);
-                  $sth->bind_param(3,0);
-                  $sth->bind_param(4,1);
-                  $sth->bind_param(5,$ext_nr);
-                  $sth->bind_param(6,$settings->{'office'});
-                  $sth->bind_param(7,$settings->{'section'});
-                  $sth->bind_param(8,3);
-                  $sth->bind_param(9,$commentaar);
-                  $sth->bind_param(10,0);
-                  $sth->bind_param(11,'HOSI');
-                  $sth->bind_param(12,$main::tech_creation_date);
-                  $sth->bind_param(13,'HOSI');
-                  $sth->bind_param(14,$main::tech_creation_date);
-                  $sth->bind_param(15,''); 
-                  $sth->bind_param(16,'');
-                  $sth->bind_param(17,0);
-                  $sth->bind_param(18,'');
-                  $sth -> execute();
-                  $sth -> finish();
-                  connectdb->disconnect($dbh);
+              eval {
+                my $zetin = "INSERT INTO $settings->{'gkd_hist_fil'} values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $sth = $dbh ->prepare($zetin);
+                   $sth->bind_param(1,$settings->{'zkfnummer'});
+                   $sth->bind_param(2,$volgnummer);
+                   $sth->bind_param(3,0);
+                   $sth->bind_param(4,1);
+                   $sth->bind_param(5,$ext_nr);
+                   $sth->bind_param(6,$settings->{'office'});
+                   $sth->bind_param(7,$settings->{'section'});
+                   $sth->bind_param(8,3);
+                   $sth->bind_param(9,$commentaar);
+                   $sth->bind_param(10,0);
+                   $sth->bind_param(11,'HOSI');
+                   $sth->bind_param(12,$main::tech_creation_date);
+                   $sth->bind_param(13,'HOSI');
+                   $sth->bind_param(14,$main::tech_creation_date);
+                   $sth->bind_param(15,''); 
+                   $sth->bind_param(16,'');
+                   $sth->bind_param(17,0);
+                   $sth->bind_param(18,'');                  
+                   $sth -> execute();
+                   $sth -> finish();
+                   connectdb->disconnect($dbh);
+               };
+              if ($@) {
+                    print "GKD dubbel volgnummer we proberen opnieuw => $@\n";
+                    $volgnummer1 = $dbh->selectrow_array ("SELECT CONTACTID FROM $settings->{'gkd_hist_fil'} WHERE ORG =  $settings->{'zkfnummer'} ORDER BY CONTACTID DESC");
+                    $volgnummer1 +=1 ;
+                    $volgnummer =$dbh->selectrow_array ("SELECT counter FROM $settings->{'gkd_contactId_fil'} WHERE org = $settings->{'zkfnummer'} ORDER BY counter DESC");
+                    $volgnummer = $volgnummer - $settings->{'zkfnummer'}*10000000000;
+                    $volgnummer = $volgnummer*1;
+                    print "volgnummer1 $volgnummer1 ->volgnummer $volgnummer\n";                 
+                    $max_insert =1;
+                    until ($volgnummer1 <= $volgnummer) {
+                    my $volgnr = ("SELECT counter FROM NEW TABLE(insert into $settings->{'gkd_contactId_fil'} (org, TECHVERSIONNUMBER, TECHCREATIONUSER, TECHLASTUPDATEUSER) 
+                    values ($settings->{'zkfnummer'}, 1,'$settings->{user_name}','$settings->{user_name}'))");
+                    $sth = $dbh ->prepare($volgnr);
+                    $sth -> execute();
+                      while(my $volg=$sth->fetchrow_array)  {
+                           $volgnummer =$volg;
+                           print "$volgnummer\n";
+                      }
+                  $volgnummer = $volgnummer - $settings->{'zkfnummer'}*10000000000;
+                  $volgnummer = $volgnummer*1;
+                  print "$max_insert : $volgnummer\n";
+                  $max_insert +=1 ;
+                  last if ($max_insert >=10);
+                 }
+                eval {
+                  my $zetin = "INSERT INTO $settings->{'gkd_hist_fil'} values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                     $sth = $dbh ->prepare($zetin);
+                     $sth->bind_param(1,$settings->{'zkfnummer'});
+                     $sth->bind_param(2,$volgnummer);
+                     $sth->bind_param(3,0);
+                     $sth->bind_param(4,1);
+                     $sth->bind_param(5,$ext_nr);
+                     $sth->bind_param(6,$settings->{'office'});
+                     $sth->bind_param(7,$settings->{'section'});
+                     $sth->bind_param(8,3);
+                     $sth->bind_param(9,$commentaar);
+                     $sth->bind_param(10,0);
+                     $sth->bind_param(11,'HOSI');
+                     $sth->bind_param(12,$main::tech_creation_date);
+                     $sth->bind_param(13,'HOSI');
+                     $sth->bind_param(14,$main::tech_creation_date);
+                     $sth->bind_param(15,''); 
+                     $sth->bind_param(16,'');
+                     $sth->bind_param(17,0);
+                     $sth->bind_param(18,'');                  
+                     $sth -> execute();
+                     $sth -> finish();
+                     connectdb->disconnect($dbh);
+                 };
+               }
+                  
           }else {
             print 'TEST geen GKD';
           }
