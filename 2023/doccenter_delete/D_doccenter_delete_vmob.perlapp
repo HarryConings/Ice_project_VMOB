@@ -1,0 +1,33 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 9.5.1\bin\perlapp.exe
+Script: doccenter_delete.2.0.pl
+Cwd: X:\veralgemeende_programmas
+Clean: 0
+Date: 2016-09-19 16:48:18
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: doccenter_delete.2.0.exe
+Force: 0
+Gui: 1
+Hostname: PV203O101
+Manifest: 
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: wordt geleverd zonder enige garabtie
+Version-CompanyName: ICE
+Version-FileDescription: doccenter delete
+Version-FileVersion: 2.0.0
+Version-InternalName: doccenter delete
+Version-LegalCopyright: Harry Conings 0475464289
+Version-LegalTrademarks: 
+Version-OriginalFilename: doccenter delete
+Version-ProductName: doccenter delete
+Version-ProductVersion: 2.0.0
+Warnings: 0
+Xclude: 0

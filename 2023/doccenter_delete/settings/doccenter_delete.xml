@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instellingen>
+     <mail_verslag_naar>harry@ice.be</mail_verslag_naar> <!--mail adressen naar waar dat de uitslag moet worden gemaild-->
+    <ziekenfondsen>
+		<zkf203>
+               <nr>203</nr>
+               <name_as400>AIRBUS</name_as400>			  
+               <as400_user>M203CGK2</as400_user>
+               <as400_paswoord>Mk0yMDNQYXRlcjQ3ODdub3N0ZXJFZXJzdDE4NDU3Q0tHSmFuemluZ3RDS0c0N0xvbmRvbmNhbGxpbmc3</as400_paswoord> <!-- nieuw paswoord AS400 aanpassen via versleutel paswoord -->               
+			   <libcxfil>libcxfil03</libcxfil>
+			   <libsxfil>libsxfil03</libsxfil>
+			   <libcxref>libcxref</libcxref>
+		</zkf203>
+		<zkf235>
+               <nr>235</nr>
+               <name_as400>AIRBUS</name_as400>			  
+               <as400_user>M235CGK2</as400_user>
+               <as400_paswoord>ZWthMjAxNkhlZGVuZGFhZ3NlS3Vuc3RjZWdMYWdlcmZlbGRab25lMzgxNmNlZ2EzNjUw</as400_paswoord> <!-- okt2015 -->              
+			   <libcxfil>libcxfil35</libcxfil>
+			   <libsxfil>libsxfil35</libsxfil>
+			   <libcxref>libcxref</libcxref>
+		</zkf235>
+	</ziekenfondsen>
+     
+</instellingen>
