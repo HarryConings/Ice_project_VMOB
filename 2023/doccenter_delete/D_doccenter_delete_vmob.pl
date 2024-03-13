@@ -52,8 +52,7 @@ package App;
          
          $main::dialog->Show(1);
         }
-package webservice;
-    
+package webservice;    
      use SOAP::Lite #;
      +trace => [ transport => sub { print $_[0]->as_string } ];
      use MIME::Base64;
@@ -63,7 +62,7 @@ package webservice;
      use Date::Manip::DM5 ;
      our $documenten;
      sub Cataloog_updateStatusForDelete {      
-         my ($class,$catalog_key) = @_;
+         my ($class,$zf,$catalog_key) = @_;
          #my $test = uc $main::instellingen->{Klant};
          #<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ged="http://ged.services.common.com.gfdi.be">
          #<soapenv:Header/>
@@ -74,13 +73,12 @@ package webservice;
          #   </soapenv:Body>
          #</soapenv:Envelope>
          my $request = 'ged:updateStatusForDelete';
-         my $user = $main::instellingen->{as400_user}; 
-         my $domain = $main::instellingen->{zkf};
-         my $zkf = $main::instellingen->{zkf};
-         my $pass = $main::instellingen->{as400_paswoord}; 
+         my $user = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{as400_user}; 
+         my $domain = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{nr};        
+         my $pass = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{as400_paswoord};
          #my $host = 'rfapps.jablux.cpc998.be/RFND_GRP200b_1407.02_20150118_03:80';  # always include the port
          #my $wsdlfn='C:\macros\ClientTool\GEDCatalogService.xml';
-          my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zkf/connectionspec.properties");
+          my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zf/connectionspec.properties");
           $endpoint_data =~ m/environment\.name=\d{3}/;
           my $environment_name = $&;
           $environment_name =~ s/environment\.name=//;
@@ -119,7 +117,7 @@ package webservice;
             
         }
      sub Cataloog_updateStatusForDouble {      
-         my ($class,$catalog_key) = @_;
+         my ($class,$zf,$catalog_key) = @_;
          #my $test = uc $main::instellingen->{Klant};
          #<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ged="http://ged.services.common.com.gfdi.be">
          #<soapenv:Header/>
@@ -131,13 +129,12 @@ package webservice;
          #</soapenv:Envelope>
          $catalog_key =~ s/"//g;
          my $request = 'updateStatusForDouble';
-         my $user = $main::instellingen->{as400_user}; 
-         my $domain = $main::instellingen->{zkf};
-         my $zkf = $main::instellingen->{zkf};
-         my $pass = $main::instellingen->{as400_paswoord}; 
+         my $user = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{as400_user}; 
+         my $domain = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{nr};        
+         my $pass = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{as400_paswoord}; 
          #my $host = 'rfapps.jablux.cpc998.be/RFND_GRP200b_1407.02_20150118_03:80';  # always include the port
          #my $wsdlfn='C:\macros\ClientTool\GEDCatalogService.xml';
-          my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zkf/connectionspec.properties");
+          my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zf/connectionspec.properties");
           $endpoint_data =~ m/environment\.name=\d{3}/;
           my $environment_name = $&;
           $environment_name =~ s/environment\.name=//;
@@ -175,151 +172,23 @@ package webservice;
             }
             
         }
-     #sub GetCatalogKeys {
-     #    my ($class,$extern_nummer,$doctype,$catalogstartdate,$catalogenddate) = @_;
-     #    #$doctype ='PSEPPRPP';
-     #    #$catalogstartdate ='2016-01-01T11:32:52';
-     #    #$catalogenddate ='2016-01-12T11:32:52';
-     #    #$extern_nummer = '0014222900034';
-     #    #$extern_nummer = '';
-     #    #my $test = uc $main::instellingen->{Klant};
-     #    #<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ged="http://ged.services.common.com.gfdi.be">
-     #    #<soapenv:Header/>
-     #    #   <soapenv:Body>
-     #    #      <ged:updateStatusForDelete>
-     #    #         <ged:in0>203-2015-203-0000000000</ged:in0>
-     #    #      </ged:updateStatusForDelete>
-     #    #   </soapenv:Body>
-     #    #</soapenv:Envelope>
-     #    my $request = 'findByParameters';
-     #    my $user = $main::instellingen->{as400_user}; 
-     #    my $domain = $main::instellingen->{zkf};
-     #    my $zkf = $main::instellingen->{zkf};
-     #    my $pass = $main::instellingen->{as400_paswoord}; 
-     #    #my $host = 'rfapps.jablux.cpc998.be/RFND_GRP200b_1407.02_20150118_03:80';  # always include the port
-     #    #my $wsdlfn='C:\macros\ClientTool\GEDCatalogService.xml';
-     #     my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zkf/connectionspec.properties");
-     #     $endpoint_data =~ m/environment\.name=\d{3}/;
-     #     my $environment_name = $&;
-     #     $environment_name =~ s/environment\.name=//;
-     #     $endpoint_data =~ m/host=[a-zA-Z\d\.\_]+/;
-     #     my $host  = $&;
-     #     $host  =~ s/host=//;
-     #     $endpoint_data =~ m/contextPath=[a-zA-Z\d\_\.]+/;
-     #     my $contextPath= $&;
-     #     $contextPath  =~ s/contextPath=//;
-     #     $endpoint_data =~ m/port=\d+/;
-     #     my $port = $&;
-     #     $port =~ s/port=//;
-     #     my $vandaag = ParseDate("today");
-     #     my $endpoint = "$host:$port/$contextPath/remoting/$environment_name/GEDCatalogService";
-     #     my $uri   = 'http://ged.services.common.com.gfdi.be';
-     #     my $soap = SOAP::Lite
-     #        ->proxy("http://$user:$pass\@$endpoint")
-     #        ->ns($uri,'ged')
-     #        #->on_action( sub { join '/','http://ged.services.common.com.gfdi.be',$request } )
-     #        ->on_action( sub { return 'updateStatusForDouble' } );
-     #       ;
-     #     my $findByParameters = SOAP::Data->name('ged:findByParameters') ->attr({xmlns => "$uri"});
-     #     my $docType    = SOAP::Data->name('docType' => "$doctype")->type('');
-     #     my $catalogEndDate    = SOAP::Data->name('catalogEndDate' => "$catalogenddate")->type('');
-     #     my $catalogStartDate    = SOAP::Data->name('catalogStartDate' => "$catalogstartdate")->type('');
-     #     my $thirdCodeType = SOAP::Data->name('thirdCodeType' => "EXID")->type('');
-     #     my $thirdCodeValue = SOAP::Data->name('thirdCodeValue' => "$extern_nummer")->type('');
-     #     my $thirdOrg = SOAP::Data->name('thirdOrg' => $zkf)->type('');
-     #     #my $in0 = SOAP::Data->name('ged:in0')->value(\SOAP::Data->value($catalog_key));
-     #     my $in0 = '';
-     #     if ($extern_nummer > 0) {
-     #         $in0 = SOAP::Data->name('ged:in0')
-     #            ->value(\SOAP::Data->value($catalogEndDate,$catalogStartDate,$docType,$thirdCodeType,$thirdCodeValue,$thirdOrg)); #$thirdCodeType,$thirdCodeValue,
-     #     }else {
-     #         $in0 = SOAP::Data->name('ged:in0')
-     #            ->value(\SOAP::Data->value($catalogEndDate,$catalogStartDate,$docType,$thirdOrg)); #$thirdCodeType,$thirdCodeValue,
-     #     }
-     #     
-     #    
-     #     #my $response = $soap->call($updateStatusForDouble,$in0);
-     #     my $response = $soap->call($findByParameters,$in0);
-     #     print "";
-     #     eval {my $key = $response->{_content}->[2]->[0]->[2]->[0]->[4]->{faultstring}};
-     #     my $docteller = 0;
-     #     if ($@) {
-     #        my $fout = $response->{_content}->[2]->[0]->[2]->[0]->[4]->{faultstring};
-     #        return ($fout);
-     #       }else {
-     #        my $link =  $response->{_content}->[2]->[0]->[2]->[0]->[4]->{out}->{GEDEvent};
-     #        eval {my $key = $link->[0]->{key}};
-     #        if (!$@) {                 
-     #            foreach my $doc_teller (sort keys $link){
-     #                my $key = $link->[$doc_teller]->{key};
-     #                my $externnr = $link->[$doc_teller]->{thirdExternalNumber};
-     #                my $rijksregnr = $link->[$doc_teller]->{thirdNiss}; 
-     #                my $voornaam = $link->[$doc_teller]->{thirdFName};
-     #                my $achternaam = $link->[$doc_teller]->{thirdName};
-     #                my $thirdtype = $link->[$doc_teller]->{thirdPartyType};
-     #                my $folder = $link->[$doc_teller]->{folderType};
-     #                my $docType = $link->[$doc_teller]->{docType};
-     #                my $dcId = $link->[$doc_teller]->{dcId};
-     #                 my $direction = $link->[$doc_teller]->{direction};
-     #                $documenten->{$key}->{ExternNummer} =$externnr;
-     #                $documenten->{$key}->{RijksRegisterNummer}=$rijksregnr;
-     #                $documenten->{$key}->{VoorNaam}=$voornaam;
-     #                $documenten->{$key}->{AchterNaam} = $achternaam;
-     #                $documenten->{$key}->{thirdPartyType} = $thirdtype;
-     #                $documenten->{$key}->{folder} = $folder;
-     #                $documenten->{$key}->{doctType} =$docType;
-     #                $documenten->{$key}->{dcId} = $dcId;
-     #                $documenten->{$key}->{direction}= $direction;
-     #                $docteller += 1;
-     #               }
-     #            print '';
-     #           }else {
-     #            my $key = $link->{key};
-     #            my $externnr = $link->{thirdExternalNumber};
-     #            my $rijksregnr = $link->{thirdNiss}; 
-     #            my $voornaam = $link->{thirdFName};
-     #            my $achternaam = $link->{thirdName};
-     #            my $thirdtype = $link->{thirdPartyType};
-     #            my $folder = $link->{folderType};
-     #            my $docType = $link->{docType};
-     #            my $dcId = $link->{dcId};
-     #            my $direction = $link->{direction};
-     #            $documenten->{$key}->{ExternNummer} =$externnr;
-     #            $documenten->{$key}->{RijksRegisterNummer}=$rijksregnr;
-     #            $documenten->{$key}->{VoorNaam}=$voornaam;
-     #            $documenten->{$key}->{AchterNaam} = $achternaam;
-     #            $documenten->{$key}->{thirdPartyType} = $thirdtype;
-     #            $documenten->{$key}->{folder} = $folder;
-     #            $documenten->{$key}->{doctType} =$docType;
-     #            $documenten->{$key}->{dcId} = $dcId;
-     #            $documenten->{$key}->{direction}= $direction;
-     #            $docteller += 1;
-     #            #my $url = webservice->make_commen_download_url();
-     #            #webservice->download_file($url,$key,$direction);
-     #            print '';
-     #           }
-     #       
-     #        return ('gelukt',$docteller);
-     #       }
-     #}
-     sub GetCatalogKeys {    
-      my ($class,$type,$extern_nummer,$doctype,$catalogstartdate,$catalogenddate,$pageNumber,$frame,$zf,$inz_nr) = @_;
-      if ($type eq 'EXID') {
-           $extern_nummer = sprintf ('%013s',$extern_nummer);#code
-          }elsif ($type eq 'NISS') {
-           $extern_nummer = sprintf ('%011s',$extern_nummer);#code
-          }
+     
+     sub GetCatalogKeys {
+      my ($class,$zf,$NaamBrief,$Begindatum,$Einddatum,$pagina,$frame) = @_; 
+      #my ($class,$type,$extern_nummer,$doctype,$catalogstartdate,$catalogenddate,$pageNumber,$frame,$zf,$inz_nr) = @_;
+     
          
-         undef $documenten;      
-         
-         my $jaarstart = substr($catalogstartdate,0,4);
-         my $maandstart = substr($catalogstartdate,4,2);
-         my $dagstart = substr($catalogstartdate,6,2);
-         $catalogstartdate ="$jaarstart-$maandstart-$dagstart"."T00:00:01";
-         my $jaarend = substr($catalogenddate,0,4);
-         my $maandend = substr($catalogenddate,4,2);
-         my $dagend = substr($catalogenddate,6,2);
-         $catalogenddate ="$jaarend-$maandend-$dagend"."T23:59:59";
+         undef $documenten;
+         my $pageNumber = $pagina;
+         my $doctype = $NaamBrief;
+         my $jaarstart = substr($Begindatum,0,4);
+         my $maandstart = substr($Begindatum,4,2);
+         my $dagstart = substr($Begindatum,6,2);
+         my $catalogstartdate ="$jaarstart-$maandstart-$dagstart"."T00:00:01";
+         my $jaarend = substr($Einddatum,0,4);
+         my $maandend = substr($Einddatum,4,2);
+         my $dagend = substr($Einddatum,6,2);
+         my $catalogenddate ="$jaarend-$maandend-$dagend"."T23:59:59";
          #$doctype ='PSEPPRPP';
          #$catalogstartdate ='2016-01-01T11:32:52';
          #$catalogenddate ='2016-01-12T11:32:52';
@@ -335,13 +204,13 @@ package webservice;
          #   </soapenv:Body>
          #</soapenv:Envelope>
          my $request = 'findByParameters';
-         my $user = $main::instellingen->{ziekenfondsen}->{$zf}->{as400_user}; 
-         my $domain = $main::instellingen->{ziekenfondsen}->{$zf}->{nr};        
-         my $pass = $main::instellingen->{ziekenfondsen}->{$zf}->{as400_paswoord}; 
+         my $user = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{as400_user}; 
+         my $domain = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{nr};        
+         my $pass = $main::instellingen->{ziekenfondsen}->{"zkf$zf"}->{as400_paswoord}; 
          #my $host = 'rfapps.jablux.cpc998.be/RFND_GRP200b_1407.02_20150118_03:80';  # always include the port
          #my $wsdlfn='C:\macros\ClientTool\GEDCatalogService.xml';
          my $zkf = $main::instellingen->{ziekenfondsen}->{$zf}->{nr};          
-          my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zkf/connectionspec.properties");
+          my $endpoint_data = get("http://rfapps.jablux.cpc998.be/WebStartWeb/Jade2Properties/$zf/connectionspec.properties");
           $endpoint_data =~ m/environment\.name=\d{3}/;
           my $environment_name = $&;
           $environment_name =~ s/environment\.name=//;
@@ -366,18 +235,14 @@ package webservice;
           my $findByParameters = SOAP::Data->name('ged:findByParameters') ->attr({xmlns => "$uri"});
           my $docType    = SOAP::Data->name('docType' => "$doctype")->type('');
           my $catalogEndDate    = SOAP::Data->name('catalogEndDate' => "$catalogenddate")->type('');
-          my $catalogStartDate    = SOAP::Data->name('catalogStartDate' => "$catalogstartdate")->type('');
-          my $thirdCodeType = SOAP::Data->name('thirdCodeType' => "$type")->type('');
-          my $thirdCodeValue = SOAP::Data->name('thirdCodeValue' => "$extern_nummer")->type('');
-          my $thirdOrg = SOAP::Data->name('thirdOrg' => $zkf)->type('');
+          my $catalogStartDate    = SOAP::Data->name('catalogStartDate' => "$catalogstartdate")->type('');         
+          my $thirdOrg = SOAP::Data->name('thirdOrg' => $zf)->type('');
           my $pageSize  = SOAP::Data->name('pageSize' => $main::instellingen->{page_size_doccenter})->type('');
           my $setPageNumber  = SOAP::Data->name('pageNumber' => $pageNumber)->type('');
           #my $in0 = SOAP::Data->name('ged:in0')->value(\SOAP::Data->value($catalog_key));
           my $in0 = '';
-         if ($extern_nummer > 0 and $type ne '') {
-              $in0 = SOAP::Data->name('ged:in0')
-                 ->value(\SOAP::Data->value($catalogEndDate,$catalogStartDate,$docType,$thirdCodeType,$thirdCodeValue,$thirdOrg)); #$thirdCodeType,$thirdCodeValue,
-          }elsif ($doctype ne '') {
+     
+          if ($doctype ne '') {
               $in0 = SOAP::Data->name('ged:in0')
                  ->value(\SOAP::Data->value($catalogEndDate,$catalogStartDate,$docType,$thirdOrg,$pageSize,$setPageNumber)); #$thirdCodeType,$thirdCodeValue,
           }else {
@@ -409,9 +274,7 @@ package webservice;
              eval {my $key = $link->[0]->{key}};
              if (!$@) {                 
                  foreach my $doc_teller (sort keys $link){
-                     my $key = $link->[$doc_teller]->{key};
-                     my $externnr = $extern_nummer;
-                     my $rijksregnr =  $inz_nr; 
+                     my $key = $link->[$doc_teller]->{key};                    
                      my $voornaam = $link->[$doc_teller]->{thirdFName};
                      my $achternaam = $link->[$doc_teller]->{thirdName};
                      my $thirdtype = $link->[$doc_teller]->{thirdPartyType};
@@ -419,10 +282,7 @@ package webservice;
                      my $docType = $link->[$doc_teller]->{docType};
                      my $dcId = $link->[$doc_teller]->{dcId};
                      my $direction = $link->[$doc_teller]->{direction};
-                     print $fh "$externnr,$key,$rijksregnr,$voornaam,$achternaam,$direction,$doctype,$dcId\n";
-                     push (@main::te_verwerken_extnr,$externnr);
-                     $documenten->{$key}->{ExternNummer} =$externnr;
-                     $documenten->{$key}->{RijksRegisterNummer}=$rijksregnr;
+                     my $catalogdate = $link->[$doc_teller]->{catalogDate};
                      $documenten->{$key}->{VoorNaam}=$voornaam;
                      $documenten->{$key}->{AchterNaam} = $achternaam;
                      $documenten->{$key}->{thirdPartyType} = $thirdtype;
@@ -430,24 +290,19 @@ package webservice;
                      $documenten->{$key}->{doctType} =$docType;
                      $documenten->{$key}->{dcId} = $dcId;
                      $documenten->{$key}->{direction}= $direction;
+                     $documenten->{$key}->{catdate}= $catalogdate;
                      $docteller += 1;
                     }
                  print '';
                 }else {
-                 my $key = $link->{key};
-                 my $externnr = $extern_nummer;
-                 my $rijksregnr = $inz_nr; 
+                 my $key = $link->{key};               
                  my $voornaam = $link->{thirdFName};
                  my $achternaam = $link->{thirdName};
                  my $thirdtype = $link->{thirdPartyType};
                  my $folder = $link->{folderType};
                  my $docType = $link->{docType};
                  my $dcId = $link->{dcId};
-                 my $direction = $link->{direction};
-                 push (@main::te_verwerken_extnr,$externnr);
-                 print $fh "$externnr,$key,$rijksregnr,$voornaam,$achternaam,$direction,$doctype,$dcId\n";
-                 $documenten->{$key}->{ExternNummer} =$externnr;
-                 $documenten->{$key}->{RijksRegisterNummer}=$rijksregnr;
+                 my $direction = $link->{direction};                 
                  $documenten->{$key}->{VoorNaam}=$voornaam;
                  $documenten->{$key}->{AchterNaam} = $achternaam;
                  $documenten->{$key}->{thirdPartyType} = $thirdtype;
@@ -652,7 +507,9 @@ package Frame;
            my $NaamBrief =  $frame->{Frame_Txt_DT}->GetValue();
            my $pagina = 1;
            if ($getkeys_is_checked == 1){
+                # ,$type,$extern_nummer,$doctype,$catalogstartdate,$catalogenddate,$pageNumber,$frame,$zf,$inz_nr)
                 my ($aantal1,$documenten1) =  webservice->GetCatalogKeys($zf,$NaamBrief,$Begindatum,$Einddatum,$pagina,$frame);
+                Frame->maak_bestand($zf,$Begindatum,$Einddatum,$aantal1,$documenten1);
                 print "";
             }else {
                 if ($Double_is_checked != 1 and $Delete_is_checked != 1) {
@@ -677,14 +534,14 @@ package Frame;
                   if ($Delete_is_checked == 1 ) {
                      my $response ='';
                      if ($CatalogKey ne '') {
-                         $response = webservice->Cataloog_updateStatusForDelete($CatalogKey);
+                         $response = webservice->Cataloog_updateStatusForDelete($zf,$CatalogKey);
                           Wx::MessageBox("$response", 
                                           _T("Antwoord van de Cataloog voor Delete"), 
                                           wxOK|wxCENTRE, 
                                           $frame
                                          );
                         }elsif ($FileName ne '') {
-                          Frame->verwerk_bestand($frame,$FileName,'delete',$Enkel_eattest_is_checked);
+                          Frame->verwerk_bestand($frame,$FileName,'delete',$Enkel_eattest_is_checked,$zf);
                         }
                      
                     
@@ -693,14 +550,14 @@ package Frame;
                   if ($Double_is_checked == 1 ) {
                       my $response ='';
                      if ($CatalogKey ne '') {
-                         $response = webservice->Cataloog_updateStatusForDouble($CatalogKey);
+                         $response = webservice->Cataloog_updateStatusForDouble($zf,$CatalogKey);
                           Wx::MessageBox("$response", 
                                           _T("Antwoord van de Cataloog voor Dubbel"), 
                                           wxOK|wxCENTRE, 
                                           $frame
                                          );
                         }elsif ($FileName ne '') {
-                          Frame->verwerk_bestand($frame,$FileName,'double',$Enkel_eattest_is_checked);
+                          Frame->verwerk_bestand($frame,$FileName,'double',$Enkel_eattest_is_checked,$zf);
                         }   
                     
                     }
@@ -729,7 +586,7 @@ package Frame;
                 }
         }
       sub verwerk_bestand {
-         my ($class,$frame,$bestand,$soort,$Enkel_eattest_is_checked) = @_   ;
+         my ($class,$frame,$bestand,$soort,$Enkel_eattest_is_checked,$zf) = @_   ;
          print "";
          my  $response = "Alles gelukt behalve:\n";
          open(my $fh, '<:encoding(UTF-8)', $bestand)  or &geen_file($frame,$bestand);
@@ -747,12 +604,13 @@ package Frame;
                                 $mag_verwerkt = 0 if ($test_nr != 6);
                              }
                       my $deel_response = '';
+                      # $mag_verwerkt =0;
                       if ($mag_verwerkt == 1) {
                             if ($soort eq 'delete' ) {
-                               $deel_response = webservice->Cataloog_updateStatusForDelete($CatalogKey);#code
+                               $deel_response = webservice->Cataloog_updateStatusForDelete($zf,$CatalogKey);#code
                             }
                             if ($soort eq 'double' ) {
-                               $deel_response = webservice->Cataloog_updateStatusForDouble($CatalogKey);#code
+                               $deel_response = webservice->Cataloog_updateStatusForDouble($zf,$CatalogKey);#code
                             }
                             
                             $response = $response."$teller->$CatalogKey\n" if ($deel_response ne 'gelukt');
@@ -770,6 +628,64 @@ package Frame;
                                           $frame
                                          );
         }
+      sub maak_bestand {
+        my ($class,$zf,$Begindatum,$Einddatum,$aantal1,$documenten1) = @_;
+        my $place_outputfile = $main::instellingen->{'place_output_file'};
+        my $file = "$place_outputfile\\$zf\_,$Begindatum\_$Einddatum\_docfiles.txt";
+        my $naam_file ="$zf\_,$Begindatum\_$Einddatum\_docfiles.txt";
+        unlink $file;
+        # ($Beschrijving,$Derden,$Creatiedatum,$Gecatalogiseerd,$Afgedruk,$Outputqueue,$Status,$Afdrukwijze,$weetniet,$CatalogKey,$Staat,$Oorsprong)
+        open(my $fh, '>:encoding(UTF-8)', $file) or print "Could not open file $file";
+        my $sort_doc;
+        eval{foreach my $dockey (keys $documenten1) {}};
+        if ($@) {
+           Wx::MessageBox( _T("Geen files van deze doctype gevonden tussen $Begindatum en $Einddatum"), 
+                                         "Zoeken", 
+                                          wxOK|wxCENTRE, 
+                                          
+                                         ); 
+        }else{
+            print $fh "achternaam,voornaam,doctype,date in catalog,docid,folder,thirdpartytype,,,dockey\n";
+            foreach my $dockey (keys $documenten1) {            
+                my $achternaam = $documenten1->{$dockey}->{'AchterNaam'};
+                my $voornaam = $documenten1->{$dockey}->{'VoorNaam'};
+                my $docid = $documenten1->{$dockey}->{'dcId'};
+                my $doctype = $documenten1->{$dockey}->{'doctType'};
+                my $folder = $documenten1->{$dockey}->{'folder'};
+                my $thirdpartytype = $documenten1->{$dockey}->{'thirdPartyType'};
+                my $catdate = substr($documenten1->{$dockey}->{'catdate'},0,10);
+                my $docsort = "$achternaam$voornaam$dockey";
+                $sort_doc->{$docsort}->{'AchterNaam'}= $achternaam;
+                $sort_doc->{$docsort}->{'VoorNaam'} = $voornaam;
+                $sort_doc->{$docsort}->{'dcId'} = $docid;
+                $sort_doc->{$docsort}->{'docType'}= $doctype;
+                $sort_doc->{$docsort}->{'folder'} =  $folder;
+                $sort_doc->{$docsort}->{'thirdPartyType'} = $thirdpartytype;
+                $sort_doc->{$docsort}->{'dockey'} = $dockey;
+                $sort_doc->{$docsort}->{'catdate'} = $catdate;
+            }
+            foreach my $key (sort keys $sort_doc) {
+                my $achternaam = $sort_doc->{$key}->{'AchterNaam'};
+                my $voornaam = $sort_doc->{$key}->{'VoorNaam'};
+                my $docid = $sort_doc->{$key}->{'dcId'};
+                my $doctype = $sort_doc->{$key}->{'docType'};
+                my $folder = $sort_doc->{$key}->{'folder'};
+                my $thirdpartytype = $sort_doc->{$key}->{'thirdPartyType'};
+                my $dockey = $sort_doc->{$key}->{'dockey'};
+                my $catdate = $sort_doc->{$key}->{'catdate'};
+                print $fh "$achternaam,$voornaam,$doctype,$catdate,$docid,$folder,$thirdpartytype,,, $dockey\n";
+            }
+            close $fh;
+            Wx::MessageBox( _T("$aantal1 files van deze doctype gevonden tussen $Begindatum en $Einddatum. U kan deze vinden in:
+                                map: $place_outputfile
+                                file: $naam_file"), 
+                                         "Zoeken", 
+                                          wxOK|wxCENTRE, 
+                                          
+                                         ); 
+        }
+        print "";
+      }
       sub geen_file {
          my ($frame,$bestand) = @_;
            Wx::MessageBox("Het bestand $bestand bestaat niet!", 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <instellingen>
      <mail_verslag_naar>harry@ice.be</mail_verslag_naar> <!--mail adressen naar waar dat de uitslag moet worden gemaild-->
+	 <page_size_doccenter>500</page_size_doccenter>
+	 <place_output_file>D:\OGV\ASSURCARD_2023</place_output_file> <!-- file met output search -->
     <ziekenfondsen>
 		<zkf203>
                <nr>203</nr>
